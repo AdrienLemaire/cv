@@ -1,4 +1,4 @@
-%%
+%
 %% Copyright 2006-2007 Christoph Neumann, Bernd Haberstumpf
 %%
 %% This LaTeX file provides a template for a german CV.
@@ -17,6 +17,37 @@
 \documentclass[english]{ecv}
 
 \usepackage{setspace}
+
+%% START CUSTOMIZATIONS
+
+% begin new row: make an (optional) spacing before a section
+%\renewcommand{\ecvBreaksections}[0]{& \tabularnewline[0pt]}
+
+\makeatletter
+\renewcommand{\ecv@Title}{%
+  \ifthenelse{\equal{\ecv@img}{}}{ %
+    \ecvLeft{\textsc{\LARGE{\ecvTitle}}%
+      \bigskip%
+    } & \tabularnewline %
+  }{ %
+    \ecvLeft{\textsc{\LARGE{\ecvTitle}}%
+      \bigskip%
+    } & \ecv@Portrait{\ecv@img} %
+    \tabularnewline %
+  } %
+}
+
+\renewcommand{\ecvBSec}[2][\ecv@lang]{%
+  \ifthenelse{\equal{#1}{\ecv@lang}}{%
+    %\ecvBreaksections
+    \tabularnewline%
+    \ecvLeft{\textsc{\Large{\textcolor{ecv@ColBlue}{#2}}} \medskip } &%
+    \tabularnewline%
+  }{}%
+}
+\makeatother
+
+%% END CUSTOMIZATIONS
 
 % Dateiname: images/<portrait>.jpg
 \ecvPortrait{../images/portrait.jpg}
@@ -93,6 +124,14 @@
 \ecvENR{Graduate school}
                 {LEGTA Auzeville French High School}
 
+\ecvEFR{Other}{\ecvBold{Certifications}}
+\ecvENR{}
+                {\textit{12/2011}: Artificial Intelligence SoA (68.3\%), Stanford University\\
+                \textit{12/2011}: Machine Learning  SoA (100\%), Stanford University\\
+                \textit{09/2009}: W3AF Web Security\\
+                \textit{05/2008}: CISCO CCNA3\\
+                \textit{12/2007}:CISCO CCNA1 \& 2}
+
 %%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Research
 %%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -137,9 +176,7 @@
 \ecvENR{Employment}
                  {Web Developer, Intern}
 \ecvENR{Main responsibilities}
-                 {Development in Python/Django of the Baigo website via
-                   telecommuting to promote the Go game in France,
-                   involving artificial intelligence programming
+                 {Development in Python/Django of the Baigo website
                  }
 
 \ecvEFR{Period}{08/2009--09/2009}
@@ -151,7 +188,19 @@
                  {Creation and integration of websites in PHP.
                  }
 
-\ecvEFR{Period}{07/2010--03/2011}
+\ecvEFR{Period}{07/2009--09/2009}
+\ecvENR{Employer}
+                 {\ecvBold{Eurodoc, Euroscript International group}, Toulouse/France}
+\ecvENR{Employment}
+                 {Intern
+                 }
+\ecvENR{Main responsibilities}
+                 {Network Administrator and support of 50 employees: software
+                   installation, data protection and recovery. Developed an
+                   Intranet application (ASP.NET, Openlazlo)
+                 }
+
+\ecvEFR{Period}{09/2008--06/2009}
 \ecvENR{Employer}
                  {\ecvBold{Eurilogic, Nexeya Group}, Lab\`ege/France}
 \ecvENR{Employment}
@@ -167,7 +216,7 @@
 \ecvENR{2 months}
                  {\ecvBold{Google Summer of Code}, Montreal/Canada: Participated
                   to the implementation of a CIFS client in the Haiku OS (C, C++)
-                  via telecommuting}
+                 }
 \ecvENR{3 months}
                  {\ecvBold{Orange beta, France Telecome}, Montreal/Canada:
                  Developer in a 4-students team for a network analysis software
