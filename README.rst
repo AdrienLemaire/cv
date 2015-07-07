@@ -2,13 +2,11 @@
 My CV
 =====
 
-Just playing out with LaTeX.
-Might create a new package if it goes anywhere.
-
 
 Requirements
 ------------
 
+ - texlive-bin
  - texlive-latexextra (contains ecv)
 
 
