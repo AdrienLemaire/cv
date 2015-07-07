@@ -1,0 +1,97 @@
+\documentclass[a4paper,11pt]{cv4tw}% options are inherited from article class, and automatically given to this class
+%\definecolorifnotdef{contrastmain}{RGB}{219,255,242}  % Main theme color in contrast mode
+%\definecolorifnotdef{main}{RGB}{60,76,70}             % Main theme color
+%\definecolorifnotdef{soft}{RGB}{50,64,58}             % Soft color, for title
+%\usetheme[optional scheme]{theme}
+\usetheme[minuit]{compact}  % choices: celadon, tan, gray, purple, teal, minuit, nothing (red)
+% Not happy with the default style, or bullet ? Define yours !
+\setmystyle[missionbullet]{\color{soft}$>$~~}
+\setmystyle[assetbullet]{\color{icons}\faBook}
+\setmystyle[fieldratefull]{\color{icons}\faCircle}
+\setmystyle[fieldrateempty]{\color{icons}\faCircleBlank}
+% If you need a custom contact, you can define a bullet here :
+\setmystyle[custom0bullet]{\color{icons}\faBolt}
+\usepackage[utf8]{inputenc}
+%\academictitle{PhD}
+\firstname{Adrien}
+\lastname{Lemaire}
+\quote{\itshape ``Make the most of yourself....for that is all there is of you.''}
+
+\cvpicture{../images/portrait_2015_1520x2280.jpg}
+% Add up to 10 assets (0 to 9)
+\setcvasset[0]{Hacker}
+\setcvasset[1]{Full Stack}
+\setcvasset[2]{Polyglot}
+\setcvasset[3]{Globetrotter}
+
+%\setcvasset[2]{}
+%\setcvasset[3]{\emph{TOP5} most-translated author}
+%
+%\setcvcontact[custom0]{\href{https://github.com/Fandekasp}{Fandekasp}} 
+\setcvcontact[email]{lemaire.adrien@gmail.com} 
+%\setcvcontact[homepagessl]{} 
+\setcvcontact[cellphone]{+81 50-3719-3980}
+%\setcvcontact[phone]{+33 9 48 23 48 76}
+%\setcvcontact[fax]{+33 9 08 02 18 88}
+\setcvcontact[skype]{Fandekasp} %not yet available
+%\setcvcontact[vk]{}
+%\setcvcontact[pinterest]{}
+\setcvcontact[facebook]{fandekasp}
+\setcvcontact[googleplus]{+AdrienLemaire}
+\setcvcontact[linkedin]{adrienlemaire}
+\setcvcontact[twitter]{@Fandekasp}
+\setcvcontact[github]{Fandekasp}
+\setcvcontact[spokenlanguages]{fr,en,ja} 
+\setcvcontact[age]{November 8th 1987} 
+\setcvcontact[address]{Apt.1202\\2-14-2 Grand Court Mitejima\\Nishiyodogawaku Mitejima\\555-0012 Osaka} 
+\title{Engineer}
+\begin{document}
+\section{Experience}
+\story{Engineer}{AlpacaDB}{2014/06-2015/09\\Kobe}
+{Software Development\\Computer Vision\\ Machine Learning\\Databases\\DevOps}
+    { Built Computer vision \& Machine Learning products 
+	\begin{missions}
+    \item \href{http://www.labell.io/}{Labellio}, an image labeller \& model trainer.
+        \item \href{http://iromo.jp}{Iromo}, new shopping experience by
+            searching similar fashion items by color and patterns.
+		\item Projects for big Japanese customers.
+	\end{missions}
+}
+\story{Director of Technology}{Aquasys}{2011/04-2014/08\\Okinawa}
+{System Administratior\\Project management\\Product management\\Web development\\CI \& QA}
+	{
+	\begin{missions}
+    \item Managed Odoo (ex-OpenERP) operations.
+        \item Developed a generic framework for marketplaces such as \href{https://uruma-work.com}{Uruma-work}
+	\end{missions}
+}
+\section{Education}
+\story{International Master of Science}{Supinfo International University}{2006-2011\\France, Canada, UK}{}{}
+\story{Certificate in Operating Systems Development}{Dominican University of California}{2009-2010\\USA}{}{}
+\section{Skills}
+\begin{skills} {Language}
+\skill[French]{ Mother tongue}
+\skill[English]{ Fluent (2010: TOEIC 855}
+%\skill[Esperanto]{ Fluent}
+\skill[Japanese]{ Intermediate (2015: JLPT n3)}
+\skill[German]{ Notions}
+\skill[Russian]{ Learning}
+\end{skills}
+\begin{skills}{Social}
+\skill[MBTI]{ENTP}
+\skill[team]{Friendly relationships, great communication}
+\end{skills}
+\begin{skills}{Organizational}
+\skill[Team]{Leadership and Mentoring}
+\skill[Strategic Planning]{Agile, Scrum, XP, Lean Startup}
+\end{skills}
+% Argument for fields env. are title, cols count and max rate
+\begin{fields}{Technical}{2}{5}
+\field{Python}{5}
+\field{Linux}{5}
+\field{Git}{5}
+\field{DevOps}{4}
+\field{Product}{4}
+\field{SysAdmin}{3}
+\end{fields}
+\end{document}
