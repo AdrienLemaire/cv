@@ -3,31 +3,95 @@
 %\definecolorifnotdef{main}{RGB}{60,76,70}             % Main theme color
 %\definecolorifnotdef{soft}{RGB}{50,64,58}             % Soft color, for title
 %\usetheme[optional scheme]{theme}
+
 \usetheme[minuit]{compact}  % choices: celadon, tan, gray, purple, teal, minuit, nothing (red)
+
+
+\setcvcontactszone[main]{% Finishing this line with a % is important to avoid a bad align of icons
+    \rendercontactifdefined{email}
+    \rendercontactifdefined{cellphone}
+    \rendercontactifdefined{age}
+    \rendercontactifdefined{address}
+    \rendercontactifdefined{spokenlanguages}
+}
+\setcvcontactszone[social]{%
+    \rendercontactifdefined{linkedin}
+    \rendercontactifdefined{github}
+    \rendercontactifdefined{googleplus}
+    \rendercontactifdefined{twitter}
+    \rendercontactifdefined{facebook}
+    %\rendercontactifdefined{skype}
+}
+\setcvcontactszone[extra]{%
+    \\
+    \\
+    \rendercontactifdefined{custom0}
+    \rendercontactifdefined{custom1}
+    \rendercontactifdefined{custom2}
+    \rendercontactifdefined{custom3}
+    \rendercontactifdefined{custom4}
+    \rendercontactifdefined{custom5}
+    \rendercontactifdefined{custom6}
+    \rendercontactifdefined{custom7}
+    \rendercontactifdefined{custom8}
+    \rendercontactifdefined{custom9}
+    \rendercontactifdefined{custom10}
+    \\
+    \\
+    \rendercontactifdefined{hobby0}
+    %\rendercontactifdefined{hobby1}
+    %\rendercontactifdefined{hobby2}
+%    \rendercontactifdefined{hobby3}
+    %\rendercontactifdefined{hobby4}
+    %\rendercontactifdefined{hobby5}
+    %\rendercontactifdefined{hobby6}
+    %\rendercontactifdefined{hobby7}
+    %\rendercontactifdefined{hobby8}
+%    \rendercontactifdefined{hobby9}
+}
+
+
+
+
 % Not happy with the default style, or bullet ? Define yours !
-\setmystyle[missionbullet]{\color{soft}$>$~~}
+%\setmystyle[missionbullet]{\color{soft}$>$~~}
+\setmystyle[custom1bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom2bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom3bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom4bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom5bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom6bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom7bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom8bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom9bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom10bullet]{{\mystyle[icons]\faStar}}
 \setmystyle[assetbullet]{\color{icons}\faBook}
 \setmystyle[fieldratefull]{\color{icons}\faCircle}
 \setmystyle[fieldrateempty]{\color{icons}\faCircleBlank}
 % If you need a custom contact, you can define a bullet here :
 \setmystyle[custom0bullet]{\color{icons}\faBolt}
+\setmystyle[hobby0bullet]{\color{icons}\faBolt}
+%\setmystyle[hobby1bullet]{\color{icons}\faBolt}
+%\setmystyle[hobby2bullet]{\color{icons}\faBolt}
+%\setmystyle[hobby3bullet]{\color{icons}\faBolt}
+%\setmystyle[hobby4bullet]{\color{icons}\faBolt}
+%\setmystyle[hobby5bullet]{\color{icons}\faBolt}
+%\setmystyle[hobby6bullet]{\color{icons}\faBolt}
+%\setmystyle[hobby7bullet]{\color{icons}\faBolt}
+%\setmystyle[hobby8bullet]{\color{icons}\faBolt}
+%\setmystyle[hobby9bullet]{\color{icons}\faBolt}
 \usepackage[utf8]{inputenc}
 %\academictitle{PhD}
 \firstname{Adrien}
 \lastname{Lemaire}
 \quote{\itshape ``Make the most of yourself....for that is all there is of you.''}
 
-\cvpicture{../images/portrait_2015_1520x2280.jpg}
+%\cvpicture{../images/portrait_2015_1520x2280.jpg}
 % Add up to 10 assets (0 to 9)
-\setcvasset[0]{Hacker}
-\setcvasset[1]{Full Stack}
-\setcvasset[2]{Polyglot}
-\setcvasset[3]{Globetrotter}
+\setcvasset[0]{MBTI: ENTP}
+\setcvasset[1]{Leadership}
+\setcvasset[2]{Mentoring}
 
-%\setcvasset[2]{}
-%\setcvasset[3]{\emph{TOP5} most-translated author}
-%
-%\setcvcontact[custom0]{\href{https://github.com/Fandekasp}{Fandekasp}} 
 \setcvcontact[email]{lemaire.adrien@gmail.com} 
 %\setcvcontact[homepagessl]{} 
 \setcvcontact[cellphone]{+81 50-3719-3980}
@@ -41,57 +105,114 @@
 \setcvcontact[linkedin]{adrienlemaire}
 \setcvcontact[twitter]{@Fandekasp}
 \setcvcontact[github]{Fandekasp}
-\setcvcontact[spokenlanguages]{fr,en,ja} 
+\setcvcontact[spokenlanguages]{French (native)\\English (fluent)\\Japanese (JLPT n3)} 
 \setcvcontact[age]{November 8th 1987} 
 \setcvcontact[address]{Apt.1202\\2-14-2 Grand Court Mitejima\\Nishiyodogawaku Mitejima\\555-0012 Osaka} 
-\title{Engineer}
+
+\setcvcontact[custom0]{Python} 
+\setcvcontact[custom1]{Linux} 
+\setcvcontact[custom2]{Git} 
+\setcvcontact[custom3]{DevOps} 
+\setcvcontact[custom4]{Product} 
+\setcvcontact[custom5]{Agile, Scrum} 
+\setcvcontact[custom6]{Lean Startup} 
+\setcvcontact[custom7]{Lean Startup} 
+\setcvcontact[custom8]{Lean Startup} 
+\setcvcontact[custom9]{Lean Startup} 
+\setmystyle[custom10]{\mystyle[cvcontact]}
+\setcvcontact[custom10]{Lean Startup} 
+
+\setmystyle[hobby0]{\mystyle[cvcontact]}
+\setcvcontact[hobby0]{Aikido 3k} 
+%\setmystyle[hobby1]{\mystyle[cvcontact]}
+%\setcvcontact[hobby1]{Karate 1d} 
+%\setmystyle[hobby2]{\mystyle[cvcontact]}
+%\setcvcontact[hobby2]{Marathon} 
+%\setmystyle[hobby3]{\mystyle[cvcontact]}
+%\setcvcontact[hobby3]{Obstacle Racing} 
+%\setmystyle[hobby4]{\mystyle[cvcontact]}
+%\setcvcontact[hobby4]{Scuba Diving} 
+%\setmystyle[hobby5]{\mystyle[cvcontact]}
+%\setcvcontact[hobby5]{Obstacle Racing} 
+%\setmystyle[hobby6]{\mystyle[cvcontact]}
+%\setcvcontact[hobby6]{Scuba Diving} 
+%\setmystyle[hobby7]{\mystyle[cvcontact]}
+%\setcvcontact[hobby7]{Piano} 
+%\setmystyle[hobby8]{\mystyle[cvcontact]}
+%\setcvcontact[hobby8]{Go game} 
+
+
+
+\title{\\ IT Operations Management}
+
 \begin{document}
 \section{Experience}
-\story{Engineer}{AlpacaDB}{2014/06-2015/09\\Kobe}
+\story{Engineer}{AlpacaDB}{2014/06-2015/09\\\faGlobe Japan, USA}
 {Software Development\\Computer Vision\\ Machine Learning\\Databases\\DevOps}
-    { Built Computer vision \& Machine Learning products 
+    { Working as a Full Stack engineer at Aquasys, I was able to improve and put
+      into practice my skills in Computer Vision and Machine Learning. I
+      worked on every steps of the development process, from Core Design to
+      Implementation and Testing, with CI \& QA, System Administration and
+      Data analysis.
+      This experience allowed me to set new standards on code quality and work
+      efficiency, and allowed me to reach expertise in the productivity area.
 	\begin{missions}
     \item \href{http://www.labell.io/}{Labellio}, an image labeller \& model trainer.
-        \item \href{http://iromo.jp}{Iromo}, new shopping experience by
-            searching similar fashion items by color and patterns.
-		\item Projects for big Japanese customers.
+    \item \href{http://iromo.jp}{Iromo}, new shopping experience by
+        searching similar fashion items by color and patterns.
+    \item Projects for big Japanese customers.
 	\end{missions}
 }
-\story{Director of Technology}{Aquasys}{2011/04-2014/08\\Okinawa}
-{System Administratior\\Project management\\Product management\\Web development\\CI \& QA}
-	{
+\story{Director of Technology}{Aquasys}{2011/04-2014/08\\\faGlobe Japan, Australia}
+{System Administration\\Project management\\Product management\\Web development\\CI \& QA}
+	{ Starting as a Software Engineer, I quickly got appreciated for my
+      dedication and performance, and ended promoted as Director of
+      Technology, supervising all technical operations, making the best out of
+      my teammates skills and mentoring them to increase their efficiency and
+      productivity.
 	\begin{missions}
-    \item Managed Odoo (ex-OpenERP) operations.
         \item Developed a generic framework for marketplaces such as \href{https://uruma-work.com}{Uruma-work}
+        \item Hired and Trained freelancers to work on various projects.
+        \item Managed Odoo (ex-OpenERP) operations.
+	\end{missions}
+}
+
+\story{Web Developer}{Fry}{2010/07-2011/03\\\faGlobe London, UK}
+{Django, HTML, CSS, JS, PostgreSQL, Nginx, TDD}
+	{ In this mature company full of smart employees, I was able to level up
+        from a junior developer into a full-fledged Web developer.
+	\begin{missions}
+    \item Frontend integration: HTML4\&5, CSS2\&3, JS (jQuery, NinjaUI)
+    \item Backend: Django, PostGreSQL, RabbitMQ, Celery, Nginx, uWSGI, Gunicorn
+    \item Test-Driven development, Kata, Debugging practices
 	\end{missions}
 }
 \section{Education}
-\story{International Master of Science}{Supinfo International University}{2006-2011\\France, Canada, UK}{}{}
-\story{Certificate in Operating Systems Development}{Dominican University of California}{2009-2010\\USA}{}{}
-\section{Skills}
-\begin{skills} {Language}
-\skill[French]{ Mother tongue}
-\skill[English]{ Fluent (2010: TOEIC 855}
+\story{International Master of Science}{Supinfo International University}{2006-2011\\\faGlobe France, Canada, UK}{}{}
+\story{Certificate in Operating Systems Development}{Dominican University of California}{2009-2010\\\faGlobe USA}{}{}
+
+%\section{Skills}
+%\begin{skills} {Language}
+%\skill[French]{ Mother tongue}
+%\skill[English]{ Fluent (2010: TOEIC 855}
 %\skill[Esperanto]{ Fluent}
-\skill[Japanese]{ Intermediate (2015: JLPT n3)}
-\skill[German]{ Notions}
-\skill[Russian]{ Learning}
-\end{skills}
-\begin{skills}{Social}
-\skill[MBTI]{ENTP}
-\skill[team]{Friendly relationships, great communication}
-\end{skills}
-\begin{skills}{Organizational}
-\skill[Team]{Leadership and Mentoring}
-\skill[Strategic Planning]{Agile, Scrum, XP, Lean Startup}
-\end{skills}
+%\skill[Japanese]{ Intermediate (2015: JLPT n3)}
+%\end{skills}
+%\begin{skills}{Social}
+%\skill[MBTI]{ENTP}
+%\skill[team]{Friendly relationships, great communication}
+%\end{skills}
+%\begin{skills}{Organizational}
+%\skill[Team]{Leadership and Mentoring}
+%\skill[Strategic Planning]{Agile, Scrum, XP, Lean Startup}
+%\end{skills}
 % Argument for fields env. are title, cols count and max rate
-\begin{fields}{Technical}{2}{5}
-\field{Python}{5}
-\field{Linux}{5}
-\field{Git}{5}
-\field{DevOps}{4}
-\field{Product}{4}
-\field{SysAdmin}{3}
-\end{fields}
+%\begin{fields}{Technical}{2}{5}
+%\field{Python}{5}
+%\field{Linux}{5}
+%\field{Git}{5}
+%\field{DevOps}{4}
+%\field{Product}{4}
+%\field{SysAdmin}{3}
+%\end{fields}
 \end{document}
