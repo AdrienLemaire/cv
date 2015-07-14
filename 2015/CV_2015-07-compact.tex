@@ -8,6 +8,7 @@
 
 
 \setcvcontactszone[main]{% Finishing this line with a % is important to avoid a bad align of icons
+    \\
     \rendercontactifdefined{email}
     \rendercontactifdefined{cellphone}
     \rendercontactifdefined{age}
@@ -15,6 +16,7 @@
     \rendercontactifdefined{spokenlanguages}
 }
 \setcvcontactszone[social]{%
+    \\
     \rendercontactifdefined{linkedin}
     \rendercontactifdefined{github}
     \rendercontactifdefined{googleplus}
@@ -23,6 +25,7 @@
     %\rendercontactifdefined{skype}
 }
 \setcvcontactszone[extra]{%
+    \\
     \\
     \\
     \rendercontactifdefined{custom0}
@@ -36,9 +39,9 @@
     \rendercontactifdefined{custom8}
     \rendercontactifdefined{custom9}
     \rendercontactifdefined{custom10}
-    \\
-    \\
-    \\
+    \rendercontactifdefined{custom11}
+    \rendercontactifdefined{custom12}
+    \rendercontactifdefined{custom13}
     \\
     \\
     \\
@@ -70,6 +73,9 @@
 \setmystyle[custom8bullet]{{\mystyle[icons]\faStar}}
 \setmystyle[custom9bullet]{{\mystyle[icons]\faStar}}
 \setmystyle[custom10bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom11bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom12bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom13bullet]{{\mystyle[icons]\faStar}}
 \setmystyle[assetbullet]{\color{icons}\faBook}
 \setmystyle[fieldratefull]{\color{icons}\faCircle}
 \setmystyle[fieldrateempty]{\color{icons}\faCircleBlank}
@@ -88,14 +94,14 @@
 %\academictitle{PhD}
 \firstname{Adrien}
 \lastname{Lemaire}
-\quote{\itshape ``Make the most of yourself....for that is all there is of you.''}
+\quote{\itshape ``On a quest to unlock one's best productivity and efficiency''}
 
 %\cvpicture{../images/portrait_2015_1520x2280.jpg}
 % Add up to 10 assets (0 to 9)
 \setcvasset[0]{MBTI: ENTP}
 \setcvasset[1]{Leadership}
 \setcvasset[2]{Mentoring}
-\setcvasset[3]{Productivity}
+\setcvasset[3]{Communication}
 
 \setcvcontact[email]{lemaire.adrien@gmail.com} 
 %\setcvcontact[homepagessl]{} 
@@ -105,28 +111,33 @@
 \setcvcontact[skype]{Fandekasp} %not yet available
 %\setcvcontact[vk]{}
 %\setcvcontact[pinterest]{}
-\setcvcontact[facebook]{fandekasp}
-\setcvcontact[googleplus]{+AdrienLemaire}
+%\setcvcontact[facebook]{fandekasp}
+%\setcvcontact[googleplus]{+AdrienLemaire}
 \setcvcontact[linkedin]{adrienlemaire}
 \setcvcontact[twitter]{@Fandekasp}
 \setcvcontact[github]{Fandekasp}
 \setcvcontact[spokenlanguages]{French (native)\\English (fluent)\\Japanese (JLPT n3)} 
 \setcvcontact[age]{November 8th 1987} 
-\setcvcontact[address]{2-14-2 Grand Court Mitejima\\Nishiyodogawaku Mitejima\\555-0012 Osaka} 
+\setcvcontact[address]{Osaka, Japan} 
 
 \setcvcontact[custom0]{Agile, Scrum} 
 \setcvcontact[custom1]{Lean Startup} 
-\setcvcontact[custom1]{Python} 
-\setcvcontact[custom2]{Javascript} 
-\setcvcontact[custom3]{HTML, CSS} 
-\setcvcontact[custom4]{Linux} 
-\setcvcontact[custom4]{Git} 
-\setcvcontact[custom5]{AWS} 
-\setcvcontact[custom6]{Kubernetes} 
-\setcvcontact[custom8]{PostgreSQL} 
-\setcvcontact[custom7]{OpenCV} 
+\setcvcontact[custom2]{TDD, DDDs, BDDs} 
+\setcvcontact[custom3]{Unit/Integration/Load Testing} 
+\setcvcontact[custom4]{Python} 
+\setcvcontact[custom5]{Javascript} 
+\setcvcontact[custom6]{HTML, CSS} 
+\setcvcontact[custom7]{Linux} 
+\setcvcontact[custom8]{Git} 
+\setcvcontact[custom9]{AWS} 
 \setmystyle[custom10]{\mystyle[cvcontact]}
-\setcvcontact[custom10]{Lean Startup} 
+\setcvcontact[custom10]{Docker} 
+\setmystyle[custom11]{\mystyle[cvcontact]}
+\setcvcontact[custom11]{Kubernetes} 
+\setmystyle[custom12]{\mystyle[cvcontact]}
+\setcvcontact[custom12]{PostgreSQL} 
+\setmystyle[custom13]{\mystyle[cvcontact]}
+\setcvcontact[custom13]{OpenCV} 
 
 \setmystyle[hobby0]{\mystyle[cvcontact]}
 \setcvcontact[hobby0]{Aikido 3k, Karate 1d} 
@@ -135,9 +146,9 @@
 \setmystyle[hobby2]{\mystyle[cvcontact]}
 \setcvcontact[hobby2]{Piano} 
 \setmystyle[hobby3]{\mystyle[cvcontact]}
-\setcvcontact[hobby3]{Go game} 
+\setcvcontact[hobby3]{DYI} 
 \setmystyle[hobby4]{\mystyle[cvcontact]}
-\setcvcontact[hobby4]{DYI} 
+\setcvcontact[hobby4]{Self-improvement} 
 
 
 
@@ -145,50 +156,52 @@
 
 \begin{document}
 \section{Experience}
-\story{Engineer}{AlpacaDB}{2014/06-2015/09\\\faGlobe Japan, USA}
+\story{Engineer}{Ikkyo Technology K.K, AlpacaDB Inc}{2014/06-2015/09\\\faGlobe \ Japan, USA}
 {Software Development\\Computer Vision\\ Machine Learning\\Databases\\DevOps}
-    { Working as a Full Stack engineer at Aquasys, I was able to improve and put
+    { Working as a Full Stack engineer at AlpacaDB, I was able to improve and put
       into practice my skills in Computer Vision and Machine Learning. I
       worked on every steps of the development process, from Core Design to
-      Implementation and Testing, with CI \& QA, System Administration and
-      Data analysis.
-      This experience allowed me to set new standards on code quality and work
-      efficiency, and allowed me to reach expertise in the productivity area.
+      Implementation and Testing, CI \& QA, Networking and System Administration.
+      The high-volume work required me to set new standards on code quality and work
+      efficiency, making me reach expertise in the productivity area.
 	\begin{missions}
-    \item \href{http://www.labell.io/}{Labellio}, an image labeller \& model trainer.
-    \item \href{http://iromo.jp}{Iromo}, new shopping experience by
-        searching similar fashion items by color and patterns.
-    \item Projects for big Japanese customers.
+        \item \underline{\href{http://www.labell.io/}{Labellio}}, a deep
+            learning image labeller \& model trainer.
+        \item \underline{\href{http://iromo.jp}{Iromo}}, shopping experience by
+            searching similar fashion items by color and patterns.
+        \item Data-analysis and R\&D missions for several large customers.
 	\end{missions}
 }
-\story{Director of Technology}{Aquasys}{2011/04-2014/08\\\faGlobe Japan, Australia}
-{System Administration\\Project management\\Product management\\Web development\\CI \& QA}
+\story{Director of Technology}{Aquasys G.K.}{2011/04-2014/08\\\faGlobe \ Japan, Australia}
+{System Administration\\Product management\\Project management\\Web
+development\\CI, QA}
 	{ Starting as a Software Engineer, I quickly got appreciated for my
       dedication and performance, and ended promoted as Director of
       Technology, supervising all technical operations, making the best out of
-      my teammates skills and mentoring them to increase their efficiency and
-      productivity.
+      my teammates skills and mentoring them to enhance their experience.
 	\begin{missions}
-        \item Developed a generic framework for marketplaces such as \href{https://uruma-work.com}{Uruma-work}
+        \item Developed a generic framework for marketplaces such as
+            \underline{\href{https://uruma-work.com}{Uruma-work}.}
         \item Hired and Trained freelancers to work on various projects.
         \item Managed Odoo (ex-OpenERP) operations.
 	\end{missions}
 }
 
-\story{Web Developer}{Fry}{2010/07-2011/03\\\faGlobe London, UK}
-{Django, HTML, CSS, JS, PostgreSQL, Nginx, TDD}
-	{ Fry enabled me to graduate from a junior developer into a full-fledged Web developer.
+\story{Web Developer}{Fry, Inc}{2010/07-2011/03\\\faGlobe \ London, UK}
+{Django\\HTML, CSS, JS\\PostgreSQL, Nginx}
+	{ After 6 previous jobs in the IT sector, Fry enabled me to graduate from a junior developer into a full-fledged Web developer.
 	\begin{missions}
     \item Frontend integration: HTML4\&5, CSS2\&3, JS (jQuery, NinjaUI)
     \item Backend: Django, PostGreSQL, RabbitMQ, Celery, Nginx, uWSGI, Gunicorn
-    \item Test-Driven development, Kata, Debugging practices
+    \item TDD, Kata, Debugging practices
 	\end{missions}
 }
 \section{Education}
-\story{MOOC Certifications}{Scala, AI, Gamification, Learning how to learn}{2011-2015}{}{}
-\story{Certificate in Operating Systems Development}{Dominican University of California}{2009-2010\\\faGlobe USA}{}{}
-\story{International Master of Science}{Supinfo International University}{2006-2011\\\faGlobe France, Canada, UK}{}{}
-\story{Certificate in Operating Systems Development}{Dominican University of California}{2009-2010\\\faGlobe USA}{}{}
+%\story{MOOC Certifications}{AI, Gamification, Learning how to learn}{2011-2015}{}{}
+\story{International Master of Science}{Supinfo International
+University}{2006-2011\\\faGlobe \ France, Canada, UK}{}{}
+\story{Certificate in Operating Systems Development}{Dominican University of
+California}{2009-2010\\\faGlobe \ USA}{}{}
 
 %\section{Skills}
 %\begin{skills} {Language}
