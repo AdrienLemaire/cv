@@ -23,8 +23,8 @@ cv4tw
  
 
 
-How to build pdf
-----------------
+How to build CV
+---------------
 
 2011 - 2015::
 
@@ -33,6 +33,12 @@ How to build pdf
 2015 + ::
 
     $ make clean all
+
+How to build Cover letter
+-------------------------
+::
+
+    $ pdflatex -shell-escape file.tex
 
 
 Customization
