@@ -1,0 +1,107 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Long Lined Cover Letter
+% LaTeX Template
+% Version 1.0 (1/6/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Matthew J. Miller
+% http://www.matthewjmiller.net/howtos/customized-cover-letter-scripts/
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,stdletter,dateno,sigleft]{newlfm} % Extra options: 'sigleft' for a left-aligned signature, 'stdletternofrom' to remove the from address, 'letterpaper' for US letter paper - consult the newlfm class manual for more options
+
+\usepackage{charter} % Use the Charter font for the document text
+\usepackage{hyperref}
+%\usepackage[utf8]{inputenc}
+
+\newsavebox{\Luiuc}\sbox{\Luiuc}{\parbox[b]{1.75in}{\vspace{0.5in}
+\includegraphics[width=1.2\linewidth]{sharewis-logo.jpeg}}} % Company/institution logo at the top left of the page
+\makeletterhead{Uiuc}{\Lheader{\usebox{\Luiuc}}}
+
+\newlfmP{sigsize=50pt} % Slightly decrease the height of the signature field
+\newlfmP{addrfromphone} % Print a phone number under the sender's address
+\newlfmP{addrfromemail} % Print an email address under the sender's address
+\PhrPhone{Phone} % Customize the "Telephone" text
+\PhrEmail{Email} % Customize the "E-mail" text
+
+\lthUiuc % Print the company/institution logo
+
+%----------------------------------------------------------------------------------------
+%	YOUR NAME AND CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\namefrom{Adrien Lemaire} % Name
+
+\addrfrom{
+\today\\[12pt] % Date
+2-14-2 grand court mitejima Apt.1202\\
+Nishiyodogawaku Mitejima\\
+555-0012 Osaka
+}
+
+\phonefrom{(+81) 50-3719-3980} % Phone number
+
+\emailfrom{lemaire.adrien@gmail.com} % Email address
+
+%----------------------------------------------------------------------------------------
+%	ADDRESSEE AND GREETING/CLOSING
+%----------------------------------------------------------------------------------------
+
+\greetto{Dear Mr Tsujikawa,} % Greeting text
+\closeline{Sincerely yours,} % Closing text
+
+\nameto{Mr. Tomoki Tsujikawa} % Addressee of the letter above the to address
+
+\addrto{
+ShareWis Inc\\
+Shimanouchi, 1 Chome−17−12\\
+Osaka-shi, Chuo-ku,\\
+542-0082 Osaka-fu
+}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\begin{newlfm}
+
+%----------------------------------------------------------------------------------------
+%	LETTER CONTENT
+%----------------------------------------------------------------------------------------
+
+I am writing this letter to show my keen interest in Sharewis Inc. I will be
+quitting my current position at \href{https://www.alpaca.ai/}{Alpaca.ai}
+in less than 2 months, and I'm now looking for work in the areas that
+passionate me most: Productivity, Efficiency and Education. I've found your job
+offer on \href{http://www.osakan-space.com/blog/6690}{Osakan Space}, and I
+believe the product is innovative and very interesting.  Along with my Master's
+Degree in Computer Science from SUPINFO and 8 years' experience in the field of
+IT, I am confident in my ability to become an essential member of the ShareWis
+team.
+
+From my experience in startups such as
+\href{http://www.aquasys.co.jp/}{Aquasys} and
+\href{https://www.alpaca.ai/}{Alpaca.ai}, I've had opportunities to work at
+every steps of a software development process, from System administration to
+Front-end development, Management and Mentoring. I have a great disposition for
+learning, and am always working on improving my productivity and efficiency to
+allow me handling a number of activities I'm passionate about. 
+
+It would be a great pleasure to meet with you in an interview to discuss my
+qualifications and experience in detail.  Thank you for your time and
+consideration, I look forward to speaking with you further.
+
+%----------------------------------------------------------------------------------------
+
+\end{newlfm}
+\end{document}
