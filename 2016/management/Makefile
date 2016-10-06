@@ -1,4 +1,4 @@
-CVNAME?=CV_2016-01
+CVNAME?=CV_2016-10
 CVTHEME?=compact
 LATEX=xelatex
 
