@@ -9,6 +9,8 @@ Requirements
  - texlive-bin
  - texlive-latexextra (contains ecv)
  - texlive-fontsextra (contains ifsym)
+ - fontawesome.sty
+ - ttf-linux-libertine
 
 cv4tw
 -----
@@ -16,10 +18,8 @@ cv4tw
  - texlive-bin
  - texlive-latexextra
  - texlive-fontsextra
- - ttf-linux-libertine
  - miktex ?
  - xetex [Can't find it]
- - fontawesome.sty
  
 
 
