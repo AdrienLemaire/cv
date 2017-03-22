@@ -1,0 +1,231 @@
+\documentclass[a4paper,11pt]{cv4tw}% options are inherited from article class, and automatically given to this class
+%\definecolorifnotdef{contrastmain}{RGB}{219,255,242}  % Main theme color in contrast mode
+%\definecolorifnotdef{main}{RGB}{60,76,70}             % Main theme color
+%\definecolorifnotdef{soft}{RGB}{50,64,58}             % Soft color, for title
+%\usetheme[optional scheme]{theme}
+
+\usetheme[purple]{compact}  % choices: celadon, tan, gray, purple, teal, minuit, nothing (red)
+\newgeometry{left=1cm,top=1cm,bottom=1cm,right=1cm}
+
+
+\setcvcontactszone[main]{% Finishing this line with a % is important to avoid a bad align of icons
+    \rendercontactifdefined{email}
+    \rendercontactifdefined{cellphone}
+    \rendercontactifdefined{age}
+    \rendercontactifdefined{address}
+    \rendercontactifdefined{spokenlanguages}
+}
+\setcvcontactszone[social]{%
+    \\
+    \rendercontactifdefined{linkedin}
+    \rendercontactifdefined{github}
+    \rendercontactifdefined{googleplus}
+    \rendercontactifdefined{twitter}
+    \rendercontactifdefined{facebook}
+    %\rendercontactifdefined{skype}
+}
+\setcvcontactszone[extra]{%
+    \\
+    \\
+    \rendercontactifdefined{custom0}
+    \rendercontactifdefined{custom1}
+    \rendercontactifdefined{custom2}
+    \rendercontactifdefined{custom3}
+    \rendercontactifdefined{custom4}
+    \rendercontactifdefined{custom5}
+    \rendercontactifdefined{custom6}
+    \rendercontactifdefined{custom7}
+    \rendercontactifdefined{custom8}
+    \rendercontactifdefined{custom9}
+    \rendercontactifdefined{custom10}
+    \rendercontactifdefined{custom11}
+    \rendercontactifdefined{custom12}
+    \rendercontactifdefined{custom13}
+    \\
+    \rendercontactifdefined{hobby0}
+    \rendercontactifdefined{hobby1}
+    \rendercontactifdefined{hobby2}
+    \rendercontactifdefined{hobby3}
+    \rendercontactifdefined{hobby4}
+    \rendercontactifdefined{hobby5}
+    \rendercontactifdefined{hobby6}
+    \rendercontactifdefined{hobby7}
+    \rendercontactifdefined{hobby8}
+    \rendercontactifdefined{hobby9}
+}
+
+
+
+
+% Not happy with the default style, or bullet ? Define yours !
+%\setmystyle[missionbullet]{\color{soft}$>$~~}
+\setmystyle[custom0bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom1bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom2bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom3bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom4bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom5bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom6bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom7bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom8bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom9bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom10bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom11bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom12bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[custom13bullet]{{\mystyle[icons]\faStar}}
+\setmystyle[assetbullet]{\color{icons}\faBook}
+\setmystyle[fieldratefull]{\color{icons}\faCircle}
+\setmystyle[fieldrateempty]{\color{icons}\faCircleBlank}
+% If you need a custom contact, you can define a bullet here :
+\setmystyle[hobby0bullet]{\color{icons}\faHeart}
+\setmystyle[hobby1bullet]{\color{icons}\faHeart}
+\setmystyle[hobby2bullet]{\color{icons}\faHeart}
+\setmystyle[hobby3bullet]{\color{icons}\faHeart}
+\setmystyle[hobby4bullet]{\color{icons}\faHeart}
+\setmystyle[hobby5bullet]{\color{icons}\faHeart}
+\setmystyle[hobby6bullet]{\color{icons}\faHeart}
+\setmystyle[hobby7bullet]{\color{icons}\faHeart}
+\setmystyle[hobby8bullet]{\color{icons}\faHeart}
+\setmystyle[hobby9bullet]{\color{icons}\faHeart}
+\usepackage[utf8]{inputenc}
+\usepackage{xeCJK}
+\setCJKmainfont{IPAPMincho} % for \rmfamily
+\setCJKsansfont{IPAPGothic} % for \sffamily
+%\academictitle{PhD}
+%\firstname{\begin{CJK}{UTF8}{min}アドリアン\end{CJK}}
+\lastname{アドリアン}
+\firstname{ルメール\\}
+\quote{\itshape 「最高の生産性と効率を探求中」}
+
+%\cvpicture{../images/portrait_2015_1520x2280.jpg}
+% Add up to 10 assets (0 to 9)
+\setcvasset[0]{MBTI: ENTP}
+\setcvasset[1]{リーダーシップ}
+\setcvasset[2]{メンタリング}
+\setcvasset[3]{通信}
+
+\setcvcontact[email]{lemaire.adrien@gmail.com} 
+%\setcvcontact[homepagessl]{} 
+\setcvcontact[cellphone]{+81 70-4006-8514}
+%\setcvcontact[phone]{+33 9 48 23 48 76}
+%\setcvcontact[fax]{+33 9 08 02 18 88}
+\setcvcontact[skype]{Fandekasp} %not yet available
+%\setcvcontact[vk]{}
+%\setcvcontact[pinterest]{}
+%\setcvcontact[facebook]{fandekasp}
+%\setcvcontact[googleplus]{+AdrienLemaire}
+\setcvcontact[linkedin]{adrienlemaire}
+\setcvcontact[twitter]{@Fandekasp}
+\setcvcontact[github]{Fandekasp}
+\setcvcontact[spokenlanguages]{
+フランス語（母国語）\\
+英語（流暢）\\
+日本語（能力試験３級）
+} 
+\setcvcontact[age]{１９８７年１１月８日} 
+\setcvcontact[address]{大阪、日本} 
+
+\setcvcontact[custom0]{アジャイル、 スクラム} 
+\setcvcontact[custom1]{リーンスタートアップ} 
+\setcvcontact[custom2]{TDD、 DDDs、 BDDs} 
+\setcvcontact[custom3]{単体/統合/負荷のテスト} 
+\setcvcontact[custom4]{Python} 
+\setcvcontact[custom5]{Javascript} 
+\setcvcontact[custom6]{HTML、 CSS} 
+\setcvcontact[custom7]{Linux} 
+\setcvcontact[custom8]{Git} 
+\setcvcontact[custom9]{AWS} 
+\setmystyle[custom10]{\mystyle[cvcontact]}
+\setcvcontact[custom10]{Docker} 
+\setmystyle[custom11]{\mystyle[cvcontact]}
+\setcvcontact[custom11]{Kubernetes} 
+\setmystyle[custom12]{\mystyle[cvcontact]}
+\setcvcontact[custom12]{PostgreSQL} 
+\setmystyle[custom13]{\mystyle[cvcontact]}
+\setcvcontact[custom13]{OpenCV} 
+
+\setmystyle[hobby0]{\mystyle[cvcontact]}
+\setcvcontact[hobby0]{合気道３級、空手初段} 
+\setmystyle[hobby1]{\mystyle[cvcontact]}
+\setcvcontact[hobby1]{マラソン、トライアスロン} 
+\setmystyle[hobby2]{\mystyle[cvcontact]}
+\setcvcontact[hobby2]{ピアノ} 
+\setmystyle[hobby3]{\mystyle[cvcontact]}
+\setcvcontact[hobby3]{DIY} 
+\setmystyle[hobby4]{\mystyle[cvcontact]}
+\setcvcontact[hobby4]{自己改善} 
+
+
+
+\title{\\ フルスタック\\ソフトウェア\\エンジニア}
+
+\begin{document}
+\section{仕事}
+\story{エンジニア}{ShareWis, Inc}{2016/02-2016/10\\\faGlobe \ 日本}
+{Ruby on Rails\\Serverless, ES6\\React native, Redux}
+    {
+    AWS/PT/Github/Slackの自動化システム。ServerlessでAPIを作りました。
+    \underline{\href{https://share-wis.com/pro_courses}{ShareWis ACT}}の学習マーケットと\underline{\href{https://share-wis.com/snack_courses}{ShareWis}}のスナック学習アプリの間に新しい機能を開発しました（認証、支払い、プレミアム）。
+    新しいスマホアプリを開発しました。グローバリゼーションの拡大に努力しました。
+}
+\story{DUエンジニア}{Rakuten, Inc}{2015/10-2016/02\\\faGlobe \ 日本}
+{プロジェクト管理\\システムアーキテクチャー\\システムセキュリティ\\PHP/Symfony}
+{
+    日本のNo1結婚仲介業「オーネット」にPHP移行を始めました。セキュリティ監査などのミッションもしました。
+}
+\story{エンジニア}{Ikkyo Technology K.K、 AlpacaDB Inc}{2014/06-2015/09\\\faGlobe \ 日本}
+{ソフトウェア開発\\コンピュータビジョン\\ 機械学習\\データベース\\システム管理者}
+    {
+        AlpacaDBにてフルスタックエンジニアとして働き コンピュータビジョンと
+       機械学習のスキルが向上しました。
+       システム設計をはじめ、 実装、テスト、 CI、 運用監視、 ネットワーキング、
+       開発プロセスの全てに携わりました。
+	\begin{missions}
+        \item \underline{\href{http://www.labell.io/}{ラベリオ}}はDeep
+            Learningの画像認識技術をベースにしたサービスです。
+        \item \underline{\href{http://iromo.jp}{Iromo}}は「色」と「柄」を通じてアイテムを見つけられるサービスです。
+        \item 大手の会社をお客様としデータ解析と研究開発をしました。
+	\end{missions}
+}
+\story{技術ディレクター}{Aquasys G.K.}{2011/04-2014/08\\\faGlobe \ 日本・オーストラリア}
+{製品管理\\Django\\DevOps, CI、 QA}
+	{ 市場の汎用フレームワークを開発しました。例えばうるま市の
+            \underline{\href{https://uruma-work.com}{わくワーク}}。
+        Odoo（以前の「OpenERP」）システムのプロジェクトを管理しました。
+}
+
+\story{ウェブ開発者}{Fry, Inc}{2010/07-2011/03\\\faGlobe \ イギリス}
+{Django\\HTML、 CSS、 JS\\PostgreSQL、 Nginx}
+{ 病院向けのE-ポートフォリオを含む、色々なプロジェクトのウエブ開発をしました。
+}
+\section{教育}
+\story{科学の修士号}{\\Supinfo International
+University}{2006-2011\\\faGlobe \ フランス・カナダ・\\イギリス}{}{}
+\story{オペレーティング·システム開発のサーティフィケート}{Dominican University of
+California}{2009-2010\\\faGlobe \ 米国}{}{}
+
+%\section{Skills}
+%\begin{skills} {Language}
+%\skill[French]{ Mother tongue}
+%\skill[English]{ Fluent (2010: TOEIC 855}
+%\skill[Esperanto]{ Fluent}
+%\skill[Japanese]{ Intermediate (2015: JLPT n3)}
+%\end{skills}
+%\begin{skills}{Social}
+%\skill[MBTI]{ENTP}
+%\skill[team]{Friendly relationships、 great communication}
+%\end{skills}
+%\begin{skills}{Organizational}
+%\skill[Team]{Leadership and Mentoring}
+%\skill[Strategic Planning]{Agile、 Scrum、 XP、 Lean Startup}
+%\end{skills}
+% Argument for fields env. are title、 cols count and max rate
+%\begin{fields}{Technical}{2}{5}
+%\field{Python}{5}
+%\field{Linux}{5}
+%\field{Git}{5}
+%\field{DevOps}{4}
+%\field{Product}{4}
+%\field{SysAdmin}{3}
+%\end{fields}
+\end{document}
