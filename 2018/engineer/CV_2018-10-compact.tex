@@ -4,6 +4,11 @@
 %\definecolorifnotdef{soft}{RGB}{50,64,58}             % Soft color, for title
 %\usetheme[optional scheme]{theme}
 
+\usepackage{fontspec}
+\defaultfontfeatures{
+    Path = /usr/share/texmf-dist/fonts/opentype/public/fontawesome/}
+\usepackage{fontawesome}
+
 \usetheme[minuit]{compact}  % choices: celadon, tan, gray, purple, teal, minuit, nothing (red)
 
 
@@ -93,7 +98,7 @@
 %\academictitle{PhD}
 \firstname{Adrien}
 \lastname{Lemaire}
-\quote{\itshape ``On a quest to unlock one's best\\productivity and efficiency''}
+\quote{\itshape ``Full stack software engineer''}
 
 %\cvpicture{../images/portrait_2015_1520x2280.jpg}
 % Add up to 10 assets (0 to 9)
@@ -102,8 +107,8 @@
 \setcvasset[2]{Mentoring}
 \setcvasset[3]{Communication}
 
-\setcvcontact[email]{lemaire.adrien@gmail.com} 
-%\setcvcontact[homepagessl]{} 
+\setcvcontact[email]{lemaire.adrien@gmail.com}
+%\setcvcontact[homepagessl]{}
 \setcvcontact[cellphone]{+81 70-4006-8514}
 %\setcvcontact[phone]{+33 9 48 23 48 76}
 %\setcvcontact[fax]{+33 9 08 02 18 88}
@@ -115,10 +120,9 @@
 \setcvcontact[linkedin]{adrienlemaire}
 \setcvcontact[twitter]{@Fandekasp}
 \setcvcontact[github]{Fandekasp}
-\setcvcontact[spokenlanguages]{French (native)\\English (fluent)\\Japanese (JLPT
-n3)\\German (beginner)} 
-\setcvcontact[age]{November 8th 1987} 
-\setcvcontact[address]{Osaka, Japan} 
+\setcvcontact[spokenlanguages]{French (native)\\English (fluent)\\Japanese (business)\\German (beginner)}
+\setcvcontact[age]{November 8th 1987}
+\setcvcontact[address]{Osaka, Japan}
 
 \setcvcontact[custom1]{Lean Startup}
 \setcvcontact[custom2]{TDD, DDDs, BDDs}
@@ -151,16 +155,21 @@ n3)\\German (beginner)}
 
 
 
-\title{\\ Full Stack\\ Developer}
+\title{\\ Data Scientist}
 
 \begin{document}
 \section{Experience}
-\story{IT Consultant}{Entrepreneur}{2016/10-now\\\faGlobe \ Japan}
-{}
-{IT Consulting work while working on personal projects, trying to launch a startup.
-Accomplished software engineer, expertise in: Project/Product management, System administration,
-Architecture \& Core design, CI \& QA, Databases, APIs, Backend \& Frontend.
+\story{CTO}{Miraidenshi, Inc}{2018/04-now\\\faGlobe \ Japan}
+{GCP, Kubernetes\\Django, Phalcon\\React, Redux}
+{Building the \underline{\href{https://www.gounite.com/}{GOunite}} service, an
+AirBnb X Glassdoor like platform to bridge the gap between SMEs and students
+by trading PR and field experience.
+Also maintaining the company's mature businesses' softwares such as
+\underline{\href{http://www.reachat.jp/}{Reach@}}.
 }
+\story{IT consultant}{Entrepreneur}{2017/11-2018/03\\\faGlobe \ Japan}
+{}
+{Consultations and startup ideation}
 \story{Engineer}{ShareWis, Inc}{2016/02-2016/10\\\faGlobe \ Japan}
 {RoR\\Serverless, ES6\\React Native, Redux}
 {Automation System for AWS, PT, Github \& Slack. API with Serverless. Added
@@ -172,7 +181,7 @@ New mobile application for \href{https://act.share-wis.com}{ShareWis ACT}.
 Globalization expansion effort.
 }
 \story{DU Engineer}{Rakuten, Inc}{2015/10-2016/02\\\faGlobe \ Japan}
-{Project Management\\Architecture\\System Security\\PHP / Symfony}
+{Architecture\\System Security\\PHP / Symfony}
 {Worked on \underline{\href{http://onet.rakuten.co.jp/}{O-net}}, No.1
   match-making service in Japan. Started large scale PHP/Symfony migration
   project, and handled various other missions such as a security Audit.
