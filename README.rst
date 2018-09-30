@@ -20,7 +20,6 @@ cv4tw
  - texlive-fontsextra
  - miktex ?
  - xetex [Can't find it]
- 
 
 
 How to build CV
