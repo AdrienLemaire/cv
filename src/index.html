@@ -6,52 +6,57 @@
   <link href="/dist/output.css" rel="stylesheet">
 </head>
 <body class="bg-[url('/assets/floating-cogs.svg')] bg-teal-50">
-    <div class="bg-white rounded-3xl p-10 w-[210mm] h-[297mm] mt-4 mx-auto relative">
-        <header class="flex mb-10">
+    <div class="bg-white rounded-3xl px-10 py-10 w-[210mm] h-[297mm] mt-4 mb-4 
+                 mx-auto relative print:py-0 print:mb-0">
+        <header class="flex">
             <div class="w-1/5">
                 <img 
                     class="w-32 h-32 m-auto"
                     src="/assets/avatar.png" 
                     alt="Avatar Adrien Lemaire">
             </div>
-            <div class="flex flex-col gap-y-5 px-6">
+            <div class="flex flex-col gap-y-5 px-6 w-4/5">
                 <h1 class="text-teal-500 font-extrabold text-4xl">Adrien Lemaire</h1>
-                <div class="flex flex-col">
-                    <div class="flex gap-x-5">
-                        <div class="flex space-x-2 items-center"> 
-                            <img class="w-4 h-4" 
-                                src="/assets/zondicons/calendar.svg" 
-                                alt="Date of birth" />
-                            <span>1987/11/08</span>
-                        </div>
-                        <div class="flex space-x-2 items-center"> 
-                            <img class="w-4 h-4" 
-                                src="/assets/zondicons/flag.svg" 
-                                alt="nationality" />
-                            <span>French</span>
-                        </div>
+                <div class="grid grid-cols-4">
+                    <div class="flex space-x-2 items-center"> 
+                        <img class="w-4 h-4" 
+                            src="/assets/zondicons/calendar.svg" 
+                            alt="Date of birth" />
+                        <span>1987/11/08</span>
                     </div>
-                    <div class="flex gap-x-5">
-                        <div class="flex space-x-2 items-center"> 
-                            <img class="w-4 h-4"
-                                src="/assets/zondicons/location.svg" 
-                                alt="address" />
-                            <span>Toulouse, France</span>
-                        </div>
-                        <div class="flex space-x-2 items-center"> 
-                            <img class="w-4 h-4"
-                                src="/assets/zondicons/at-symbol.svg"
-                                alt="E-mail" />
-                            <a href="mailto:lemaire.adrien@gmail.com">
-                                lemaire.adrien@gmail.com
-                            </a>
-                        </div>
+                    <div class="flex space-x-2 items-center"> 
+                        <img class="w-4 h-4" 
+                            src="/assets/zondicons/flag.svg" 
+                            alt="nationality" />
+                        <span>French</span>
                     </div>
                     <div class="flex space-x-2 items-center"> 
                         <img class="w-4 h-4"
-                            src="/assets/zondicons/education.svg" 
-                            alt="education" />
-                        <span>SUPINFO International University</span>
+                            src="/assets/zondicons/location.svg" 
+                            alt="address" />
+                        <span>France</span>
+                    </div>
+                    <div class="flex space-x-2 items-center"> 
+                        <img class="w-4 h-4" 
+                            src="/assets/zondicons/location-restroom.svg" 
+                            alt="Family status" />
+                        <span>3 children</span>
+                    </div>
+                    <div class="flex space-x-2 items-center col-span-2"> 
+                        <img class="w-4 h-4"
+                            src="/assets/zondicons/at-symbol.svg"
+                            alt="E-mail" />
+                        <a class="hover:underline hover:text-teal-800"
+                            href="mailto:lemaire.adrien@gmail.com"
+                            target="_blank">
+                            lemaire.adrien@gmail.com
+                        </a>
+                    </div>
+                    <div class="flex space-x-2 items-center col-span-2"> 
+                        <img class="w-4 h-4" 
+                            src="/assets/zondicons/mood-happy-outline.svg" 
+                            alt="Hobbies" />
+                        <span>Triathlon, Ultra-marathon</span>
                     </div>
                 </div>
             </div>
@@ -59,24 +64,30 @@
 
         <div class="flex divide-x-2 divide-solid">
             <div class="w-1/5"></div>
-            <div class="col-span-3 px-6 pb-10">
+            <div class="w-3/4 px-6 pb-8">
                 <img 
                     class="w-6 h-6 absolute left-1/5 bg-white ml-3"
                     src="/assets/zondicons/user-solid-circle.svg"
                     alt="user icon">
                 <h2 class="text-teal-500 font-extrabold text-lg">Profile</h2>
-                <p>lorem ipsum</p>
+                <p>Passionate by new technologies, I have a strong background in
+                developing web applications and platforms.</p>
+                <img class="w-4 h-4 inline" src="/assets/zondicons/star-full.svg" alt="Skills">
+                <span class="text-sm">
+                GCP, Kubernetes, GRANDstack (React), Typescript,
+                Pixi.js, Git, Vim
+                </span>
             </div>
         </div>
 
         <div class="flex divide-x-2 divide-solid">
             <div class="w-1/5"></div>
-            <div class="col-span-3 px-6">
+            <div class="w-3/4 px-6">
                 <img 
                     class="w-6 h-6 absolute left-1/5 bg-white ml-3"
                     src="/assets/zondicons/box.svg"
                     alt="user icon">
-                <h2 class="text-teal-500 font-extrabold text-lg pb-10">
+                <h2 class="text-teal-500 font-extrabold text-lg pb-8">
                     Work experience
                 </h2>
             </div>
@@ -84,21 +95,178 @@
 
         <div class="flex divide-x-2 divide-solid">
             <div class="w-1/5 flex flex-col items-end pr-4">
-                <span class="text-xs">03/2017 ~ present</span>
-                <span class="text-xs">Japan, France (remote)</span>
+                <span class="text-xs">2017/05 ~ present</span>
+                <span class="text-xs">Osaka,</span>
+                <span class="text-xs">Toulouse (remote)</span>
             </div>
-            <div class="col-span-3 px-6">
+            <div class="w-3/4 px-6">
                 <img 
-                    class="w-4 h-4 absolute left-1/5 bg-white ml-4 -rotate-12"
+                    class="w-4 h-4 absolute left-1/5 bg-white ml-4 mt-2 -rotate-12"
                     src="/assets/zondicons/pin.svg"
                     alt="pin icon">
-                <h3 class="font-bold text-md flex flex-col leading-snug">
+                <h3 class="font-bold text-md flex flex-row justify-between leading-snug">
                     <span>CTO</span>
-                    <span>Miraidenshi Technology</span>
+                    <span class="text-teal-800">Miraidenshi Technology, Inc</span>
                 </h3>
+                <ul class="text-sm leading-none list-outside list-disc mb-6">
+                    <li>Building a Metaverse commmunity building platform using
+                    GRANDstack and Pixi.js on Kubernetes</li>
+                    <li>Built and maintaining Reach@, a blog writing system
+                        with Django Wagtail</li>
+                    <li>Managing a small team of ~4 developers</li>
+                    <li>Collaboration with other teams through automation and
+                        scripting tools</li>
+                </ul>
             </div>
         </div>
 
+        <div class="flex divide-x-2 divide-solid">
+            <div class="w-1/5 flex flex-col items-end pr-4">
+                <span class="text-xs">2016/02~2016/12</span>
+                <span class="text-xs">Osaka</span>
+            </div>
+            <div class="w-3/4 px-6">
+                <img 
+                    class="w-4 h-4 absolute left-1/5 bg-white ml-4 mt-2 -rotate-12"
+                    src="/assets/zondicons/pin.svg"
+                    alt="pin icon">
+                <h3 class="font-bold text-md flex flex-row justify-between leading-snug">
+                    <span>CGO</span>
+                    <span class="text-teal-800">ShareWis, Inc</span>
+                </h3>
+                <ul class="text-sm leading-none list-outside list-disc mb-6">
+                    <li>Features development on ShareWis ACT, a MOOC platform in Ruby on Rails</li>
+                    <li>Developed a React Native mobile application for
+                        Sharewise ACT</li>
+                    <li>Globalization expansion effort </li>
+                    <li>Automation system setup</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex divide-x-2 divide-solid">
+            <div class="w-1/5 flex flex-col items-end pr-4">
+                <span class="text-xs">2015/09~2016/02</span>
+                <span class="text-xs">Osaka</span>
+            </div>
+            <div class="w-3/4 px-6">
+                <img 
+                    class="w-4 h-4 absolute left-1/5 bg-white ml-4 mt-2 -rotate-12"
+                    src="/assets/zondicons/pin.svg"
+                    alt="pin icon">
+                <h3 class="font-bold text-md flex flex-row justify-between leading-snug">
+                    <span>DU Engineer</span>
+                    <span class="text-teal-800">Rakuten, Inc</span>
+                </h3>
+                <ul class="text-sm leading-none list-outside list-disc mb-6">
+                    <li>PHP Symfony migration for the O-net and O-net Superior
+                        match-making services</li>
+                    <li>Missions such as Security audit</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex divide-x-2 divide-solid">
+            <div class="w-1/5 flex flex-col items-end pr-4">
+                <span class="text-xs">2014/06~2015/09</span>
+                <span class="text-xs">Kobe</span>
+            </div>
+            <div class="w-3/4 px-6">
+                <img 
+                    class="w-4 h-4 absolute left-1/5 bg-white ml-4 mt-2 -rotate-12"
+                    src="/assets/zondicons/pin.svg"
+                    alt="pin icon">
+                <h3 class="font-bold text-md flex flex-row justify-between leading-snug">
+                    <span>Full Stack Software Engineer</span>
+                    <span class="text-teal-800">AlpacaJapan Co, Ltd</span>
+                </h3>
+                <ul class="text-sm leading-none list-outside list-disc mb-6">
+                    <li>Built the platform behind Labellio, a Deep Learning labelling
+                        system, using Kubernetes, Django, Caffe...</li>
+                    <li>Backend development for Iromo, a color and pattern
+                        search engine (Computer Vision)</li>
+                    <li>Data analysis and R&D missions for customers like
+                        Nintendo and Yahoo Japan</li>
+            </div>
+        </div>
+
+        <div class="flex divide-x-2 divide-solid">
+            <div class="w-1/5 flex flex-col items-end pr-4">
+                <span class="text-xs">2011/04~2014/08</span>
+                <span class="text-xs">Okinawa,</span>
+                <span class="text-xs">Sydney (remote)</span>
+            </div>
+            <div class="w-3/4 px-6">
+                <img 
+                    class="w-4 h-4 absolute left-1/5 bg-white ml-4 mt-2 -rotate-12"
+                    src="/assets/zondicons/pin.svg"
+                    alt="pin icon">
+                <h3 class="font-bold text-md flex flex-row justify-between leading-snug">
+                    <span>Director of Technology</span>
+                    <span class="text-teal-800">Aquasys</span>
+                </h3>
+                <ul class="text-sm leading-none list-outside list-disc mb-6">
+                    <li>Built a Django Marketplace framework</li>
+                    <li>Managed Odoo operations (hiring, training, PM)</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="flex divide-x-2 divide-solid">
+            <div class="w-1/5 flex flex-col items-end pr-4">
+                <span class="text-xs">2010/07~2011/03</span>
+                <span class="text-xs">London</span>
+            </div>
+            <div class="w-3/4 px-6">
+                <img 
+                    class="w-4 h-4 absolute left-1/5 bg-white ml-4 mt-2 -rotate-12"
+                    src="/assets/zondicons/pin.svg"
+                    alt="pin icon">
+                <h3 class="font-bold text-md flex flex-row justify-between leading-snug">
+                    <span>Django Developer</span>
+                    <span class="text-teal-800">Fry-IT, Ltd</span>
+                </h3>
+                <ul class="text-sm leading-none list-outside list-disc mb-6">
+                    <li>Web development on various projects, eg E-portfolio for
+                    London Hospitals (Django, jQuery, Nginx, PostGreSQL)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex divide-x-2 divide-solid">
+            <div class="w-1/5"></div>
+            <div class="w-3/4 px-6">
+                <img 
+                    class="w-6 h-6 absolute left-1/5 bg-white ml-3"
+                    src="/assets/zondicons/education.svg"
+                    alt="education icon">
+                <h2 class="text-teal-500 font-extrabold text-lg pb-8">
+                    Education
+                </h2>
+            </div>
+        </div>
+
+        <div class="flex divide-x-2 divide-solid">
+            <div class="w-1/5 flex flex-col items-end pr-4">
+                <span class="text-xs">Toulouse, Montreal</span>
+                <span class="text-xs">San Francisco, London</span>
+            </div>
+            <div class="w-3/4 px-6">
+                <ul class="text-sm leading-none list-outside list-disc">
+                    <li>Master at SUPINFO International University</li>
+                    <li>IT Management and Marketing Certificate at Dominican
+                        University of California</li>
+                    <li>
+                        <a class="hover:underline hover:text-teal-800"
+                           href="https://www.linkedin.com/in/adrienlemaire/details/certifications/"
+                           target="_blank">
+                            Dozen of licenses and certifications
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
 </html>
