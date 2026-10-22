@@ -9,9 +9,13 @@ PDF CV of Adrien Lemaire, written in LaTeX. The online version lives on the
   Inside, one subdirectory per variant (`engineer/`, `cto/`, …), each with its
   own `Makefile`.
 - Older years are an archive: never edit their content (toolchain or build
-  fixes are fine). 2026+ CVs use the single-column template in `2026/cto/`:
+  fixes are fine). 2026+ CVs use the timeline template in `2026/cto/`, which
+  mirrors the `html` branch design (avatar, teal accents, dated timeline):
   start a new CV by copying that directory into a new year directory, then
   rename the `.tex` (`CV_YYYY-MM.tex`) and update `CVNAME` in its `Makefile`.
+  Its `icons/*.pdf` are the html branch zondicons converted with
+  `nix shell nixpkgs#librsvg -c rsvg-convert -f pdf` (librsvg is not in the
+  flake).
 - `images/` holds portraits, `Certificates/` scanned diplomas, `other/` notes
   (e.g. a LinkedIn export).
 - 2015–2018 CVs use the legacy `cv4tw` class (sidebar theme, poor ATS
@@ -29,8 +33,9 @@ $ pdftotext -layout CV_*.pdf -      # what an ATS will read
 
 - The flake pins the toolchain (`texlive.withPackages`, gnumake,
   poppler-utils) and exposes TeX Live's OpenType fonts to fontconfig, so
-  `fontspec` finds Libertine and FontAwesome by name. Never hardcode font
-  paths.
+  `fontspec` finds Libertine and FontAwesome by name; the 2026 template loads
+  Noto Sans by TeX Live file name (`NotoSans-Regular.ttf`). Never hardcode
+  font paths.
 - When a build fails on a missing `.sty`, add the package to `flake.nix`
   rather than vendoring it.
 - Only the 2018+ xelatex builds are supported (2026+ is the maintained
@@ -53,8 +58,10 @@ $ pdftotext -layout CV_*.pdf -      # what an ATS will read
 
 - After every change, run `pdftotext` and read the output: reading order,
   contact details, dates and keywords must come out as plain text.
-- Prefer a single-column body; put contact details in the body, not in
-  headers or footers; give icons a plain-text equivalent.
+- Keep one reading flow per row (dates/labels column, then body); put
+  contact details in the body as plain text, not in headers or footers.
+- Icons, the QR code and other decorations are allowed only when hidden from
+  text extraction with `accsupp` (`\hidetext` in the 2026 template).
 - Disable common ligatures in `fontspec` (`Ligatures=NoCommon`) if keywords
   extract badly.
 - Bullets start with an action verb and state an outcome, with a number when
