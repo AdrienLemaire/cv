@@ -1,191 +1,346 @@
-% CV 2026 -- single-column, ATS-friendly template (xelatex).
-\documentclass[a4paper,11pt]{article}
+% CV 2026 -- timeline template mirroring the HTML CV (xelatex).
+% Sizes follow the HTML/Tailwind sheet: 1 CSS px = 0.75pt.
+\documentclass[a4paper,10pt]{article}
 
 % ---------------------------------------------------------------- Settings
 \newcommand{\cvname}{Adrien Lemaire}
 \newcommand{\cvheadline}{CTO \& Co-founder · Full-stack Engineer}
+\newcommand{\cvurl}{https://adrienlemaire.github.io/cv/}
 
 % ---------------------------------------------------------------- Packages
 \usepackage{fontspec}
-\usepackage[margin=2.2cm]{geometry}
+\usepackage[a4paper,margin=30pt]{geometry}
 \usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
 \usepackage{enumitem}
-\usepackage{needspace}
-\usepackage{etoolbox}
+\usepackage{accsupp}
+\usepackage{qrcode}
 \usepackage{hyperref}
 
-\setmainfont{Linux Libertine O}[Ligatures={TeX,NoCommon}]
-\setsansfont{Linux Biolinum O}[Ligatures={TeX,NoCommon}]
+% Noto Sans, loaded by file name from TeX Live (no path, no fontconfig).
+\setmainfont{NotoSans}[
+  Extension=.ttf, UprightFont=*-Regular, BoldFont=*-Bold,
+  ItalicFont=*-Italic, BoldItalicFont=*-BoldItalic,
+  Ligatures={TeX,NoCommon}]
+\newfontfamily\semibold{NotoSans-SemiBold.ttf}[Ligatures={TeX,NoCommon}]
+\newfontfamily\extrabold{NotoSans-ExtraBold.ttf}[Ligatures={TeX,NoCommon}]
 
-\definecolor{accent}{RGB}{31,78,121}
-\definecolor{muted}{RGB}{90,90,90}
+% Tailwind palette used by the HTML CV.
+\definecolor{name}{HTML}{009689}    % teal-600 (Tailwind v4)
+\definecolor{heading}{HTML}{00786F} % teal-700
+\definecolor{company}{HTML}{005F5A} % teal-800
+\definecolor{text}{HTML}{1E2939}    % gray-800
+\definecolor{muted}{HTML}{4A5565}   % gray-600
+\definecolor{rule}{HTML}{E5E7EB}    % gray-200
 
 \hypersetup{
   pdftitle={\cvname{} -- CV},
   pdfauthor={\cvname},
   pdfsubject={Curriculum Vitae},
-  colorlinks=true,
-  allcolors=accent,
+  hidelinks,
 }
 
 \pagestyle{empty}
-\linespread{1.02}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 \setlength{\emergencystretch}{2em}
 \hyphenpenalty=10000 % keep keywords whole for ATS parsers
-\setlist[itemize]{leftmargin=1.2em, label=\textbullet, topsep=4pt,
-  itemsep=3pt, parsep=0pt}
+\frenchspacing
+\color{text}
 
-% ---------------------------------------------------------------- Macros
-% \cvsection{title}
-\newcommand{\cvsection}[1]{%
-  \par\bigskip\needspace{4\baselineskip}%
-  {\sffamily\large\bfseries\color{accent}#1}\par
-  \smallskip{\color{accent}\hrule height 0.6pt}\addvspace{\medskipamount}}
+% ---------------------------------------------------------------- Fonts
+\newcommand{\basefont}{\fontsize{12}{16.5}\selectfont}    % text-base snug
+\newcommand{\smfont}{\fontsize{10.5}{14.4}\selectfont}    % text-sm snug
+\newcommand{\smloosefont}{\fontsize{10.5}{15}\selectfont} % text-sm
+\newcommand{\xsfont}{\fontsize{9}{12}\selectfont}         % text-xs
+\newcommand{\titlefont}{\fontsize{13.5}{21}\selectfont}   % text-lg
 
-% \role{company}{title}{dates}{location}
-\newcommand{\role}[4]{%
-  \par\needspace{5\baselineskip}\addvspace{\bigskipamount}
-  {\bfseries #1} -- #2\ifstrempty{#3}{}{\hfill #3}\par
-  {\small\color{muted}#4}\par\smallskip}
+% ---------------------------------------------------------------- Geometry
+\newlength{\asidewidth}    % date/label column, w-1/5
+\newlength{\asidegap}      % pr-4
+\newlength{\rulewidth}     % border-l-2
+\newlength{\bodygap}       % pl-6
+\newlength{\bodywidth}     % w-4/5 minus border and padding
+\setlength{\asidewidth}{.2\textwidth}
+\setlength{\asidegap}{12pt}
+\setlength{\rulewidth}{1.5pt}
+\setlength{\bodygap}{18pt}
+\setlength{\bodywidth}{\dimexpr.8\textwidth-\rulewidth-\bodygap\relax}
+
+\setlist[itemize]{leftmargin=12pt, labelsep=6pt, topsep=0pt, partopsep=0pt,
+  itemsep=3pt, parsep=0pt, label=\textbullet}
+
+% ---------------------------------------------------------------- Icons
+% \hidetext{content}: drawn, but absent from extracted text.
+\newcommand{\hidetext}[1]{%
+  \BeginAccSupp{method=plain,ActualText={}}#1\EndAccSupp{}}
+
+% \cvicon[size]{zondicon name}
+\newcommand{\cvicon}[2][12pt]{%
+  \hidetext{\includegraphics[height=#1]{icons/#2}}}
+
+% \onrule{raise}{content}: centre content on the timeline rule, white backed.
+\newcommand{\onrule}[2]{%
+  \kern-.5\rulewidth
+  \makebox[0pt]{\raisebox{#1}[0pt][0pt]{%
+    \setlength{\fboxsep}{1.5pt}\colorbox{white}{#2}}}%
+  \kern.5\rulewidth}
+
+\newcommand{\pinmarker}{\onrule{-4pt}{\rotatebox{12}{\cvicon{pin}}}}
+\newcommand{\sectionmarker}[1]{\onrule{-5.5pt}{\cvicon[15pt]{#1}}}
+
+% ---------------------------------------------------------------- Rows
+% A row is one unbreakable line: aside column, timeline rule (with an
+% optional marker), body minipage. Rows are stacked without interline glue
+% so the rule stays continuous; spacing lives in the bottom padding.
+\newcommand{\cvaside}[1]{%
+  \parbox[t]{\dimexpr\asidewidth-\asidegap}{%
+    \raggedleft\xsfont\leavevmode\color{muted}#1\par
+    \vspace{\cvrowpad}}%
+  \hspace{\asidegap}}
+
+% \begin{cvrow}[bottom padding]{aside}{marker} body \end{cvrow}
+\newenvironment{cvrow}[3][0pt]{%
+  \par\nointerlineskip\noindent
+  \def\cvrowpad{#1}%
+  \cvaside{#2}%
+  {\color{rule}\vrule width \rulewidth}#3\hspace{\bodygap}%
+  \begin{minipage}[t]{\bodywidth}\raggedright}
+ {\par\vspace{\cvrowpad}\hrule height 0pt\end{minipage}\par}
+
+% \cvindent{body}: body column without the timeline (header, summary).
+\newcommand{\cvindent}[1]{%
+  \par\noindent\hspace*{\dimexpr\textwidth-\bodywidth}%
+  \begin{minipage}[t]{\bodywidth}\raggedright#1\end{minipage}\par}
+
+% Strut of the first line of a section title (21pt line box).
+\newcommand{\titlestrut}{\rule[-6pt]{0pt}{15pt}}
+\newcommand{\sectiontitle}[1]{%
+  {\titlefont\extrabold\leavevmode\color{heading}\titlestrut#1}}
+
+% \begin{cvsection}[padding]{aside}{icon}{title} content \end{cvsection}
+\newenvironment{cvsection}[4][12pt]{%
+  \begin{cvrow}[#1]{#2}{\sectionmarker{#3}}\sectiontitle{#4}\par}
+ {\end{cvrow}}
+
+% \cvheading[padding]{icon}{title}: a section title alone on its row.
+\newcommand{\cvheading}[3][12pt]{%
+  \begin{cvsection}[#1]{}{#2}{#3}\end{cvsection}}
+
+% \begin{role}[padding]{dates}{location}{title}{company} ... \end{role}
+\newenvironment{role}[5][12pt]{%
+  \begin{cvrow}[#1]{#2\\#3}{\pinmarker}%
+  {\basefont\bfseries\rule[-4pt]{0pt}{12.5pt}%
+   #4\hfill{\color{company}#5}\par}}
+ {\end{cvrow}}
 
 % \roledesc{one-line description of the company}
-\newcommand{\roledesc}[1]{{\small\itshape #1}\par}
+\newcommand{\roledesc}[1]{%
+  \vspace{3pt}{\smfont\itshape\color{muted}#1\par}}
+
+% \rolenote{small grey line under the title}
+\newcommand{\rolenote}[1]{\vspace{3pt}{\xsfont\color{muted}#1\par}}
+
+% \begin{bullets} \item ... \end{bullets}
+\newenvironment{bullets}{\vspace{3pt}\smfont\begin{itemize}}{\end{itemize}}
 
 % \stack{comma-separated technologies}
-\newcommand{\stack}[1]{{\small\textbf{Stack:} #1}\par}
+\newcommand{\stack}[1]{%
+  \vspace{6pt}{\fontsize{9}{12.4}\selectfont\color{muted}%
+  {\semibold Stack:} #1\par}}
 
-% \entry{label}{text}
-\newcommand{\entry}[2]{\textbf{#1:} #2}
+% \skill[padding]{label}{values}
+\newcommand{\skill}[3][4.5pt]{%
+  \begin{cvrow}[#1]{{\semibold #2}}{}\smfont#3\end{cvrow}}
+
+% \contact{icon}{text}
+\newcommand{\contact}[2]{%
+  \mbox{\raisebox{-2pt}{\cvicon{#1}}\hspace{3pt}#2}%
+  \hspace{12pt plus 4pt}\allowbreak}
+
+% Avatar clipped to a circle (h-28: 84pt).
+\newcommand{\cvavatar}{%
+  \begin{tikzpicture}
+    \clip (0,0) circle (42pt);
+    \node[inner sep=0] at (0,0) {\includegraphics[width=84pt]{avatar}};
+  \end{tikzpicture}}
+
+% QR code to the online CV, hidden from extracted text.
+\newcommand{\cvqrcode}{%
+  \hidetext{\begin{tabular}{@{}c@{}}
+    \qrcode[height=2.2cm]{\cvurl}\\[2pt]
+    {\fontsize{7}{8}\selectfont\color{muted}Online version}
+  \end{tabular}}}
 
 % ================================================================= Document
 \begin{document}
 
-{\sffamily\Huge\bfseries\color{accent}\cvname}\par
-\smallskip
-{\large\cvheadline}\par
-\smallskip
-{\raggedright Toulouse, France
-· \href{mailto:lemaire.adrien@gmail.com}{lemaire.adrien@gmail.com}
-· \href{https://adrienlemaire.github.io/cv}{adrienlemaire.github.io/cv}
-· \href{https://github.com/AdrienLemaire}{github.com/AdrienLemaire}
-· \href{https://linkedin.com/in/adrienlemaire}{linkedin.com/in/adrienlemaire}\par}
+% ---------------------------------------------------------------- Header
+\noindent
+\parbox[c]{\dimexpr\asidewidth-\asidegap}{\centering\cvavatar}%
+\hspace*{\dimexpr\textwidth-\bodywidth-\asidewidth+\asidegap}%
+\parbox[c]{\dimexpr\bodywidth-2.6cm}{%
+  {\fontsize{27}{30}\extrabold\color{name}\cvname\par}
+  \vspace{6pt}
+  {\fontsize{13.5}{21}\semibold\cvheadline\par}
+  \vspace{6pt}
+  {\raggedright\fontsize{10.5}{18}\selectfont
+    \contact{location}{Toulouse, France}%
+    \contact{at-symbol}{\href{mailto:lemaire.adrien@gmail.com}{lemaire.adrien@gmail.com}}%
+    \contact{globe}{\href{\cvurl}{adrienlemaire.github.io/cv}}%
+    \contact{code}{\href{https://github.com/AdrienLemaire}{github.com/AdrienLemaire}}%
+    \contact{link}{\href{https://www.linkedin.com/in/adrienlemaire}{linkedin.com/in/adrienlemaire}}%
+    \par}}%
+\hfill\parbox[c]{2.2cm}{\cvqrcode}\par
+\vspace{15pt}
 
-\cvsection{Summary}
-CTO and full-stack engineer with 16 years of experience taking products from
-idea to production in France, Japan and the UK. Co-founded Made In Tracker, a
-deeptech startup, and built MD Atlas, a medical-device regulatory search
-engine with 110,000+ users in 100+ countries. Hands-on across architecture,
-data pipelines, AI tooling and team leadership.
+% ---------------------------------------------------------------- Summary
+\cvindent{\basefont
+  CTO and full-stack engineer with 16 years of experience taking products
+  from idea to production for users worldwide. Co-founded Made In Tracker, a
+  deeptech startup, and built MD Atlas, a medical-device regulatory search
+  engine with 110,000+ users in 100+ countries. Hands-on across architecture,
+  data pipelines, AI tooling and team leadership.}
+\vspace{18pt}
 
-\cvsection{Experience}
+% ---------------------------------------------------------------- Experience
+\cvheading{portfolio}{Experience}
 
-\role{Made In Tracker}{Co-founder \& CTO}{2023/03 -- present}{Toulouse, France (remote)}
-\roledesc{Traceability and regulatory data software for the medical-device
-  industry. Labelled deeptech startup; €90k from angel investors and €90k in
-  public funding; 1 patent; valued at €1.8M in 2026.}
-\begin{itemize}
-  \item Built MD Atlas (\href{https://md-atlas.com}{md-atlas.com}), a
-    regulatory intelligence search engine for medical devices: 3.7M records
-    across companies, devices, certificates, people and documents, with
-    conformity alerts and feed monitoring; 110,000+ users in 100+ countries.
-  \item Shipped its AI layer, including an MCP server listed in the official
-    MCP Registry, so AI assistants can query European regulatory data
-    directly.
-  \item Led EasyUDI, a SaaS for UDI and EUDAMED compliance: GS1 label and
-    DataMatrix generation, XML validation, traceability, audit trail and an
-    AI chatbot.
-  \item Took R\&D to pilots: product passports, smart labels and secure QR
-    codes; Artwork Passport (AI-assisted registration); pilots with Anopa
-    (cotton) and SobraBTP (construction reuse). 1st place at the Axone
-    blockchain contest.
-  \item Grew the team to 8 people at once (about 20 over four years) and
-    coached 12+ developers. Owned architecture, stack and conventions, code
-    review, infrastructure and client integrations; worked with design, sales
-    and investors.
-\end{itemize}
-\stack{TypeScript, React, Flutter, Python, PostgreSQL/Supabase, Firebase/GCP,
-  Vercel, Docker, Nix, LLM/RAG, MCP}
+\begin{role}[18pt]{2023/03 – present}{Toulouse, France (remote)}%
+  {Co-founder \& CTO}{Made In Tracker}
+  \roledesc{Traceability and regulatory data software for the medical-device
+    industry. Labelled deeptech startup; €90k from angel investors and €90k
+    in public funding; 1 patent; valued at €1.8M in 2026.}
+  \begin{bullets}
+    \item Built MD Atlas (\href{https://md-atlas.com}{md-atlas.com}), a
+      regulatory intelligence search engine for medical devices: 3.7M records
+      across companies, devices, certificates, people and documents, with
+      conformity alerts and feed monitoring; 110,000+ users in 100+
+      countries.
+    \item Led EasyUDI, a SaaS for UDI and EUDAMED compliance: GS1 label and
+      DataMatrix generation, XML validation, traceability and audit trail.
+    \item Built an AI layer across products: the MD Atlas MCP server, listed
+      in the official MCP Registry, lets AI assistants query European
+      regulatory data directly, and the EasyUDI chatbot assists with
+      regulatory workflows.
+    \item Took R\&D to pilots: product passports, smart labels and secure QR
+      codes; Artwork Passport (AI-assisted registration); pilots with Anopa
+      (cotton) and SobraBTP (construction reuse). 1st place at the Axone
+      blockchain contest.
+    \item Grew the team to 8 people at once (about 20 over four years) and
+      coached 12+ developers. Owned architecture, stack and conventions, code
+      review, infrastructure and client integrations; worked with design,
+      sales and investors.
+  \end{bullets}
+  \stack{TypeScript, React, Flutter, Python, PostgreSQL/Supabase,
+    Firebase/GCP, Vercel, Docker, Nix, LLM/RAG, MCP}
+\end{role}
 
-\role{YAOYA Inc.}{CTO}{2017/05 -- 2023/02}{Osaka, Japan / remote}
-\begin{itemize}
-  \item Built three versions of GOunite (internship marketplace, then online
-    school, then metaverse community) on GRANDstack (React, Apollo,
-    TypeScript, Neo4j) and Pixi.js, reaching 250+ users; started a Unity
-    version in 2022.
-  \item Rewrote Reach@, the company's article-writing service, from
-    PHP/jQuery to Django Wagtail, MySQL and Kubernetes: 2,000+ articles a
-    month, ¥100M+ yearly revenue.
-  \item Led a team of about 4 developers plus interns, and supported other
-    divisions with automation, data backups and client website audits.
-\end{itemize}
+\begin{role}[6pt]{2017/05 – 2023/02}{Osaka, Japan / remote}{CTO}{YAOYA Inc.}
+  \begin{bullets}
+    \item Built three versions of GOunite (internship marketplace, then
+      online school, then metaverse community) on GRANDstack (React, Apollo,
+      TypeScript, Neo4j) and Pixi.js, reaching 250+ users; started a Unity
+      version in 2022.
+    \item Rewrote Reach@, the company's article-writing service, from
+      PHP/jQuery to Django Wagtail, MySQL and Kubernetes: 2,000+ articles a
+      month, ¥100M+ yearly revenue.
+    \item Led a team of about 4 developers plus interns, and supported other
+      divisions with automation, data backups and client website audits.
+  \end{bullets}
+\end{role}
 
-\role{ShareWis Inc.}{Senior Full-stack Developer}{2016/02 -- 2016/12}{Osaka, Japan}
-\begin{itemize}
-  \item Technical lead on EdTech products: the ShareWis ACT MOOC marketplace
-    (Ruby on Rails, i18n, payments), React Native apps for ShareWis ACT and
-    ShareWis snack (authentication, payments, premium features), and a
-    Serverless account API.
-  \item Built a Node.js automation linking AWS, Pivotal Tracker, GitHub and
-    Slack; led the internationalisation effort.
-\end{itemize}
+\newpage
 
-\role{Rakuten}{DU Engineer}{2015/09 -- 2016/02}{Osaka, Japan}
-\begin{itemize}
-  \item Started the large-scale PHP/Symfony migration of O-net, Japan's
-    largest marriage agency (43,500+ members), and ran a security audit.
-\end{itemize}
+\begin{role}{2016/02 – 2016/12}{Osaka, Japan}%
+  {Senior Full-stack Developer}{ShareWis Inc.}
+  \begin{bullets}
+    \item Technical lead on EdTech products: the ShareWis ACT MOOC
+      marketplace (Ruby on Rails, i18n, payments), React Native apps for
+      ShareWis ACT and ShareWis snack (authentication, payments, premium
+      features), and a Serverless account API.
+    \item Built a Node.js automation linking AWS, Pivotal Tracker, GitHub and
+      Slack; led the internationalisation effort.
+  \end{bullets}
+\end{role}
 
-\role{Alpaca.ai (formerly Ikkyo Technology)}{Engineer}{2014/06 -- 2015/09}{Kobe, Japan}
-\begin{itemize}
-  \item Core design of the AlpacaDB platform, released as Labellio, a
-    deep-learning image labelling and training service (Kubernetes, Docker,
-    Django, Caffe, RabbitMQ).
-  \item Computer-vision R\&D for major Japanese gaming and search companies;
-    backend of Iromo, a fashion search engine matching clothes by colour and
-    pattern.
-\end{itemize}
+\begin{role}{2015/09 – 2016/02}{Osaka, Japan}{DU Engineer}{Rakuten}
+  \begin{bullets}
+    \item Started the large-scale PHP/Symfony migration of O-net, Japan's
+      largest marriage agency (43,500+ members), and ran a security audit.
+  \end{bullets}
+\end{role}
 
-\role{Aquasys}{Director of Technology (2012/11 -- 2014/08),
-  Software Engineer (2011/04 -- 2012/11)}{}{Okinawa, Japan}
-\begin{itemize}
-  \item Supervised all technical operations; hired, trained and managed
-    freelancers; built a Django marketplace framework (Uruma-work) and ran
-    Odoo operations.
-\end{itemize}
+\begin{role}{2014/06 – 2015/09}{Kobe, Japan}%
+  {Engineer}{Alpaca.ai (formerly Ikkyo Technology)}
+  \begin{bullets}
+    \item Core design of the AlpacaDB platform, released as Labellio, a
+      deep-learning image labelling and training service (Kubernetes, Docker,
+      Django, Caffe, RabbitMQ).
+    \item Computer-vision R\&D for major Japanese gaming and search
+      companies; backend of Iromo, a fashion search engine matching clothes
+      by colour and pattern.
+  \end{bullets}
+\end{role}
 
-\role{Fry-IT}{Django Developer}{2010/07 -- 2011/03}{London, UK}
-\begin{itemize}
-  \item Built a Django e-portfolio for London hospitals (PostgreSQL, Celery,
-    RabbitMQ) using TDD.
-\end{itemize}
+\begin{role}{2011/04 – 2014/08}{Okinawa, Japan}%
+  {Director of Technology, Software Engineer}{Aquasys}
+  \rolenote{Director of Technology (2012/11 – 2014/08), Software Engineer
+    (2011/04 – 2012/11)}
+  \begin{bullets}
+    \item Supervised all technical operations; hired, trained and managed
+      freelancers; built a Django marketplace framework (Uruma-work) and ran
+      Odoo operations.
+  \end{bullets}
+\end{role}
 
-\cvsection{Skills}
-\begin{itemize}
-  \item \entry{Leadership}{technical strategy, architecture, hiring and
-    coaching, product scoping, investor relations}
-  \item \entry{Languages \& frameworks}{TypeScript, JavaScript, Python, Dart;
-    React, Node.js, Flutter, Django}
-  \item \entry{Data \& AI}{PostgreSQL, Supabase, Neo4j, data pipelines,
-    LLM/RAG, MCP, computer vision}
-  \item \entry{Infrastructure}{GCP, Firebase, Vercel, AWS, Docker, Kubernetes,
-    Nix, CI/CD}
-  \item \entry{Practices}{TDD, DDD, Lean Startup, code review}
-\end{itemize}
+\begin{role}[15pt]{2010/07 – 2011/03}{London, UK}{Django Developer}{Fry-IT}
+  \begin{bullets}
+    \item Built a Django e-portfolio for London hospitals (PostgreSQL,
+      Celery, RabbitMQ) using TDD.
+  \end{bullets}
+\end{role}
 
-\cvsection{Languages}
-French (native) · English (bilingual) · Japanese (professional)
+% ---------------------------------------------------------------- Skills
+\cvheading[9pt]{wrench}{Skills}
+\skill{Leadership}{technical strategy, architecture, hiring and coaching,
+  product scoping, investor relations}
+\skill{Languages \& frameworks}{TypeScript, JavaScript, Python, Dart; React,
+  Node.js, Flutter, Django}
+\skill{Data \& AI}{PostgreSQL, Supabase, Neo4j, data pipelines, LLM/RAG, MCP,
+  computer vision}
+\skill{Infrastructure}{GCP, Firebase, Vercel, AWS, Docker, Kubernetes, Nix,
+  CI/CD}
+\skill[15pt]{Practices}{TDD, DDD, Lean Startup, code review}
 
-\cvsection{Education}
-\textbf{SUPINFO International University} -- International Master of Science
-in Computer Science\hfill 2006 -- 2011\par
-{\small\color{muted}Studied in France, Canada, the UK and the USA}
+% ---------------------------------------------------------------- Languages
+\begin{cvsection}[15pt]{}{translate}{Languages}
+  \vspace{3pt}{\smloosefont French (native) · English (bilingual) · Japanese
+  (professional)\par}
+\end{cvsection}
 
-\cvsection{Certifications}
-Wharton Entrepreneurship specialisation (2016) · Stanford Machine Learning (2011)
+% ---------------------------------------------------------------- Education
+\begin{cvsection}[15pt]{2006 – 2011}{education}{Education}
+  \vspace{3pt}{\smfont{\semibold SUPINFO International University} —
+  International Master of Science in Computer Science (studied in France,
+  Canada, the UK and the USA)\par}
+\end{cvsection}
 
-\cvsection{Interests}
-Triathlon, ultra-marathon
+% ------------------------------------------- Certifications and Interests
+\begin{cvrow}{}{\sectionmarker{badge}}
+  \begin{minipage}[t]{\dimexpr.5\linewidth-9pt}\raggedright
+    \sectiontitle{Certifications}\par
+    \vspace{3pt}{\smfont
+      Wharton Entrepreneurship specialisation (2016)\par
+      Stanford Machine Learning (2011)\par}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{\dimexpr.5\linewidth-9pt}\raggedright
+    \sectiontitle{\raisebox{-2.5pt}{\cvicon[15pt]{mood-happy-outline}}%
+      \hspace{6pt}Interests}\par
+    \vspace{3pt}{\smloosefont Triathlon, ultra-marathon, child education,
+      dog training, chess\par}
+  \end{minipage}
+\end{cvrow}
 
 \end{document}
