@@ -16,7 +16,7 @@ branch.
 $ nix develop                  # latest Node + Python
 $ npm install
 $ npm run dev                  # rebuild dist/output.css on change
-$ npm run build                # one-shot build, run before committing
+$ npm run build                # build + cache-bust, run before committing
 $ python -m http.server 8080   # preview at http://localhost:8080
 ```
 
@@ -31,6 +31,10 @@ $ python -m http.server 8080   # preview at http://localhost:8080
   `.row`, `.bullets`, …).
 - `dist/output.css` — generated, but committed because Pages serves the
   branch as-is. Always rebuild and commit it with any class change.
+- `scripts/cache-bust.js` — run by `npm run build`: appends a content hash
+  (`?v=<sha256[:8]>`) to the stylesheet link in `index.html`, so browsers
+  don't keep a stale `output.css` (Pages caches it 10 minutes). `npm run dev`
+  skips it; always finish with `npm run build`.
 - `assets/` — avatar, background, zondicons SVG icons.
 - Tailwind only scans files listed with `@source` in `input.css` (automatic
   detection is off via `source(none)`); add new template files there.
