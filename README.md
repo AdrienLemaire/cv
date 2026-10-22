@@ -2,12 +2,17 @@
 
 ## Local
 
+Requires [Nix](https://nixos.org) with flakes enabled.
+
 ```console
-$ npx tailwindcss -i input.css -o ./dist/output.css --content index.html --watch
-Rebuilding...
-$ python -m http.server 8080
-Serving HTTP on 0.0.0.0 port 8080 (http://0.0.0.0:8080/) ...
+$ nix develop
+$ npm install
+$ npm run dev                   # rebuild dist/output.css on change
+$ python -m http.server 8080    # in another shell, then open http://localhost:8080
 ```
+
+Run `npm run build` to regenerate `dist/output.css` once before committing.
+Tailwind v4 is configured in `input.css` (`@source`, `@theme`).
 
 ## Github Pages
 
