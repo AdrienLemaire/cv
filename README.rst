@@ -6,20 +6,13 @@ My CV
 Requirements
 ------------
 
- - texlive-bin
- - texlive-latexextra (contains ecv)
- - texlive-fontsextra (contains ifsym)
- - fontawesome.sty
- - ttf-linux-libertine
+The LaTeX toolchain (xelatex, cv4tw, fontawesome, libertine) is provided by
+the Nix flake::
 
-cv4tw
------
+    $ nix develop
 
- - texlive-bin
- - texlive-latexextra
- - texlive-fontsextra
- - miktex ?
- - xetex [Can't find it]
+or automatically with direnv (``direnv allow``). Verified with the 2018
+xelatex builds; the 2011 - 2015 pdflatex builds are not covered.
 
 
 How to build CV
