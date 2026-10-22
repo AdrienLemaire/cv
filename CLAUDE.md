@@ -36,6 +36,9 @@ $ python -m http.server 8080   # preview at http://localhost:8080
   don't keep a stale `output.css` (Pages caches it 10 minutes). `npm run dev`
   skips it; always finish with `npm run build`.
 - `assets/` — avatar, background, zondicons SVG icons.
+- `assets/Adrien_Lemaire_CV.pdf` — copy of the latest PDF from the `latex`
+  branch (`20XX/cto/CV_*.pdf`), served by the "Download PDF" button. Replace
+  it whenever the PDF changes so both versions stay identical.
 - Tailwind only scans files listed with `@source` in `input.css` (automatic
   detection is off via `source(none)`); add new template files there.
 
