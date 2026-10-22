@@ -13,6 +13,7 @@
         let
           tex = pkgs.texlive.withPackages (ps: with ps; [
             scheme-small
+            accsupp
             boxedminipage
             catoptions
             collectbox
@@ -26,8 +27,10 @@
             navigator
             needspace
             newenviron
+            noto
             pbox
             picinpar
+            qrcode
             realboxes
             wrapfig
             xstring
