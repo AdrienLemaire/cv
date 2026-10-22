@@ -6,8 +6,8 @@ My CV
 Requirements
 ------------
 
-The LaTeX toolchain (xelatex, cv4tw, fontawesome, libertine) is provided by
-the Nix flake::
+The LaTeX toolchain (xelatex, libertine, enumitem; cv4tw and fontawesome for
+legacy CVs) is provided by the Nix flake::
 
     $ nix develop
 
@@ -22,9 +22,9 @@ How to build CV
 
     $ pdflatex -shell-escape file.tex
 
-2015 + ::
+2015 + (2026+ uses the single-column template in ``2026/cto``)::
 
-    $ make clean all
+    $ cd 2026/cto && make force
 
 How to build Cover letter
 -------------------------
@@ -36,4 +36,4 @@ How to build Cover letter
 Customization
 -------------
 
-https://github.com/Cicatrice/cv4tw/blob/master/CUSTOMIZE.md
+Legacy cv4tw CVs (2015 - 2018): https://github.com/Cicatrice/cv4tw/blob/master/CUSTOMIZE.md

@@ -5,23 +5,24 @@ PDF CV of Adrien Lemaire, written in LaTeX. The online version lives on the
 
 ## Layout
 
-- One directory per year in which the CV was updated (`2010/` … `2018/`).
-  Inside, one subdirectory per variant (`engineer/`, `data_scientist/`,
-  `consulting/`, `cover_letter/`), each with its own `Makefile`.
+- One directory per year in which the CV was updated (`2010/` … `2026/`).
+  Inside, one subdirectory per variant (`engineer/`, `cto/`, …), each with its
+  own `Makefile`.
 - Older years are an archive: never edit their content (toolchain or build
-  fixes are fine). Start a new CV by copying the
-  latest variant directory into a new year directory, then rename the `.tex`
-  (`CV_YYYY-MM-<theme>.tex`) and update `CVNAME` in its `Makefile`.
+  fixes are fine). 2026+ CVs use the single-column template in `2026/cto/`:
+  start a new CV by copying that directory into a new year directory, then
+  rename the `.tex` (`CV_YYYY-MM.tex`) and update `CVNAME` in its `Makefile`.
 - `images/` holds portraits, `Certificates/` scanned diplomas, `other/` notes
   (e.g. a LinkedIn export).
-- 2015+ CVs use the `cv4tw` class (from TeX Live) with the `compact` theme;
-  see https://github.com/Cicatrice/cv4tw/blob/master/CUSTOMIZE.md.
+- 2015–2018 CVs use the legacy `cv4tw` class (sidebar theme, poor ATS
+  extraction); see https://github.com/Cicatrice/cv4tw/blob/master/CUSTOMIZE.md.
+  Do not use it for new CVs.
 
 ## Commands
 
 ```console
 $ nix develop                       # or `direnv allow` (.envrc)
-$ cd 2018/engineer && make force    # xelatex, run twice for references
+$ cd 2026/cto && make force         # xelatex, run twice for references
 $ pdfinfo CV_*.pdf                  # page count
 $ pdftotext -layout CV_*.pdf -      # what an ATS will read
 ```
@@ -32,8 +33,8 @@ $ pdftotext -layout CV_*.pdf -      # what an ATS will read
   paths.
 - When a build fails on a missing `.sty`, add the package to `flake.nix`
   rather than vendoring it.
-- Only the 2018+ xelatex builds are supported; 2011–2015 pdflatex builds are
-  kept as-is.
+- Only the 2018+ xelatex builds are supported (2026+ is the maintained
+  template); 2011–2015 pdflatex builds are kept as-is.
 
 ## LaTeX practices
 
