@@ -1,0 +1,191 @@
+% CV 2026 -- single-column, ATS-friendly template (xelatex).
+\documentclass[a4paper,11pt]{article}
+
+% ---------------------------------------------------------------- Settings
+\newcommand{\cvname}{Adrien Lemaire}
+\newcommand{\cvheadline}{CTO \& Co-founder · Full-stack Engineer}
+
+% ---------------------------------------------------------------- Packages
+\usepackage{fontspec}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{needspace}
+\usepackage{etoolbox}
+\usepackage{hyperref}
+
+\setmainfont{Linux Libertine O}[Ligatures={TeX,NoCommon}]
+\setsansfont{Linux Biolinum O}[Ligatures={TeX,NoCommon}]
+
+\definecolor{accent}{RGB}{31,78,121}
+\definecolor{muted}{RGB}{90,90,90}
+
+\hypersetup{
+  pdftitle={\cvname{} -- CV},
+  pdfauthor={\cvname},
+  pdfsubject={Curriculum Vitae},
+  colorlinks=true,
+  allcolors=accent,
+}
+
+\pagestyle{empty}
+\linespread{1.02}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{2em}
+\hyphenpenalty=10000 % keep keywords whole for ATS parsers
+\setlist[itemize]{leftmargin=1.2em, label=\textbullet, topsep=4pt,
+  itemsep=3pt, parsep=0pt}
+
+% ---------------------------------------------------------------- Macros
+% \cvsection{title}
+\newcommand{\cvsection}[1]{%
+  \par\bigskip\needspace{4\baselineskip}%
+  {\sffamily\large\bfseries\color{accent}#1}\par
+  \smallskip{\color{accent}\hrule height 0.6pt}\addvspace{\medskipamount}}
+
+% \role{company}{title}{dates}{location}
+\newcommand{\role}[4]{%
+  \par\needspace{5\baselineskip}\addvspace{\bigskipamount}
+  {\bfseries #1} -- #2\ifstrempty{#3}{}{\hfill #3}\par
+  {\small\color{muted}#4}\par\smallskip}
+
+% \roledesc{one-line description of the company}
+\newcommand{\roledesc}[1]{{\small\itshape #1}\par}
+
+% \stack{comma-separated technologies}
+\newcommand{\stack}[1]{{\small\textbf{Stack:} #1}\par}
+
+% \entry{label}{text}
+\newcommand{\entry}[2]{\textbf{#1:} #2}
+
+% ================================================================= Document
+\begin{document}
+
+{\sffamily\Huge\bfseries\color{accent}\cvname}\par
+\smallskip
+{\large\cvheadline}\par
+\smallskip
+{\raggedright Toulouse, France
+· \href{mailto:lemaire.adrien@gmail.com}{lemaire.adrien@gmail.com}
+· \href{https://adrienlemaire.github.io/cv}{adrienlemaire.github.io/cv}
+· \href{https://github.com/AdrienLemaire}{github.com/AdrienLemaire}
+· \href{https://linkedin.com/in/adrienlemaire}{linkedin.com/in/adrienlemaire}\par}
+
+\cvsection{Summary}
+CTO and full-stack engineer with 16 years of experience taking products from
+idea to production in France, Japan and the UK. Co-founded Made In Tracker, a
+deeptech startup, and built MD Atlas, a medical-device regulatory search
+engine with 110,000+ users in 100+ countries. Hands-on across architecture,
+data pipelines, AI tooling and team leadership.
+
+\cvsection{Experience}
+
+\role{Made In Tracker}{Co-founder \& CTO}{2023/03 -- present}{Toulouse, France (remote)}
+\roledesc{Traceability and regulatory data software for the medical-device
+  industry. Labelled deeptech startup; €90k from angel investors and €90k in
+  public funding; 1 patent; valued at €1.8M in 2026.}
+\begin{itemize}
+  \item Built MD Atlas (\href{https://md-atlas.com}{md-atlas.com}), a
+    regulatory intelligence search engine for medical devices: 3.7M records
+    across companies, devices, certificates, people and documents, with
+    conformity alerts and feed monitoring; 110,000+ users in 100+ countries.
+  \item Shipped its AI layer, including an MCP server listed in the official
+    MCP Registry, so AI assistants can query European regulatory data
+    directly.
+  \item Led EasyUDI, a SaaS for UDI and EUDAMED compliance: GS1 label and
+    DataMatrix generation, XML validation, traceability, audit trail and an
+    AI chatbot.
+  \item Took R\&D to pilots: product passports, smart labels and secure QR
+    codes; Artwork Passport (AI-assisted registration); pilots with Anopa
+    (cotton) and SobraBTP (construction reuse). 1st place at the Axone
+    blockchain contest.
+  \item Grew the team to 8 people at once (about 20 over four years) and
+    coached 12+ developers. Owned architecture, stack and conventions, code
+    review, infrastructure and client integrations; worked with design, sales
+    and investors.
+\end{itemize}
+\stack{TypeScript, React, Flutter, Python, PostgreSQL/Supabase, Firebase/GCP,
+  Vercel, Docker, Nix, LLM/RAG, MCP}
+
+\role{YAOYA Inc.}{CTO}{2017/05 -- 2023/02}{Osaka, Japan / remote}
+\begin{itemize}
+  \item Built three versions of GOunite (internship marketplace, then online
+    school, then metaverse community) on GRANDstack (React, Apollo,
+    TypeScript, Neo4j) and Pixi.js, reaching 250+ users; started a Unity
+    version in 2022.
+  \item Rewrote Reach@, the company's article-writing service, from
+    PHP/jQuery to Django Wagtail, MySQL and Kubernetes: 2,000+ articles a
+    month, ¥100M+ yearly revenue.
+  \item Led a team of about 4 developers plus interns, and supported other
+    divisions with automation, data backups and client website audits.
+\end{itemize}
+
+\role{ShareWis Inc.}{Senior Full-stack Developer}{2016/02 -- 2016/12}{Osaka, Japan}
+\begin{itemize}
+  \item Technical lead on EdTech products: the ShareWis ACT MOOC marketplace
+    (Ruby on Rails, i18n, payments), React Native apps for ShareWis ACT and
+    ShareWis snack (authentication, payments, premium features), and a
+    Serverless account API.
+  \item Built a Node.js automation linking AWS, Pivotal Tracker, GitHub and
+    Slack; led the internationalisation effort.
+\end{itemize}
+
+\role{Rakuten}{DU Engineer}{2015/09 -- 2016/02}{Osaka, Japan}
+\begin{itemize}
+  \item Started the large-scale PHP/Symfony migration of O-net, Japan's
+    largest marriage agency (43,500+ members), and ran a security audit.
+\end{itemize}
+
+\role{Alpaca.ai (formerly Ikkyo Technology)}{Engineer}{2014/06 -- 2015/09}{Kobe, Japan}
+\begin{itemize}
+  \item Core design of the AlpacaDB platform, released as Labellio, a
+    deep-learning image labelling and training service (Kubernetes, Docker,
+    Django, Caffe, RabbitMQ).
+  \item Computer-vision R\&D for major Japanese gaming and search companies;
+    backend of Iromo, a fashion search engine matching clothes by colour and
+    pattern.
+\end{itemize}
+
+\role{Aquasys}{Director of Technology (2012/11 -- 2014/08),
+  Software Engineer (2011/04 -- 2012/11)}{}{Okinawa, Japan}
+\begin{itemize}
+  \item Supervised all technical operations; hired, trained and managed
+    freelancers; built a Django marketplace framework (Uruma-work) and ran
+    Odoo operations.
+\end{itemize}
+
+\role{Fry-IT}{Django Developer}{2010/07 -- 2011/03}{London, UK}
+\begin{itemize}
+  \item Built a Django e-portfolio for London hospitals (PostgreSQL, Celery,
+    RabbitMQ) using TDD.
+\end{itemize}
+
+\cvsection{Skills}
+\begin{itemize}
+  \item \entry{Leadership}{technical strategy, architecture, hiring and
+    coaching, product scoping, investor relations}
+  \item \entry{Languages \& frameworks}{TypeScript, JavaScript, Python, Dart;
+    React, Node.js, Flutter, Django}
+  \item \entry{Data \& AI}{PostgreSQL, Supabase, Neo4j, data pipelines,
+    LLM/RAG, MCP, computer vision}
+  \item \entry{Infrastructure}{GCP, Firebase, Vercel, AWS, Docker, Kubernetes,
+    Nix, CI/CD}
+  \item \entry{Practices}{TDD, DDD, Lean Startup, code review}
+\end{itemize}
+
+\cvsection{Languages}
+French (native) · English (bilingual) · Japanese (professional)
+
+\cvsection{Education}
+\textbf{SUPINFO International University} -- International Master of Science
+in Computer Science\hfill 2006 -- 2011\par
+{\small\color{muted}Studied in France, Canada, the UK and the USA}
+
+\cvsection{Certifications}
+Wharton Entrepreneurship specialisation (2016) · Stanford Machine Learning (2011)
+
+\cvsection{Interests}
+Triathlon, ultra-marathon
+
+\end{document}
