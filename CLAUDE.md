@@ -13,7 +13,7 @@ branch.
 ## Commands
 
 ```console
-$ nix develop                  # Node LTS + Python
+$ nix develop                  # latest Node + Python
 $ npm install
 $ npm run dev                  # rebuild dist/output.css on change
 $ npm run build                # one-shot build, run before committing
@@ -23,17 +23,18 @@ $ python -m http.server 8080   # preview at http://localhost:8080
 ## Structure
 
 - `index.html` — the whole CV, a single A4-sized page (`w-[210mm] h-[297mm]`).
-- `input.css` — Tailwind entry (`@tailwind` directives only).
+- `input.css` — Tailwind entry and CSS-first config (`@import`, `@source`,
+  `@theme`).
 - `dist/output.css` — generated, but committed because Pages serves the
   branch as-is. Always rebuild and commit it with any class change.
 - `assets/` — avatar, background, zondicons SVG icons.
-- The `--content index.html` flag in npm scripts is what Tailwind scans; the
-  `content` key in `tailwind.config.js` is not used.
+- Tailwind only scans files listed with `@source` in `input.css` (automatic
+  detection is off via `source(none)`); add new template files there.
 
 ## HTML / CSS practices
 
-- Tailwind 3.x only. Do not migrate to v4 without a dedicated PR (config and
-  directives change).
+- Tailwind v4 (`tailwindcss` + `@tailwindcss/cli`). Configure in CSS via
+  `@theme` in `input.css`; there is no `tailwind.config.js`.
 - Semantic HTML: `header`, `main`, `section`, `h1`–`h3` in order, lists for
   bullets, `<time datetime="YYYY-MM">` for dates.
 - Accessibility: meaningful `alt` text (empty `alt=""` for decorative icons),
