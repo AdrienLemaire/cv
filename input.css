@@ -1,3 +1,58 @@
 @import "tailwindcss" source(none);
 
 @source "./index.html";
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@layer components {
+  .sheet {
+    @apply relative mx-auto my-4 flex h-[297mm] w-[210mm] flex-col
+      rounded-3xl bg-white px-10 py-10 text-gray-800
+      print:my-0 print:rounded-none;
+  }
+
+  .row {
+    @apply flex;
+  }
+
+  .row-aside {
+    @apply flex w-1/5 shrink-0 flex-col items-end pt-0.5 pr-4 text-right
+      text-xs text-gray-600;
+  }
+
+  .row-body {
+    @apply relative w-4/5 border-l-2 border-gray-200 pl-6;
+  }
+
+  .section-title {
+    @apply text-lg font-extrabold text-teal-700;
+  }
+
+  .section-icon {
+    @apply absolute top-0.5 -left-[13px] h-6 w-6 bg-white p-0.5;
+  }
+
+  .entry-icon {
+    @apply absolute top-1 -left-[9px] h-4 w-4 -rotate-12 bg-white;
+  }
+
+  .entry-title {
+    @apply flex justify-between gap-x-4 leading-snug font-bold;
+  }
+
+  .entry-company {
+    @apply text-right text-teal-800;
+  }
+
+  .bullets {
+    @apply mt-1 list-outside list-disc space-y-1 pl-4 text-sm leading-snug;
+  }
+
+  .contact-link {
+    @apply rounded hover:text-teal-800 hover:underline focus-visible:outline-2
+      focus-visible:outline-teal-600;
+  }
+}

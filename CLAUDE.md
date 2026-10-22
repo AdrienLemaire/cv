@@ -22,9 +22,13 @@ $ python -m http.server 8080   # preview at http://localhost:8080
 
 ## Structure
 
-- `index.html` — the whole CV, a single A4-sized page (`w-[210mm] h-[297mm]`).
+- `index.html` — the whole CV, two fixed A4 sheets (`.sheet`, 210mm × 297mm):
+  sheet 1 = header, summary and the two latest jobs; sheet 2 = older jobs,
+  skills, languages, education, certifications, interests. Content that
+  outgrows a sheet overflows silently: re-check both after edits.
 - `input.css` — Tailwind entry and CSS-first config (`@import`, `@source`,
-  `@theme`).
+  `@theme`), `@page` A4 setup and the shared component classes (`.sheet`,
+  `.row`, `.bullets`, …).
 - `dist/output.css` — generated, but committed because Pages serves the
   branch as-is. Always rebuild and commit it with any class change.
 - `assets/` — avatar, background, zondicons SVG icons.
@@ -40,8 +44,8 @@ $ python -m http.server 8080   # preview at http://localhost:8080
 - Accessibility: meaningful `alt` text (empty `alt=""` for decorative icons),
   sufficient contrast, links with visible focus states.
 - Set `<html lang="en">`, a `<title>`, a meta description and Open Graph tags.
-- Must print cleanly to A4 (`print:` variants); check with the browser's print
-  preview after layout changes.
+- Must print to exactly two A4 pages (`print:` variants, page break before
+  sheet 2); check with the browser's print preview after layout changes.
 - No JavaScript unless required; no CDN dependencies.
 
 ## Content practices
