@@ -8,7 +8,8 @@ PDF CV of Adrien Lemaire, written in LaTeX. The online version lives on the
 - One directory per year in which the CV was updated (`2010/` … `2018/`).
   Inside, one subdirectory per variant (`engineer/`, `data_scientist/`,
   `consulting/`, `cover_letter/`), each with its own `Makefile`.
-- Older years are an archive: never edit them. Start a new CV by copying the
+- Older years are an archive: never edit their content (toolchain or build
+  fixes are fine). Start a new CV by copying the
   latest variant directory into a new year directory, then rename the `.tex`
   (`CV_YYYY-MM-<theme>.tex`) and update `CVNAME` in its `Makefile`.
 - `images/` holds portraits, `Certificates/` scanned diplomas, `other/` notes
