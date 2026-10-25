@@ -88,7 +88,7 @@
     \setlength{\fboxsep}{1.5pt}\colorbox{white}{#2}}}%
   \kern.5\rulewidth}
 
-\newcommand{\pinmarker}{\onrule{-4pt}{\rotatebox{12}{\cvicon{pin}}}}
+\newcommand{\pinmarker}{\onrule{-4pt}{\cvicon{pin}}}
 \newcommand{\sectionmarker}[1]{\onrule{-5.5pt}{\cvicon[15pt]{#1}}}
 
 % ---------------------------------------------------------------- Rows
@@ -160,11 +160,12 @@
   \mbox{\raisebox{-2pt}{\cvicon{#1}}\hspace{3pt}#2}%
   \hspace{12pt plus 4pt}\allowbreak}
 
-% Avatar clipped to a circle (h-28: 84pt).
+% Avatar clipped to a circle (h-28: 84pt) with a teal ring (border-2).
 \newcommand{\cvavatar}{%
   \begin{tikzpicture}
     \clip (0,0) circle (42pt);
     \node[inner sep=0] at (0,0) {\includegraphics[width=84pt]{avatar}};
+    \draw[name, line width=1.5pt] (0,0) circle (41.25pt);
   \end{tikzpicture}}
 
 % QR code to the online CV, hidden from extracted text.
@@ -201,7 +202,7 @@
   CTO and full-stack engineer with 16 years of experience, 9 of them leading
   engineering, taking products from idea to production. Co-founded Made In
   Tracker, a deeptech startup, and built MD Atlas, a medical-device regulatory
-  search engine with 110,000+ users across 170 countries. Hands-on across architecture,
+  search engine with {\semibold 110,000+ users} across 170 countries. Hands-on across architecture,
   data pipelines, agentic AI tooling and team leadership.}
 \vspace{18pt}
 
@@ -215,23 +216,24 @@
     in public funding; 1 patent; valued at €1.7M by an independent expert in 2026.}
   \begin{bullets}
     \item Built MD Atlas (\href{https://md-atlas.com}{md-atlas.com}), a
-      regulatory intelligence search engine for medical devices: 5.2M records
+      regulatory intelligence search engine for medical devices: {\semibold 5.2M
+      records}
       (companies, devices, certificates, people, documents) kept fresh by
       crawlers of public databases, with conformity alerts and feed
       monitoring; 110,000+ users across 170 countries.
     \item Launched EasyUDI, a B2B SaaS for UDI and EUDAMED compliance (GS1
-      labels and DataMatrix, XML validation, audit trail): 14 customers and
+      labels and DataMatrix, XML validation, audit trail): {\semibold 14 customers} and
       €40k revenue.
     \item Chose a strongly typed, well-tested stack driven through MCP
       (TypeScript, Supabase, Vercel, Nix on NixOS) for agentic development:
-      shipped MD Atlas in 2 months instead of 2 years for 6 developers before
+      shipped MD Atlas in {\semibold 2~months} instead of 2 years for 6 developers before
       AI. Its MCP server, listed in the official MCP Registry, lets AI agents
       query EU regulatory data; the EasyUDI chatbot assists with workflows.
     \item Took R\&D to pilots with Anopa (cotton) and SobraBTP (construction
       reuse): product passports, smart labels, secure QR codes and Artwork
       Passport (AI-assisted registration). 1st place at the Axone blockchain
       contest.
-    \item Built and led a team of up to 8 (about 20 people since 2023) and
+    \item Built and led a team of {\semibold up to 8} (about 20 people since 2023) and
       coached 12+ developers. Owned architecture, code review, infrastructure
       and client integrations; worked with design, sales and investors.
   \end{bullets}
@@ -243,7 +245,7 @@
   \begin{bullets}
     \item Rewrote Reach@, the company's content service, from PHP/jQuery
       to Django/Wagtail, MySQL and Kubernetes: 2,000+ articles a month,
-      ¥100M+ yearly revenue.
+      {\semibold ¥100M+} yearly revenue.
     \item Led product engineering through three iterations of GOunite
       (internship marketplace, online school, metaverse community) on
       GRANDstack (React, Apollo, TypeScript, Neo4j) and Pixi.js.
