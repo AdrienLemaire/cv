@@ -339,6 +339,9 @@
   .pb-6 {
     padding-bottom: calc(var(--spacing) * 6);
   }
+  .pb-7 {
+    padding-bottom: calc(var(--spacing) * 7);
+  }
   .pl-6 {
     padding-left: calc(var(--spacing) * 6);
   }
