@@ -242,6 +242,9 @@
   .h-28 {
     height: calc(var(--spacing) * 28);
   }
+  .h-\[22px\] {
+    height: 22px;
+  }
   .w-1\/5 {
     width: calc(1 / 5 * 100%);
   }
@@ -253,6 +256,9 @@
   }
   .w-28 {
     width: calc(var(--spacing) * 28);
+  }
+  .w-\[22px\] {
+    width: 22px;
   }
   .flex-1 {
     flex: 1;
