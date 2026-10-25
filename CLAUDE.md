@@ -35,7 +35,12 @@ $ python -m http.server 8080   # preview at http://localhost:8080
   (`?v=<sha256[:8]>`) to the stylesheet link in `index.html`, so browsers
   don't keep a stale `output.css` (Pages caches it 10 minutes). `npm run dev`
   skips it; always finish with `npm run build`.
-- `assets/` — avatar, background, zondicons SVG icons.
+- `assets/` — avatar, background, `icons/` SVG icons.
+- `assets/icons/` — the Lucide icons in use (https://lucide.dev, ISC), with
+  `stroke="currentColor"` replaced by a hex colour (`<img>` cannot inherit
+  colour): teal-700 `#00786F`, white for the download button; stroke width
+  1.75 for section icons, 2 otherwise. The `latex` branch converts the same
+  files to PDF, so add or rename icons on both branches.
 - `assets/Adrien_Lemaire_CV.pdf` — copy of the latest PDF from the `latex`
   branch (`20XX/cto/CV_*.pdf`), served by the "Download PDF" button. Replace
   it whenever the PDF changes so both versions stay identical.
