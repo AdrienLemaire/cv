@@ -4,7 +4,7 @@
 
 % ---------------------------------------------------------------- Settings
 \newcommand{\cvname}{Adrien Lemaire}
-\newcommand{\cvheadline}{CTO · AI \& Data Products}
+\newcommand{\cvheadline}{Founding CTO · MedTech SaaS \& AI}
 \newcommand{\cvurl}{https://adrienlemaire.github.io/cv/}
 \newcommand{\cvcertsurl}{https://www.linkedin.com/in/adrienlemaire/details/certifications/}
 \newcommand{\cvrecsurl}{https://www.linkedin.com/in/adrienlemaire/details/recommendations/}
@@ -260,9 +260,10 @@
 % ---------------------------------------------------------------- Summary
 \cvindent{\basefont
   CTO and full-stack engineer with 16 years of experience, 9 of them as head
-  of engineering, taking products from idea to production. Co-founded Made In
-  Tracker and built MD Atlas, a medical-device regulatory
-  search engine with {\semibold 110,000+ users} across 170 countries.}
+  of engineering and 11 in Japan; trilingual French, English, Japanese.
+  Co-founded Made In Tracker and shipped MD Atlas alone in 2 months: a
+  5.2M-record medical-device regulatory platform with {\semibold 110,000+
+  users} across 170 countries.}
 \vspace{9pt}
 \cvindent{\smfont\textit{“A top-level CTO […] he knows how to turn an idea into
   a concrete solution.”}\par
@@ -279,21 +280,20 @@
     medical-device industry, GDPR-compliant. Labelled deeptech startup; 1
     patent.}
   \begin{bullets}
-    \item Built MD Atlas (\href{https://md-atlas.com}{md-atlas.com}), a
-      regulatory intelligence search engine for medical devices: {\semibold 5.2M
-      records} (companies, devices, certificates, people, documents) kept
-      fresh by crawlers of public databases, with conformity alerts and feed
-      monitoring.
+    \item Built MD Atlas (\href{https://md-atlas.com}{md-atlas.com}) in
+      {\semibold 2~months} with agentic development: a regulatory search
+      engine of {\semibold 5.2M records} (devices, companies, certificates,
+      people, documents) crawled from public databases; 576,000
+      lines of TypeScript, 2,365 test files; MCP server in the official
+      Registry; €300 a month to run.
+    \item Secured its 40~GB multi-tenant database deny-by-default:
+      row-level security on all 101 public tables, data served through a
+      typed service layer, zero errors on the Supabase security linter.
     \item Launched EasyUDI, a B2B SaaS for UDI/EUDAMED compliance (GS1
       DataMatrix labels, XML validation, audit trail, RAG chatbot):
-      {\semibold 14 customers}, €40k revenue, go-live in as little as 3 days.
-    \item Shipped MD Atlas in {\semibold 2~months}, about 12 person-years of
-      pre-AI work, with agentic development on a typed, tested stack
-      (TypeScript, Supabase, Vercel, Nix); MCP server in the official
-      Registry; €300 a month in infrastructure.
-    \item Took R\&D to paid pilots with Anopa ({\semibold €25k} revenue) and
-      SobraBTP: a Prolog/SPARQL traceability engine for product passports and
-      secure QR codes; won the Axone blockchain contest.
+      {\semibold 14 customers}, €40k revenue, go-live in 3 days. Took R\&D to
+      paid pilots with Anopa ({\semibold €25k}) and SobraBTP (Prolog/SPARQL
+      traceability engine); won the Axone blockchain contest.
     \item Co-raised {\semibold €180k} (9 angel investors and public funding)
       and reported to investors monthly; co-managed a budget of up to €112k a
       year, stretched with cloud credits negotiated through incubation
@@ -349,6 +349,8 @@
 \end{role}
 
 \begin{role}{2010/07 – 2011/03}{London, UK}{Django Developer}{Fry-IT}
+  \roletext{Built a Django e-portfolio for London hospitals using TDD
+    (PostgreSQL, Celery).}
 \end{role}
 
 % ---------------------------------------------------------------- Education
@@ -370,8 +372,10 @@
 % ---------------------------------------------------------------- Skills
 \begin{refsection}[9pt]{layers}{Skills}\end{refsection}
 \skillstrip
-\skill{Leadership}{engineering management, technical strategy and roadmap,
-  hiring and coaching, budget, fundraising, investor relations}
+\skill{Leadership}{engineering management, roadmap, hiring and coaching,
+  budget, fundraising}
+\skill{Domain}{EU MDR, UDI/EUDAMED, GS1, GDPR, traceability, row-level
+  security}
 \skill{Stack}{TypeScript, JavaScript, Python, Dart; React,
   Node.js, Flutter, Django, Tailwind}
 \skill{Data \& AI}{PostgreSQL, Supabase, Neo4j, LLM/RAG, MCP,
@@ -389,9 +393,9 @@
     \smfont\textit{“#4”}\end{cvrow}}
 \begin{refsection}[6pt]{quote}{Recommendations}\end{refsection}
 \recommendation{Jimmy Crequer}{Direct report at YAOYA, contractor at Made
-  In Tracker}{Adrien is what I would call an ‘enabler’. […] He thinks that a
-  small team of extremely good developers produce a better output than a large
-  team of average developers, and his behavior demonstrates that.}
+  In Tracker}{Adrien is what I would call an ‘enabler’. During the time I
+  worked under him, he helped me to become better on areas I was already good
+  at, and also gave me opportunities to grow my skillset on new topics.}
 \recommendation[15pt]{Kevin Mandrick, PhD}{Co-founder \& CEO of Made In
   Tracker}{[…] an exceptional resilient leader as a CTO who perfectly bridges
   the gap between vision and lightning-fast execution. […] knows how to
@@ -419,14 +423,13 @@
     \vspace{3pt}{\smfont
       Google Cloud Computer Vision (2023)\par
       Neo4j Certified Professional (2020)\par
-      Wharton Entrepreneurship (2016)\par
       \href{\cvcertsurl}{All 30 certifications on LinkedIn}\par}
   \end{minipage}\hfill
   \begin{minipage}[t]{\colwidth}\raggedright
     \sectiontitle{\llap{\makebox[\iconhang][l]{\sectionicon{heart}}}%
       Interests}\titlerule\par
-    \vspace{3pt}{\smloosefont Triathlon, ultra-marathon, child education,
-      dog training, chess\par}
+    \vspace{3pt}{\smloosefont Triathlon, ultra-marathon, chess, dog
+      training, coaching my 3 daughters in school and sport\par}
   \end{minipage}
 \end{cvrow}
 \endgroup
