@@ -38,7 +38,13 @@
         in
         {
           default = pkgs.mkShell {
-            packages = [ tex pkgs.gnumake pkgs.poppler-utils ];
+            packages = [
+              tex
+              pkgs.gnumake
+              pkgs.poppler-utils
+              # Second and third text extractors for the ATS check (make ats).
+              (pkgs.python3.withPackages (ps: [ ps.pypdf ps.pdfminer-six ]))
+            ];
             FONTCONFIG_FILE = pkgs.makeFontsConf {
               fontDirectories = [ "${tex}/share/texmf/fonts/opentype" ];
             };

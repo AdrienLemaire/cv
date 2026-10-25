@@ -29,11 +29,12 @@ PDF CV of Adrien Lemaire, written in LaTeX. The online version lives on the
 $ nix develop                       # or `direnv allow` (.envrc)
 $ cd 2026/cto && make force         # xelatex, run twice for references
 $ pdfinfo CV_*.pdf                  # page count
-$ pdftotext -layout CV_*.pdf -      # what an ATS will read
+$ pdftotext -layout CV_*.pdf -      # visual text layout
+$ make ats                          # poppler raw, pypdf and pdfminer output
 ```
 
 - The flake pins the toolchain (`texlive.withPackages`, gnumake,
-  poppler-utils) and exposes TeX Live's OpenType fonts to fontconfig, so
+  poppler-utils, Python with pypdf and pdfminer.six) and exposes TeX Live's OpenType fonts to fontconfig, so
   `fontspec` finds Libertine and FontAwesome by name; the 2026 template loads
   Noto Sans by TeX Live file name (`NotoSans-Regular.ttf`). Never hardcode
   font paths.
@@ -57,8 +58,18 @@ $ pdftotext -layout CV_*.pdf -      # what an ATS will read
 
 ## ATS / readability
 
-- After every change, run `pdftotext` and read the output: reading order,
-  contact details, dates and keywords must come out as plain text.
+- After every change, run `make ats` and read all three outputs: reading
+  order, contact details, dates and keywords must come out as plain text,
+  each date next to its title and company. `pdftotext -layout` is the most
+  forgiving extractor and hides ordering bugs; poppler raw and pypdf follow
+  the content stream, pdfminer sorts by position (it separates the left
+  date column, which is accepted).
+- Left-column text of a row (dates, locations) is typeset from the body with
+  `\prepaside`/`\placeaside`, so it is emitted next to its title while
+  drawn in the aside column. Never add hidden or invisible text to steer
+  parsers: extracted text must match what is visible.
+- Also render every page (`pdftoppm -png`) and check spacing: each page
+  needs a visible bottom margin, not just the right page count.
 - Keep one reading flow per row (dates/labels column, then body); put
   contact details in the body as plain text, not in headers or footers.
 - Icons, the QR code and other decorations are allowed only when hidden from
