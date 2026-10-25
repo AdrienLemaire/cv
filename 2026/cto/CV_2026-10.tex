@@ -99,9 +99,11 @@
 % A row is one unbreakable line: aside column, timeline rule (with an
 % optional marker), body minipage. Rows are stacked without interline glue
 % so the rule stays continuous; spacing lives in the bottom padding.
-% \cvrule draws the timeline; \cvrulestub ends it on the last marker.
+% \cvrule draws the timeline; \cvrulestub ends it on the last marker;
+% \cvnorule keeps its width for sections off the timeline.
 \newcommand{\cvrule}{\vrule width \rulewidth}
 \newcommand{\cvrulestub}{\vrule width \rulewidth height 9pt depth 0pt}
+\newcommand{\cvnorule}{\hspace*{\rulewidth}}
 \newcommand{\cvaside}[1]{%
   \parbox[t]{\dimexpr\asidewidth-\asidegap}{%
     \raggedleft\xsfont\leavevmode\color{muted}#1\par
@@ -130,6 +132,15 @@
 % \begin{cvsection}[padding]{aside}{icon}{title} content \end{cvsection}
 \newenvironment{cvsection}[4][12pt]{%
   \begin{cvrow}[#1]{#2}{\sectionmarker{#3}}\sectiontitle{#4}\par}
+ {\end{cvrow}}
+
+% \titlerule: horizontal rule filling the rest of a section title line.
+\newcommand{\titlerule}{\hspace{6pt}%
+  {\color{rule}\leaders\hrule height 4.75pt depth -3.25pt\hfill}}
+
+% \begin{refsection}[padding]{icon}{title}: undated section, ruled title.
+\newenvironment{refsection}[3][12pt]{%
+  \begin{cvrow}[#1]{}{\sectionmarker{#2}}\sectiontitle{#3}\titlerule\par}
  {\end{cvrow}}
 
 % \cvheading[padding]{icon}{title}: a section title alone on its row.
@@ -178,8 +189,7 @@
 % \skillstrip: tinted top padding above the first skill row.
 \newcommand{\skillstrip}{%
   \par\nointerlineskip\noindent\hspace*{\asidewidth}%
-  {\color{rule}\vrule width \rulewidth height \tintpad depth 0pt}%
-  \hspace{\dimexpr\bodygap-\tintpad}%
+  {\color{rule}\cvrule}\hspace{\dimexpr\bodygap-\tintpad}%
   {\color{tint}\vrule width \dimexpr\bodywidth+\tintpad height \tintpad
    depth 0pt}\par}
 
@@ -326,15 +336,29 @@
   \end{bullets}
 \end{role}
 
-\begin{role}[15pt]{2010/07 – 2011/03}{London, UK}{Django Developer}{Fry-IT}
+\begin{role}{2010/07 – 2011/03}{London, UK}{Django Developer}{Fry-IT}
   \begin{bullets}
     \item Built a Django e-portfolio for London hospitals (PostgreSQL,
       Celery) using TDD.
   \end{bullets}
 \end{role}
 
+% ---------------------------------------------------------------- Education
+% Oldest dated entry: the timeline ends on its icon.
+{\let\cvrule\cvrulestub
+\begin{cvsection}[18pt]{{\semibold\color{text}2006 – 2011}}{graduation-cap}{Education}
+  \vspace{3pt}{\smfont{\semibold SUPINFO International University} —
+  International Master of Science in Computer Science (studied in France,
+  Canada, the UK and the USA)\par}
+\end{cvsection}}
+
+% Undated sections below sit off the timeline: same icon gutter, no
+% vertical rule, each title followed by a horizontal rule.
+\begingroup
+\let\cvrule\cvnorule
+
 % ---------------------------------------------------------------- Skills
-\cvheading[9pt]{layers}{Skills}
+\begin{refsection}[9pt]{layers}{Skills}\end{refsection}
 \skillstrip
 \skill{Leadership}{engineering management, technical strategy and roadmap,
   hiring and coaching, budget, fundraising, investor relations}
@@ -349,7 +373,7 @@
 \begin{cvrow}[15pt]{}{}\end{cvrow}
 
 % ---------------------------------------------------------- Recommendations
-\begin{cvsection}[15pt]{}{quote}{Recommendations}
+\begin{refsection}[15pt]{quote}{Recommendations}
   \vspace{3pt}{\smfont
   \textit{“Adrien is what I would call an ‘enabler’. […] He thinks that a small
   team of extremely good developers produce a better output than a large team
@@ -362,34 +386,25 @@
   recommend him for a leadership position.”}\par
   \vspace{2pt}{\xsfont\color{muted}— \href{\cvrecsurl}{Marcel Akiyama},
   Product Designer, at Alpaca and Made In Tracker\par}}
-\end{cvsection}
+\end{refsection}
 
 % ---------------------------------------------------------------- Languages
-\begin{cvsection}[15pt]{}{languages}{Languages}
+\begin{refsection}[15pt]{languages}{Languages}
   \vspace{3pt}{\smloosefont French (native) · English (bilingual) · Japanese
   (professional)\par}
-\end{cvsection}
-
-% ---------------------------------------------------------------- Education
-\begin{cvsection}[15pt]{{\semibold\color{text}2006 – 2011}}{graduation-cap}{Education}
-  \vspace{3pt}{\smfont{\semibold SUPINFO International University} —
-  International Master of Science in Computer Science (studied in France,
-  Canada, the UK and the USA)\par}
-\end{cvsection}
+\end{refsection}
 
 % ------------------------------------------- Certifications and Interests
-% Last row: the timeline stops on the badge and turns into a horizontal
-% connector leading to the Interests icon, which hangs left of its title
-% like the timeline icons (\iconhang: icon width plus title gap).
+% Last row: two ruled titles side by side; the Interests icon hangs left of
+% its title like the other icons (\iconhang: icon width plus title gap).
 \newlength{\iconhang}
 \setlength{\iconhang}{\dimexpr\bodygap+.5\rulewidth+7pt}
-{\let\cvrule\cvrulestub
 \begin{cvrow}{}{\sectionmarker{award}}
   \makebox[\dimexpr.5\linewidth+9pt-\iconhang-6pt][l]{%
-    \sectiontitle{Certifications}\hspace{6pt}%
-    {\color{rule}\leaders\hrule height 4.75pt depth -3.25pt\hfill}}%
+    \sectiontitle{Certifications}\titlerule}%
   \hspace{6pt}%
-  \sectiontitle{\makebox[\iconhang][l]{\sectionicon{heart}}Interests}\par
+  \sectiontitle{\makebox[\iconhang][l]{\sectionicon{heart}}Interests}%
+  \titlerule\par
   \begin{minipage}[t]{\dimexpr.5\linewidth-9pt}\raggedright
     \vspace{3pt}{\smfont
       Wharton Entrepreneurship (2016)\par}
@@ -398,6 +413,7 @@
     \vspace{3pt}{\smloosefont Triathlon, ultra-marathon, child education,
       dog training, chess\par}
   \end{minipage}
-\end{cvrow}}
+\end{cvrow}
+\endgroup
 
 \end{document}
