@@ -69,6 +69,15 @@ $ pdftotext -layout CV_*.pdf -      # what an ATS will read
   one is available. No skill bars, ratings, MBTI or objective statements.
 - Fill whole pages (1 or 2), never 1.3.
 
+## Tailoring per application
+
+- Keep `2026/cto/` as the generic CV (mirrored by the `html` branch). For a
+  specific job, copy it to a sibling variant directory (e.g.
+  `2026/<company>/`, `CVNAME` updated) and adapt only `\cvheadline`, the
+  summary and Skills to mirror the job description's keywords.
+- Mirror wording, never invent experience: every keyword must be backed by a
+  bullet. Titles, dates and companies stay identical to the generic CV.
+
 ## Content consistency
 
 - Titles, dates (`YYYY/MM`) and company names must match the `html` branch

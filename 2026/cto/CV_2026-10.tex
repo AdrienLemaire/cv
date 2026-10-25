@@ -33,7 +33,8 @@
 \definecolor{text}{HTML}{1E2939}    % gray-800
 \definecolor{subtle}{HTML}{364153}  % gray-700
 \definecolor{muted}{HTML}{4A5565}   % gray-600
-\definecolor{rule}{HTML}{E5E7EB}    % gray-200
+\definecolor{rule}{HTML}{D1D5DC}    % gray-300
+\definecolor{tint}{HTML}{F0FDFA}    % teal-50
 
 \hypersetup{
   pdftitle={\cvname{} -- CV},
@@ -55,7 +56,7 @@
 \newcommand{\smfont}{\fontsize{10.5}{14.4}\selectfont}    % text-sm snug
 \newcommand{\smloosefont}{\fontsize{10.5}{15}\selectfont} % text-sm
 \newcommand{\xsfont}{\fontsize{9}{12}\selectfont}         % text-xs
-\newcommand{\titlefont}{\fontsize{13.5}{21}\selectfont}   % text-lg
+\newcommand{\titlefont}{\fontsize{15}{21}\selectfont}     % text-xl
 
 % ---------------------------------------------------------------- Geometry
 \newlength{\asidewidth}    % date/label column, w-1/5
@@ -88,7 +89,8 @@
     \setlength{\fboxsep}{1.5pt}\colorbox{white}{#2}}}%
   \kern.5\rulewidth}
 
-\newcommand{\pinmarker}{\onrule{-2pt}{\cvicon{pin}}}
+% Timeline node: a 6pt teal dot.
+\newcommand{\dotmarker}{\onrule{1pt}{\hidetext{\tikz\fill[fill=heading] (0,0) circle (3pt);}}}
 \newcommand{\sectionicon}[1]{\raisebox{-3pt}{\cvicon[14pt]{#1}}}
 \newcommand{\sectionmarker}[1]{\onrule{0pt}{\sectionicon{#1}}}
 
@@ -135,7 +137,7 @@
 
 % \begin{role}[padding]{dates}{location}{title}{company} ... \end{role}
 \newenvironment{role}[5][12pt]{%
-  \begin{cvrow}[#1]{#2\\#3}{\pinmarker}%
+  \begin{cvrow}[#1]{{\semibold\color{text}#2}\\#3}{\dotmarker}%
   {\basefont\bfseries\rule[-4pt]{0pt}{12.5pt}%
    #4\hfill{\semibold\color{company}#5}\par}}
  {\end{cvrow}}
@@ -156,8 +158,29 @@
   {\semibold Stack:} #1\par}}
 
 % \skill[padding]{label}{values}
+% Skills rows sit on a teal-50 band that starts \tintpad left of the text.
+\newlength{\tintpad}
+\setlength{\tintpad}{6pt}
+\newsavebox{\skillbox}
 \newcommand{\skill}[3][4.5pt]{%
-  \begin{cvrow}[#1]{{\semibold #2}}{}\smfont#3\end{cvrow}}
+  \par\nointerlineskip\noindent
+  \def\cvrowpad{#1}%
+  \cvaside{{\semibold #2}}%
+  {\color{rule}\cvrule}\hspace{\dimexpr\bodygap-\tintpad}%
+  \begin{lrbox}{\skillbox}%
+    \begin{minipage}[t]{\dimexpr\bodywidth-\tintpad}\raggedright
+      \smfont\strut#3\par\vspace{#1}\hrule height 0pt\end{minipage}%
+  \end{lrbox}%
+  {\setlength{\fboxsep}{0pt}%
+   \colorbox{tint}{\hspace{\tintpad}\usebox{\skillbox}\hspace{\tintpad}}}\par}
+
+% \skillstrip: tinted top padding above the first skill row.
+\newcommand{\skillstrip}{%
+  \par\nointerlineskip\noindent\hspace*{\asidewidth}%
+  {\color{rule}\vrule width \rulewidth height \tintpad depth 0pt}%
+  \hspace{\dimexpr\bodygap-\tintpad}%
+  {\color{tint}\vrule width \dimexpr\bodywidth+\tintpad height \tintpad
+   depth 0pt}\par}
 
 % \contact{icon}{text}
 \newcommand{\contact}[2]{%
@@ -216,31 +239,29 @@
 
 \begin{role}[18pt]{2023/03 – present}{Toulouse, France (remote)}%
   {Co-Founder \& CTO}{\href{https://madeintracker.com/}{Made In Tracker}}
-  \roledesc{Traceability and regulatory data software for the medical-device
-    industry. Labelled deeptech startup; €90k from angel investors and €90k
-    in public funding; 1 patent; valued at €1.7M by an independent expert in 2026.}
+  \roledesc{B2B SaaS for traceability and EU MDR regulatory data in the
+    medical-device industry. Labelled deeptech startup; 1 patent.}
   \begin{bullets}
     \item Built MD Atlas (\href{https://md-atlas.com}{md-atlas.com}), a
       regulatory intelligence search engine for medical devices: {\semibold 5.2M
-      records}
-      (companies, devices, certificates, people, documents) kept fresh by
-      crawlers of public databases, with conformity alerts and feed
-      monitoring; 110,000+ users across 170 countries.
-    \item Launched EasyUDI, a B2B SaaS for UDI and EUDAMED compliance (GS1
-      labels and DataMatrix, XML validation, audit trail): {\semibold 14 customers} and
-      €40k revenue.
-    \item Chose a strongly typed, well-tested stack driven through MCP
-      (TypeScript, Supabase, Vercel, Nix on NixOS) for agentic development:
-      shipped MD Atlas in {\semibold 2~months} instead of 2 years for 6 developers before
-      AI. Its MCP server, listed in the official MCP Registry, lets AI agents
-      query EU regulatory data; the EasyUDI chatbot assists with workflows.
-    \item Took R\&D to pilots with Anopa (cotton) and SobraBTP (construction
-      reuse): product passports, smart labels, secure QR codes and Artwork
-      Passport (AI-assisted registration). 1st place at the Axone blockchain
+      records} (companies, devices, certificates, people, documents) kept
+      fresh by crawlers of public databases, with conformity alerts and feed
+      monitoring.
+    \item Launched EasyUDI, a B2B SaaS for UDI/EUDAMED compliance (GS1
+      DataMatrix labels, XML validation, audit trail, RAG chatbot):
+      {\semibold 14 customers} and €40k revenue.
+    \item Shipped MD Atlas in {\semibold 2~months} instead of 2 years for 6
+      developers, through agentic development on a typed, tested stack
+      (TypeScript, Supabase, Vercel, Nix); its MCP server is listed in the
+      official MCP Registry.
+    \item Took R\&D to pilots with Anopa and SobraBTP: product passports,
+      smart labels and secure QR codes; 1st place at the Axone blockchain
       contest.
+    \item Co-raised {\semibold €180k} (angel and public funding) and
+      co-managed company finances; valued at €1.7M by an independent expert.
     \item Built and led a team of {\semibold up to 8} (about 20 people since 2023) and
-      coached 12+ developers. Owned architecture, code review, infrastructure
-      and client integrations; worked with design, sales and investors.
+      coached 12+ developers; owned architecture, code review and
+      infrastructure.
   \end{bullets}
   \stack{TypeScript, React, Flutter, Python, PostgreSQL/Supabase,
     Firebase/GCP, Vercel, Docker, Nix, LLM/RAG, MCP}
@@ -264,12 +285,9 @@
 \begin{role}{2016/02 – 2016/12}{Osaka, Japan}%
   {Senior Full-stack Developer}{\href{https://share-wis.com/}{ShareWis Inc.}}
   \begin{bullets}
-    \item Led EdTech products: the ShareWis ACT MOOC
-      marketplace (Ruby on Rails, i18n, payments), React Native apps for
-      ShareWis ACT and ShareWis snack (authentication, payments, premium
-      features), and a Serverless account API.
-    \item Built a Node.js automation linking AWS, Pivotal Tracker, GitHub and
-      Slack; led the internationalisation effort.
+    \item Led the ShareWis ACT MOOC marketplace (Ruby on Rails, payments,
+      internationalisation) and its React Native apps, and automated delivery
+      across AWS, Pivotal Tracker, GitHub and Slack.
   \end{bullets}
 \end{role}
 
@@ -281,14 +299,12 @@
 \end{role}
 
 \begin{role}{2014/06 – 2015/09}{Kobe, Japan}%
-  {Engineer}{\href{https://alpaca.markets/}{Alpaca.ai (formerly Ikkyo Technology)}}
+  {Engineer}{\href{https://alpaca.markets/}{Alpaca.ai}}
+  \rolenote{Formerly Ikkyo Technology}
   \begin{bullets}
-    \item Designed the core of the AlpacaDB platform, released as Labellio, a
-      deep-learning image labelling and training service (Kubernetes, Docker,
-      Django, Caffe, RabbitMQ).
-    \item Delivered computer-vision R\&D for major Japanese gaming and search
-      companies; backend of Iromo, a fashion search engine matching clothes
-      by colour and pattern.
+    \item Designed the core of AlpacaDB, released as Labellio, a deep-learning
+      image labelling service (Kubernetes, Django, Caffe), and delivered
+      computer-vision R\&D for major Japanese gaming and search companies.
   \end{bullets}
 \end{role}
 
@@ -298,30 +314,47 @@
     (2011/04 – 2012/11)}
   \begin{bullets}
     \item Supervised all technical operations; hired, trained and managed
-      freelancers; built a Django marketplace framework (Uruma-work) and
-      administered Odoo.
+      freelancers; built a Django marketplace framework and administered
+      Odoo.
   \end{bullets}
 \end{role}
 
 \begin{role}[15pt]{2010/07 – 2011/03}{London, UK}{Django Developer}{Fry-IT}
   \begin{bullets}
     \item Built a Django e-portfolio for London hospitals (PostgreSQL,
-      Celery, RabbitMQ) using TDD.
+      Celery) using TDD.
   \end{bullets}
 \end{role}
 
 % ---------------------------------------------------------------- Skills
 \cvheading[9pt]{layers}{Skills}
-\skill{Leadership}{technical strategy, architecture, hiring and coaching,
-  product scoping, investor relations}
+\skillstrip
+\skill{Leadership}{engineering management, technical strategy and roadmap,
+  hiring and coaching, budget, fundraising, investor relations}
 \skill{Stack}{TypeScript, JavaScript, Python, Dart; React,
   Node.js, Flutter, Django}
 \skill{Data \& AI}{PostgreSQL, Supabase, Neo4j, LLM/RAG, MCP,
   AI agents, computer vision}
 \skill{Infrastructure}{GCP, Firebase, Vercel, AWS, Docker, Kubernetes, Nix,
   CI/CD}
-\skill[15pt]{Practices}{TDD, DDD, Lean Startup, code review,
+\skill[6pt]{Practices}{TDD, DDD, Lean Startup, code review,
   agentic coding (Claude Code)}
+\begin{cvrow}[15pt]{}{}\end{cvrow}
+
+% ---------------------------------------------------------- Recommendations
+\begin{cvsection}[15pt]{}{quote}{Recommendations}
+  \vspace{3pt}{\smfont
+  \textit{“[…] his constant learning and strong architectural perspective.
+  […] he demonstrated that he is a resilient leader. […] I'd definitely
+  recommend him for a leadership position.”}\par
+  \vspace{2pt}{\xsfont\color{muted}— Marcel Akiyama, Product Designer, at
+  Alpaca and Made In Tracker\par}
+  \vspace{6pt}
+  \textit{“Adrien helped me understand the why behind the code: the problem to
+  solve, the business needs and what the solution must deliver.”}\par
+  \vspace{2pt}{\xsfont\color{muted}— Wadie El Amrani, direct report at Made
+  In Tracker (translated from French)\par}}
+\end{cvsection}
 
 % ---------------------------------------------------------------- Languages
 \begin{cvsection}[15pt]{}{languages}{Languages}
@@ -330,7 +363,7 @@
 \end{cvsection}
 
 % ---------------------------------------------------------------- Education
-\begin{cvsection}[15pt]{2006 – 2011}{graduation-cap}{Education}
+\begin{cvsection}[15pt]{{\semibold\color{text}2006 – 2011}}{graduation-cap}{Education}
   \vspace{3pt}{\smfont{\semibold SUPINFO International University} —
   International Master of Science in Computer Science (studied in France,
   Canada, the UK and the USA)\par}
@@ -338,17 +371,16 @@
 
 % ------------------------------------------- Certifications and Interests
 % Last row: the timeline stops on the badge and turns into a horizontal
-% connector leading to the Interests icon.
+% connector leading to the Interests title.
 {\let\cvrule\cvrulestub
 \begin{cvrow}{}{\sectionmarker{award}}
-  \makebox[\dimexpr.5\linewidth+9pt][l]{\sectiontitle{Certifications}%
+  \makebox[\dimexpr.5\linewidth+3pt][l]{\sectiontitle{Certifications}%
     \hspace{6pt}{\color{rule}\leaders\hrule height 4.75pt depth -3.25pt
-    \hfill}}%
-  \sectiontitle{\sectionicon{smile}\hspace{6pt}Interests}\par
+    \hfill}}\hspace{6pt}%
+  \sectiontitle{Interests}\par
   \begin{minipage}[t]{\dimexpr.5\linewidth-9pt}\raggedright
     \vspace{3pt}{\smfont
-      Wharton Entrepreneurship specialisation (2016)\par
-      Stanford Machine Learning (2011)\par}
+      Wharton Entrepreneurship specialisation (2016)\par}
   \end{minipage}\hfill
   \begin{minipage}[t]{\dimexpr.5\linewidth-9pt}\raggedright
     \vspace{3pt}{\smloosefont Triathlon, ultra-marathon, child education,
