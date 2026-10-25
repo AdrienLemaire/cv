@@ -77,7 +77,7 @@
 \newcommand{\hidetext}[1]{%
   \BeginAccSupp{method=plain,ActualText={}}#1\EndAccSupp{}}
 
-% \cvicon[size]{zondicon name}
+% \cvicon[size]{Lucide icon name}
 \newcommand{\cvicon}[2][12pt]{%
   \hidetext{\includegraphics[height=#1]{icons/#2}}}
 
@@ -88,13 +88,17 @@
     \setlength{\fboxsep}{1.5pt}\colorbox{white}{#2}}}%
   \kern.5\rulewidth}
 
-\newcommand{\pinmarker}{\onrule{-4pt}{\cvicon{pin}}}
-\newcommand{\sectionmarker}[1]{\onrule{-5.5pt}{\cvicon[15pt]{#1}}}
+\newcommand{\pinmarker}{\onrule{-2pt}{\cvicon{pin}}}
+\newcommand{\sectionicon}[1]{\raisebox{-3pt}{\cvicon[14pt]{#1}}}
+\newcommand{\sectionmarker}[1]{\onrule{0pt}{\sectionicon{#1}}}
 
 % ---------------------------------------------------------------- Rows
 % A row is one unbreakable line: aside column, timeline rule (with an
 % optional marker), body minipage. Rows are stacked without interline glue
 % so the rule stays continuous; spacing lives in the bottom padding.
+% \cvrule draws the timeline; \cvrulestub ends it on the last marker.
+\newcommand{\cvrule}{\vrule width \rulewidth}
+\newcommand{\cvrulestub}{\vrule width \rulewidth height 9pt depth 0pt}
 \newcommand{\cvaside}[1]{%
   \parbox[t]{\dimexpr\asidewidth-\asidegap}{%
     \raggedleft\xsfont\leavevmode\color{muted}#1\par
@@ -106,7 +110,7 @@
   \par\nointerlineskip\noindent
   \def\cvrowpad{#1}%
   \cvaside{#2}%
-  {\color{rule}\vrule width \rulewidth}#3\hspace{\bodygap}%
+  {\color{rule}\cvrule}#3\hspace{\bodygap}%
   \begin{minipage}[t]{\bodywidth}\raggedright}
  {\par\vspace{\cvrowpad}\hrule height 0pt\end{minipage}\par}
 
@@ -157,7 +161,7 @@
 
 % \contact{icon}{text}
 \newcommand{\contact}[2]{%
-  \mbox{\raisebox{-2pt}{\cvicon{#1}}\hspace{3pt}#2}%
+  \mbox{\raisebox{-1.5pt}{\cvicon[11pt]{#1}}\hspace{4pt}#2}%
   \hspace{12pt plus 4pt}\allowbreak}
 
 % Avatar clipped to a circle (h-28: 84pt) with a teal ring (border-2).
@@ -188,11 +192,12 @@
   {\fontsize{13.5}{21}\semibold\cvheadline\par}
   \vspace{6pt}
   {\raggedright\fontsize{10.5}{18}\selectfont
-    \contact{location}{Toulouse, France}%
-    \contact{at-symbol}{\href{mailto:lemaire.adrien@gmail.com}{lemaire.adrien@gmail.com}}%
+    \contact{map-pin}{Toulouse, France}%
+    \contact{mail}{\href{mailto:lemaire.adrien@gmail.com}{lemaire.adrien@gmail.com}}%
     \contact{globe}{\href{\cvurl}{adrienlemaire.github.io/cv}}%
-    \contact{code}{\href{https://github.com/AdrienLemaire}{github.com/AdrienLemaire}}%
-    \contact{link}{\href{https://www.linkedin.com/in/adrienlemaire}{linkedin.com/in/adrienlemaire}}%
+    \contact{github}{\href{https://github.com/AdrienLemaire}{github.com/AdrienLemaire}}%
+    \contact{linkedin}{\href{https://www.linkedin.com/in/adrienlemaire}{linkedin.com/in/adrienlemaire}
+      · \href{https://www.linkedin.com/in/adrienlemaire/details/recommendations/}{13 recommendations}}%
     \par}}%
 \hfill\parbox[c]{2.2cm}{\cvqrcode}\par
 \vspace{15pt}
@@ -207,7 +212,7 @@
 \vspace{18pt}
 
 % ---------------------------------------------------------------- Experience
-\cvheading{portfolio}{Experience}
+\cvheading{briefcase}{Experience}
 
 \begin{role}[18pt]{2023/03 – present}{Toulouse, France (remote)}%
   {Co-founder \& CTO}{Made In Tracker}
@@ -306,7 +311,7 @@
 \end{role}
 
 % ---------------------------------------------------------------- Skills
-\cvheading[9pt]{wrench}{Skills}
+\cvheading[9pt]{layers}{Skills}
 \skill{Leadership}{technical strategy, architecture, hiring and coaching,
   product scoping, investor relations}
 \skill{Stack}{TypeScript, JavaScript, Python, Dart; React,
@@ -319,32 +324,36 @@
   agentic coding (Claude Code)}
 
 % ---------------------------------------------------------------- Languages
-\begin{cvsection}[15pt]{}{translate}{Languages}
+\begin{cvsection}[15pt]{}{languages}{Languages}
   \vspace{3pt}{\smloosefont French (native) · English (bilingual) · Japanese
   (professional)\par}
 \end{cvsection}
 
 % ---------------------------------------------------------------- Education
-\begin{cvsection}[15pt]{2006 – 2011}{education}{Education}
+\begin{cvsection}[15pt]{2006 – 2011}{graduation-cap}{Education}
   \vspace{3pt}{\smfont{\semibold SUPINFO International University} —
   International Master of Science in Computer Science (studied in France,
   Canada, the UK and the USA)\par}
 \end{cvsection}
 
 % ------------------------------------------- Certifications and Interests
-\begin{cvrow}{}{\sectionmarker{badge}}
+% Last row: the timeline stops on the badge and turns into a horizontal
+% connector leading to the Interests icon.
+{\let\cvrule\cvrulestub
+\begin{cvrow}{}{\sectionmarker{award}}
+  \makebox[\dimexpr.5\linewidth+9pt][l]{\sectiontitle{Certifications}%
+    \hspace{6pt}{\color{rule}\leaders\hrule height 4.75pt depth -3.25pt
+    \hfill}}%
+  \sectiontitle{\sectionicon{smile}\hspace{6pt}Interests}\par
   \begin{minipage}[t]{\dimexpr.5\linewidth-9pt}\raggedright
-    \sectiontitle{Certifications}\par
     \vspace{3pt}{\smfont
       Wharton Entrepreneurship specialisation (2016)\par
       Stanford Machine Learning (2011)\par}
   \end{minipage}\hfill
   \begin{minipage}[t]{\dimexpr.5\linewidth-9pt}\raggedright
-    \sectiontitle{\raisebox{-2.5pt}{\cvicon[15pt]{mood-happy-outline}}%
-      \hspace{6pt}Interests}\par
     \vspace{3pt}{\smloosefont Triathlon, ultra-marathon, child education,
       dog training, chess\par}
   \end{minipage}
-\end{cvrow}
+\end{cvrow}}
 
 \end{document}

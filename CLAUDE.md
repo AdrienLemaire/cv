@@ -13,9 +13,10 @@ PDF CV of Adrien Lemaire, written in LaTeX. The online version lives on the
   mirrors the `html` branch design (avatar, teal accents, dated timeline):
   start a new CV by copying that directory into a new year directory, then
   rename the `.tex` (`CV_YYYY-MM.tex`) and update `CVNAME` in its `Makefile`.
-  Its `icons/*.pdf` are the html branch zondicons converted with
+  Its `icons/*.pdf` are the html branch `assets/icons/*.svg` (Lucide, ISC,
+  pre-coloured teal-700 `#00786F`) converted with
   `nix shell nixpkgs#librsvg -c rsvg-convert -f pdf` (librsvg is not in the
-  flake).
+  flake). Keep the Lucide icon names so both branches stay in sync.
 - `images/` holds portraits, `Certificates/` scanned diplomas, `other/` notes
   (e.g. a LinkedIn export).
 - 2015–2018 CVs use the legacy `cv4tw` class (sidebar theme, poor ATS
