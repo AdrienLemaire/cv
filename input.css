@@ -45,6 +45,12 @@
     @apply text-xl font-extrabold text-teal-700;
   }
 
+  /* Title of a section off the timeline, followed by a horizontal rule. */
+  .ruled {
+    @apply flex items-center gap-x-1.5 after:h-0.5 after:flex-1
+      after:bg-gray-300 after:content-[''];
+  }
+
   .section-icon {
     @apply absolute top-[3px] -left-[12px] h-[22px] w-[22px] bg-white;
   }
