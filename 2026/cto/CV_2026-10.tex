@@ -379,13 +379,17 @@
 
 % ------------------------------------------- Certifications and Interests
 % Last row: the timeline stops on the badge and turns into a horizontal
-% connector leading to the Interests icon.
+% connector leading to the Interests icon, which hangs left of its title
+% like the timeline icons (\iconhang: icon width plus title gap).
+\newlength{\iconhang}
+\setlength{\iconhang}{\dimexpr\bodygap+.5\rulewidth+7pt}
 {\let\cvrule\cvrulestub
 \begin{cvrow}{}{\sectionmarker{award}}
-  \makebox[\dimexpr.5\linewidth+3pt][l]{\sectiontitle{Certifications}%
-    \hspace{6pt}{\color{rule}\leaders\hrule height 4.75pt depth -3.25pt
-    \hfill}}\hspace{6pt}%
-  \sectiontitle{\sectionicon{heart}\hspace{6pt}Interests}\par
+  \makebox[\dimexpr.5\linewidth+9pt-\iconhang-6pt][l]{%
+    \sectiontitle{Certifications}\hspace{6pt}%
+    {\color{rule}\leaders\hrule height 4.75pt depth -3.25pt\hfill}}%
+  \hspace{6pt}%
+  \sectiontitle{\makebox[\iconhang][l]{\sectionicon{heart}}Interests}\par
   \begin{minipage}[t]{\dimexpr.5\linewidth-9pt}\raggedright
     \vspace{3pt}{\smfont
       Wharton Entrepreneurship (2016)\par}
