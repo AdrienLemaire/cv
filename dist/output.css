@@ -30,7 +30,7 @@
     --font-weight-bold: 700;
     --font-weight-extrabold: 800;
     --leading-snug: 1.375;
-    --radius-3xl: 1.5rem;
+    --radius-sm: 0.25rem;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
   }
@@ -279,6 +279,16 @@
   .gap-y-2 {
     row-gap: calc(var(--spacing) * 2);
   }
+  .rounded-full {
+    border-radius: calc(infinity * 1px);
+  }
+  .border-2 {
+    border-style: var(--tw-border-style);
+    border-width: 2px;
+  }
+  .border-teal-600 {
+    border-color: var(--color-teal-600);
+  }
   .bg-teal-50 {
     background-color: var(--color-teal-50);
   }
@@ -372,6 +382,12 @@
   size: A4;
   margin: 0;
 }
+@layer base {
+  strong {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+  }
+}
 @layer components {
   .sheet {
     position: relative;
@@ -381,16 +397,22 @@
     height: 297mm;
     width: 210mm;
     flex-direction: column;
-    border-radius: var(--radius-3xl);
+    border-radius: var(--radius-sm);
     background-color: var(--color-white);
     padding-inline: calc(var(--spacing) * 10);
     padding-block: calc(var(--spacing) * 10);
     color: var(--color-gray-800);
+    --tw-shadow: 0 1px 2px var(--tw-shadow-color, rgb(0 0 0/.06)), 0 12px 32px -8px var(--tw-shadow-color, rgb(0 0 0/.12));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     @media print {
       margin-block: 0px;
     }
     @media print {
       border-radius: 0;
+    }
+    @media print {
+      --tw-shadow: 0 0 #0000;
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
   .row {
@@ -476,7 +498,6 @@
     left: calc(9px * -1);
     height: calc(var(--spacing) * 4);
     width: calc(var(--spacing) * 4);
-    rotate: calc(12deg * -1);
     background-color: var(--color-white);
   }
   .entry-title {
@@ -529,6 +550,11 @@
       outline-color: var(--color-teal-600);
     }
   }
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
 }
 @property --tw-leading {
   syntax: "*";
@@ -661,11 +687,6 @@
   inherits: false;
   initial-value: solid;
 }
-@property --tw-border-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @property --tw-space-y-reverse {
   syntax: "*";
   inherits: false;
@@ -674,6 +695,7 @@
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-border-style: solid;
       --tw-leading: initial;
       --tw-font-weight: initial;
       --tw-blur: initial;
@@ -704,7 +726,6 @@
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
       --tw-outline-style: solid;
-      --tw-border-style: solid;
       --tw-space-y-reverse: 0;
     }
   }
