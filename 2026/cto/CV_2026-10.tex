@@ -31,6 +31,7 @@
 \definecolor{heading}{HTML}{00786F} % teal-700
 \definecolor{company}{HTML}{005F5A} % teal-800
 \definecolor{text}{HTML}{1E2939}    % gray-800
+\definecolor{subtle}{HTML}{364153}  % gray-700
 \definecolor{muted}{HTML}{4A5565}   % gray-600
 \definecolor{rule}{HTML}{E5E7EB}    % gray-200
 
@@ -132,12 +133,12 @@
 \newenvironment{role}[5][12pt]{%
   \begin{cvrow}[#1]{#2\\#3}{\pinmarker}%
   {\basefont\bfseries\rule[-4pt]{0pt}{12.5pt}%
-   #4\hfill{\color{company}#5}\par}}
+   #4\hfill{\semibold\color{company}#5}\par}}
  {\end{cvrow}}
 
 % \roledesc{one-line description of the company}
 \newcommand{\roledesc}[1]{%
-  \vspace{3pt}{\smfont\itshape\color{muted}#1\par}}
+  \vspace{3pt}{\smfont\itshape\color{subtle}#1\par}}
 
 % \rolenote{small grey line under the title}
 \newcommand{\rolenote}[1]{\vspace{3pt}{\xsfont\color{muted}#1\par}}
@@ -169,8 +170,8 @@
 % QR code to the online CV, hidden from extracted text.
 \newcommand{\cvqrcode}{%
   \hidetext{\begin{tabular}{@{}c@{}}
-    \qrcode[height=2.2cm]{\cvurl}\\[2pt]
-    {\fontsize{7}{8}\selectfont\color{muted}Online version}
+    {\color{text}\qrcode[height=1.6cm]{\cvurl}}\\[2pt]
+    {\fontsize{8}{9}\selectfont\color{muted}Online version}
   \end{tabular}}}
 
 % ================================================================= Document
@@ -296,13 +297,17 @@
 \end{role}
 
 \begin{role}[15pt]{2010/07 – 2011/03}{London, UK}{Django Developer}{Fry-IT}
+  \begin{bullets}
+    \item Built a Django e-portfolio for London hospitals (PostgreSQL,
+      Celery, RabbitMQ) using TDD.
+  \end{bullets}
 \end{role}
 
 % ---------------------------------------------------------------- Skills
 \cvheading[9pt]{wrench}{Skills}
 \skill{Leadership}{technical strategy, architecture, hiring and coaching,
   product scoping, investor relations}
-\skill{Languages \& frameworks}{TypeScript, JavaScript, Python, Dart; React,
+\skill{Stack}{TypeScript, JavaScript, Python, Dart; React,
   Node.js, Flutter, Django}
 \skill{Data \& AI}{PostgreSQL, Supabase, Neo4j, LLM/RAG, MCP,
   AI agents, computer vision}
