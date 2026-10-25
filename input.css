@@ -38,23 +38,30 @@
   }
 
   .row-body {
-    @apply relative w-4/5 border-l-2 border-gray-200 pl-6;
+    @apply relative w-4/5 border-l-2 border-gray-300 pl-6;
   }
 
   .section-title {
-    @apply text-lg font-extrabold text-teal-700;
+    @apply text-xl font-extrabold text-teal-700;
   }
 
   .section-icon {
     @apply absolute top-[3px] -left-[12px] h-[22px] w-[22px] bg-white;
   }
 
-  .entry-icon {
-    @apply absolute top-1 -left-[9px] h-4 w-4 bg-white;
+  .entry-dot {
+    @apply absolute top-[2.5px] -left-[7px] h-3 w-3 rounded-full border-[3px]
+      border-white bg-teal-700;
   }
 
   .rule-stub {
-    @apply absolute top-0 -left-0.5 h-3.5 w-0.5 bg-gray-200;
+    @apply absolute top-0 -left-0.5 h-3.5 w-0.5 bg-gray-300;
+  }
+
+  /* Skills values sit on a teal-50 band starting 6px left of the text. */
+  .skill-value {
+    @apply pr-1.5 pb-1.5 text-sm leading-snug [print-color-adjust:exact]
+      bg-[linear-gradient(to_right,white_20px,var(--color-teal-50)_20px)];
   }
 
   .contact-icon {
@@ -62,7 +69,7 @@
   }
 
   .entry-title {
-    @apply flex justify-between gap-x-4 leading-snug font-bold;
+    @apply flex justify-between gap-x-4 leading-[17px] font-bold;
   }
 
   .entry-company {
