@@ -111,6 +111,23 @@
     \vspace{\cvrowpad}}%
   \hspace{\asidegap}}
 
+% Inline aside: aside text typeset from the body's first line and moved into
+% the aside column, so extractors read it with its row (same position, same
+% text on the page; only the content-stream order changes).
+% \prepaside{text} boxes it before the row; the row's aside keeps its height
+% with \asidestrut; \placeaside draws it at the start of the body.
+\newsavebox{\asidebox}
+\newlength{\asidedepth}
+\newcommand{\prepaside}[1]{%
+  \sbox{\asidebox}{\parbox[t]{\dimexpr\asidewidth-\asidegap}{%
+    \raggedleft\normalfont\xsfont\leavevmode\color{muted}#1\par}}%
+  \setlength{\asidedepth}{\dp\asidebox}%
+  \ht\asidebox=0pt \dp\asidebox=0pt\relax}
+\newcommand{\asidestrut}{\rule[-\asidedepth]{0pt}{\asidedepth}}
+\newcommand{\placeaside}{%
+  \leavevmode\llap{\usebox{\asidebox}%
+    \hspace{\dimexpr\asidegap+\rulewidth+\bodygap}}}
+
 % \begin{cvrow}[bottom padding]{aside}{marker} body \end{cvrow}
 \newenvironment{cvrow}[3][0pt]{%
   \par\nointerlineskip\noindent
@@ -132,7 +149,9 @@
 
 % \begin{cvsection}[padding]{aside}{icon}{title} content \end{cvsection}
 \newenvironment{cvsection}[4][12pt]{%
-  \begin{cvrow}[#1]{#2}{\sectionmarker{#3}}\sectiontitle{#4}\par}
+  \prepaside{#2}%
+  \begin{cvrow}[#1]{\asidestrut}{\sectionmarker{#3}}\placeaside
+  \sectiontitle{#4}\par}
  {\end{cvrow}}
 
 % \titlerule: horizontal rule filling the rest of a section title line.
@@ -150,7 +169,8 @@
 
 % \begin{role}[padding]{dates}{location}{title}{company} ... \end{role}
 \newenvironment{role}[5][12pt]{%
-  \begin{cvrow}[#1]{{\semibold\color{text}#2}\\#3}{\dotmarker}%
+  \prepaside{{\semibold\color{text}#2}\\#3}%
+  \begin{cvrow}[#1]{\asidestrut}{\dotmarker}\placeaside
   {\basefont\bfseries\rule[-4pt]{0pt}{12.5pt}%
    #4\hfill{\semibold\color{company}#5}\par}}
  {\end{cvrow}}
@@ -197,10 +217,9 @@
   {\color{tint}\vrule width \dimexpr\bodywidth+\tintpad height \tintpad
    depth 0pt}\par}
 
-% \contact{icon}{text}
+% \contact{icon}{text}, laid out in a two-column tabular.
 \newcommand{\contact}[2]{%
-  \mbox{\raisebox{-1.5pt}{\cvicon[11pt]{#1}}\hspace{4pt}#2}%
-  \hspace{12pt plus 4pt}\allowbreak}
+  \mbox{\raisebox{-1.5pt}{\cvicon[11pt]{#1}}\hspace{4pt}#2}}
 
 % Avatar clipped to a circle (h-28: 84pt) with a teal ring (border-2).
 \newcommand{\cvavatar}{%
@@ -211,11 +230,7 @@
   \end{tikzpicture}}
 
 % QR code to the online CV, hidden from extracted text.
-\newcommand{\cvqrcode}{%
-  \hidetext{\begin{tabular}{@{}c@{}}
-    {\color{text}\qrcode[height=1.6cm]{\cvurl}}\\[2pt]
-    {\fontsize{8}{9}\selectfont\color{muted}Online version}
-  \end{tabular}}}
+\newcommand{\cvqrcode}{\hidetext{{\color{text}\qrcode[height=1.6cm]{\cvurl}}}}
 
 % ================================================================= Document
 \begin{document}
@@ -229,22 +244,23 @@
   \vspace{6pt}
   {\fontsize{13.5}{21}\semibold\cvheadline\par}
   \vspace{6pt}
-  {\raggedright\fontsize{10.5}{18}\selectfont
-    \contact{map-pin}{Toulouse, France}%
-    \contact{mail}{\href{mailto:lemaire.adrien@gmail.com}{lemaire.adrien@gmail.com}}%
-    \contact{globe}{\href{\cvurl}{adrienlemaire.github.io/cv}}%
-    \contact{github}{\href{https://github.com/AdrienLemaire}{github.com/AdrienLemaire}}%
-    \contact{linkedin}{\href{https://www.linkedin.com/in/adrienlemaire}{linkedin.com/in/adrienlemaire}
-}%
-    \contact{message-square-quote}{\href{\cvrecsurl}{13 recommendations}}%
-    \par}}%
+  {\fontsize{10.5}{18}\selectfont
+   \begin{tabular}{@{}l@{\hspace{18pt}}l@{}}
+    \contact{map-pin}{Toulouse, France} &
+    \contact{phone}{\href{tel:+33601776676}{+33 6 01 77 66 76}} \\
+    \contact{mail}{\href{mailto:lemaire.adrien@gmail.com}{lemaire.adrien@gmail.com}} &
+    \contact{globe}{\href{\cvurl}{adrienlemaire.github.io/cv}} \\
+    \contact{github}{\href{https://github.com/AdrienLemaire}{github.com/AdrienLemaire}} &
+    \contact{linkedin}{\href{https://www.linkedin.com/in/adrienlemaire}{linkedin.com/in/adrienlemaire}} \\
+    \contact{message-square-quote}{\href{\cvrecsurl}{14 recommendations}} &
+   \end{tabular}\par}}%
 \hfill\parbox[c]{2.2cm}{\cvqrcode}\par
 \vspace{15pt}
 
 % ---------------------------------------------------------------- Summary
 \cvindent{\basefont
-  CTO and full-stack engineer with 16 years of experience, 9 of them leading
-  engineering, taking products from idea to production. Co-founded Made In
+  CTO and full-stack engineer with 16 years of experience, 9 of them as head
+  of engineering, taking products from idea to production. Co-founded Made In
   Tracker and built MD Atlas, a medical-device regulatory
   search engine with {\semibold 110,000+ users} across 170 countries.}
 \vspace{9pt}
@@ -271,9 +287,9 @@
     \item Launched EasyUDI, a B2B SaaS for UDI/EUDAMED compliance (GS1
       DataMatrix labels, XML validation, audit trail, RAG chatbot):
       {\semibold 14 customers}, €40k revenue, go-live in as little as 3 days.
-    \item Shipped MD Atlas in {\semibold 2~months} instead of 2 years for 6
-      developers, through agentic development on a typed, tested stack
-      (TypeScript, Supabase, Vercel, Nix); MCP server in the official MCP
+    \item Shipped MD Atlas in {\semibold 2~months}, about 12 person-years of
+      pre-AI work, with agentic development on a typed, tested stack
+      (TypeScript, Supabase, Vercel, Nix); MCP server in the official
       Registry; €300 a month in infrastructure.
     \item Took R\&D to paid pilots with Anopa ({\semibold €25k} revenue) and
       SobraBTP: a Prolog/SPARQL traceability engine for product passports and
@@ -283,10 +299,10 @@
       year, stretched with cloud credits negotiated through incubation
       programs; valued at €1.7M by an independent expert after a review of code
       and data ownership proofs.
-    \item Built and led a team of {\semibold up to 8} (about 20 people since 2023),
+    \item Built and led a team of {\semibold up to 8} at a time (20 people since
+      2023, interns to contractors),
       hired through a CTF challenge, interviews and a live coding test, and
-      coached 12+ developers; owned architecture, code review and
-      infrastructure.
+      coached 12+ developers; owned architecture and code review.
   \end{bullets}
   \stack{TypeScript, React, Flutter, Python, PostgreSQL/Supabase, GCP,
     Vercel, Nix, LLM/RAG, MCP}
@@ -376,10 +392,10 @@
   In Tracker}{Adrien is what I would call an ‘enabler’. […] He thinks that a
   small team of extremely good developers produce a better output than a large
   team of average developers, and his behavior demonstrates that.}
-\recommendation[15pt]{Marcel Akiyama}{Colleague at Alpaca and Made In
-  Tracker}{[…] his constant learning and strong architectural perspective. […]
-  he demonstrated that he is a resilient leader. […] I'd definitely recommend
-  him for a leadership position.}
+\recommendation[15pt]{Kevin Mandrick, PhD}{Co-founder \& CEO of Made In
+  Tracker}{[…] an exceptional resilient leader as a CTO who perfectly bridges
+  the gap between vision and lightning-fast execution. […] knows how to
+  stretch a startup budget.}
 
 % ---------------------------------------------------------------- Languages
 \begin{refsection}[15pt]{languages}{Languages}
@@ -388,24 +404,27 @@
 \end{refsection}
 
 % ------------------------------------------- Certifications and Interests
-% Last row: two ruled titles side by side; the Interests icon hangs left of
-% its title like the other icons (\iconhang: icon width plus title gap).
+% Last row: two ruled sections side by side, each typeset as one block so
+% extractors keep titles with their lists. The Certifications rule runs on
+% to the Interests icon, which hangs left of its title like the other icons
+% (\iconhang: icon width plus title gap).
 \newlength{\iconhang}
 \setlength{\iconhang}{\dimexpr\bodygap+.5\rulewidth+7pt}
+\newlength{\colwidth}
 \begin{cvrow}{}{\sectionmarker{award}}
-  \makebox[\dimexpr.5\linewidth+9pt-\iconhang-6pt][l]{%
-    \sectiontitle{Certifications}\titlerule}%
-  \hspace{6pt}%
-  \sectiontitle{\makebox[\iconhang][l]{\sectionicon{heart}}Interests}%
-  \titlerule\par
-  \begin{minipage}[t]{\dimexpr.5\linewidth-9pt}\raggedright
+  \setlength{\colwidth}{\dimexpr.5\linewidth-9pt}%
+  \begin{minipage}[t]{\colwidth}\raggedright
+    \makebox[\dimexpr\colwidth+18pt-\iconhang-6pt][l]{%
+      \sectiontitle{Certifications}\titlerule}\par
     \vspace{3pt}{\smfont
       Google Cloud Computer Vision (2023)\par
       Neo4j Certified Professional (2020)\par
       Wharton Entrepreneurship (2016)\par
       \href{\cvcertsurl}{All 30 certifications on LinkedIn}\par}
   \end{minipage}\hfill
-  \begin{minipage}[t]{\dimexpr.5\linewidth-9pt}\raggedright
+  \begin{minipage}[t]{\colwidth}\raggedright
+    \sectiontitle{\llap{\makebox[\iconhang][l]{\sectionicon{heart}}}%
+      Interests}\titlerule\par
     \vspace{3pt}{\smloosefont Triathlon, ultra-marathon, child education,
       dog training, chess\par}
   \end{minipage}
