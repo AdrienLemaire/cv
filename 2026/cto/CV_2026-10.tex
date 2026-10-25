@@ -6,6 +6,7 @@
 \newcommand{\cvname}{Adrien Lemaire}
 \newcommand{\cvheadline}{CTO · AI \& Data Products}
 \newcommand{\cvurl}{https://adrienlemaire.github.io/cv/}
+\newcommand{\cvcertsurl}{https://www.linkedin.com/in/adrienlemaire/details/certifications/}
 \newcommand{\cvrecsurl}{https://www.linkedin.com/in/adrienlemaire/details/recommendations/}
 
 % ---------------------------------------------------------------- Packages
@@ -161,6 +162,9 @@
 % \rolenote{small grey line under the title}
 \newcommand{\rolenote}[1]{\vspace{3pt}{\xsfont\color{muted}#1\par}}
 
+% \roletext{description}: a role summed up in one sentence (no bullet).
+\newcommand{\roletext}[1]{\vspace{3pt}{\smfont#1\par}}
+
 % \begin{bullets} \item ... \end{bullets}
 \newenvironment{bullets}{\vspace{3pt}\smfont\begin{itemize}}{\end{itemize}}
 
@@ -270,9 +274,10 @@
     \item Shipped MD Atlas in {\semibold 2~months} instead of 2 years for 6
       developers, through agentic development on a typed, tested stack
       (TypeScript, Supabase, Vercel, Nix); MCP server in the official MCP
-      Registry; about €300 a month of infrastructure.
+      Registry; €300 a month in infrastructure.
     \item Took R\&D to paid pilots with Anopa ({\semibold €25k} revenue) and
-      SobraBTP (product passports, secure QR codes); won the Axone contest.
+      SobraBTP: a Prolog/SPARQL traceability engine for product passports and
+      secure QR codes; won the Axone blockchain contest.
     \item Co-raised {\semibold €180k} (9 angel investors and public funding)
       and reported to investors monthly; co-managed a budget of up to €112k a
       year, stretched with cloud credits negotiated through incubation
@@ -303,44 +308,31 @@
 
 \begin{role}{2016/02 – 2016/12}{Osaka, Japan}%
   {Senior Full-stack Developer}{\href{https://share-wis.com/}{ShareWis Inc.}}
-  \begin{bullets}
-    \item Led the ShareWis ACT MOOC marketplace (Ruby on Rails, payments,
-      i18n) and its React Native apps; automated delivery on AWS and GitHub.
-  \end{bullets}
+  \roletext{Led the ShareWis ACT MOOC marketplace (Ruby on Rails, payments,
+    i18n) and its React Native apps; automated delivery on AWS and GitHub.}
 \end{role}
 
 \begin{role}{2015/09 – 2016/02}{Osaka, Japan}{Software Engineer}{\href{https://onet.co.jp/}{Rakuten}}
-  \begin{bullets}
-    \item Kicked off the large-scale PHP/Symfony migration of O-net, Japan's
-      largest marriage agency (43,500+ members), and ran a security audit.
-  \end{bullets}
+  \roletext{Started migrating O-net, Japan's largest marriage agency, to Symfony.}
 \end{role}
 
 \begin{role}{2014/06 – 2015/09}{Kobe, Japan}%
   {Engineer}{\href{https://alpaca.markets/}{Alpaca.ai}}
-  \begin{bullets}
-    \item Designed the core of AlpacaDB, released as Labellio, a deep-learning
-      image labelling service (Kubernetes, Django, Caffe), and delivered
-      computer-vision R\&D for major Japanese gaming and search companies.
-  \end{bullets}
+  \roletext{Designed the core of AlpacaDB, released as Labellio, a deep-learning
+    image labelling service (Kubernetes, Django, Caffe), and delivered
+    computer-vision R\&D for major Japanese gaming and search companies.}
 \end{role}
 
 \begin{role}{2011/04 – 2014/08}{Okinawa, Japan}%
   {Director of Technology, Software Engineer}{\href{https://aquasys.co.jp/}{Aquasys}}
   \rolenote{Director of Technology (2012/11 – 2014/08), Software Engineer
     (2011/04 – 2012/11)}
-  \begin{bullets}
-    \item Supervised all technical operations; hired, trained and managed
-      freelancers; built a Django marketplace framework and administered
-      Odoo.
-  \end{bullets}
+  \roletext{Supervised all technical operations; hired, trained and managed
+    freelancers; built a Django marketplace framework and administered
+    Odoo.}
 \end{role}
 
 \begin{role}{2010/07 – 2011/03}{London, UK}{Django Developer}{Fry-IT}
-  \begin{bullets}
-    \item Built a Django e-portfolio for London hospitals (PostgreSQL,
-      Celery) using TDD.
-  \end{bullets}
 \end{role}
 
 % ---------------------------------------------------------------- Education
@@ -349,7 +341,9 @@
 \begin{cvsection}[18pt]{{\semibold\color{text}2006 – 2011}}{graduation-cap}{Education}
   \vspace{3pt}{\smfont{\semibold SUPINFO International University} —
   International Master of Science in Computer Science (studied in France,
-  Canada, the UK and the USA)\par}
+  Canada, the UK and the USA)\par
+  \vspace{3pt}{\semibold Dominican University of California} — IT Management
+  and Marketing Certificate\par}
 \end{cvsection}}
 
 % Undated sections below sit off the timeline: same icon gutter, no
@@ -363,30 +357,29 @@
 \skill{Leadership}{engineering management, technical strategy and roadmap,
   hiring and coaching, budget, fundraising, investor relations}
 \skill{Stack}{TypeScript, JavaScript, Python, Dart; React,
-  Node.js, Flutter, Django}
+  Node.js, Flutter, Django, Tailwind}
 \skill{Data \& AI}{PostgreSQL, Supabase, Neo4j, LLM/RAG, MCP,
   AI agents, computer vision}
-\skill{Infrastructure}{GCP, Firebase, Vercel, AWS, Docker, Kubernetes, Nix,
+\skill{Infrastructure}{GCP (Vertex AI), Firebase, Vercel, AWS, Docker, Kubernetes, Nix,
   CI/CD}
 \skill[6pt]{Practices}{TDD, DDD, Lean Startup, code review,
   agentic coding (Claude Code)}
 \begin{cvrow}[15pt]{}{}\end{cvrow}
 
 % ---------------------------------------------------------- Recommendations
-\begin{refsection}[15pt]{quote}{Recommendations}
-  \vspace{3pt}{\smfont
-  \textit{“Adrien is what I would call an ‘enabler’. […] He thinks that a small
-  team of extremely good developers produce a better output than a large team
-  of average developers, and his behavior demonstrates that.”}\par
-  \vspace{2pt}{\xsfont\color{muted}— \href{\cvrecsurl}{Jimmy Crequer},
-  direct report at YAOYA \& contractor at Made In Tracker\par}
-  \vspace{6pt}
-  \textit{“[…] his constant learning and strong architectural perspective.
-  […] he demonstrated that he is a resilient leader. […] I'd definitely
-  recommend him for a leadership position.”}\par
-  \vspace{2pt}{\xsfont\color{muted}— \href{\cvrecsurl}{Marcel Akiyama},
-  Product Designer, at Alpaca and Made In Tracker\par}}
-\end{refsection}
+% One row per quote: the author sits in the aside column.
+\newcommand{\recommendation}[4][9pt]{%
+  \begin{cvrow}[#1]{{\semibold\color{text}\href{\cvrecsurl}{#2}}\\#3}{}%
+    \smfont\textit{“#4”}\end{cvrow}}
+\begin{refsection}[6pt]{quote}{Recommendations}\end{refsection}
+\recommendation{Jimmy Crequer}{Direct report at YAOYA, contractor at Made
+  In Tracker}{Adrien is what I would call an ‘enabler’. […] He thinks that a
+  small team of extremely good developers produce a better output than a large
+  team of average developers, and his behavior demonstrates that.}
+\recommendation[15pt]{Marcel Akiyama}{Colleague at Alpaca and Made In
+  Tracker}{[…] his constant learning and strong architectural perspective. […]
+  he demonstrated that he is a resilient leader. […] I'd definitely recommend
+  him for a leadership position.}
 
 % ---------------------------------------------------------------- Languages
 \begin{refsection}[15pt]{languages}{Languages}
@@ -407,7 +400,10 @@
   \titlerule\par
   \begin{minipage}[t]{\dimexpr.5\linewidth-9pt}\raggedright
     \vspace{3pt}{\smfont
-      Wharton Entrepreneurship (2016)\par}
+      Google Cloud Computer Vision (2023)\par
+      Neo4j Certified Professional (2020)\par
+      Wharton Entrepreneurship (2016)\par
+      \href{\cvcertsurl}{All 30 certifications on LinkedIn}\par}
   \end{minipage}\hfill
   \begin{minipage}[t]{\dimexpr.5\linewidth-9pt}\raggedright
     \vspace{3pt}{\smloosefont Triathlon, ultra-marathon, child education,
