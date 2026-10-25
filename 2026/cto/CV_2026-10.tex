@@ -271,7 +271,7 @@
     \item Shipped MD Atlas in {\semibold 2~months} instead of 2 years for 6
       developers, through agentic development on a typed, tested stack
       (TypeScript, Supabase, Vercel, Nix); MCP server in the official MCP
-      Registry; about €300 a month of infrastructure.
+      Registry; €300 a month in infrastructure.
     \item Took R\&D to paid pilots with Anopa ({\semibold €25k} revenue) and
       SobraBTP: a Prolog/SPARQL traceability engine for product passports and
       secure QR codes; won the Axone blockchain contest.
@@ -313,8 +313,7 @@
 
 \begin{role}{2015/09 – 2016/02}{Osaka, Japan}{Software Engineer}{\href{https://onet.co.jp/}{Rakuten}}
   \begin{bullets}
-    \item Kicked off the large-scale PHP/Symfony migration of O-net, Japan's
-      largest marriage agency (43,500+ members), and ran a security audit.
+    \item Started migrating O-net, Japan's largest marriage agency, to Symfony.
   \end{bullets}
 \end{role}
 
@@ -339,10 +338,6 @@
 \end{role}
 
 \begin{role}{2010/07 – 2011/03}{London, UK}{Django Developer}{Fry-IT}
-  \begin{bullets}
-    \item Built a Django e-portfolio for London hospitals (PostgreSQL,
-      Celery) using TDD.
-  \end{bullets}
 \end{role}
 
 % ---------------------------------------------------------------- Education
@@ -375,20 +370,19 @@
 \begin{cvrow}[15pt]{}{}\end{cvrow}
 
 % ---------------------------------------------------------- Recommendations
-\begin{refsection}[15pt]{quote}{Recommendations}
-  \vspace{3pt}{\smfont
-  \textit{“Adrien is what I would call an ‘enabler’. […] He thinks that a small
-  team of extremely good developers produce a better output than a large team
-  of average developers, and his behavior demonstrates that.”}\par
-  \vspace{2pt}{\xsfont\color{muted}— \href{\cvrecsurl}{Jimmy Crequer},
-  direct report at YAOYA \& contractor at Made In Tracker\par}
-  \vspace{6pt}
-  \textit{“[…] his constant learning and strong architectural perspective.
-  […] he demonstrated that he is a resilient leader. […] I'd definitely
-  recommend him for a leadership position.”}\par
-  \vspace{2pt}{\xsfont\color{muted}— \href{\cvrecsurl}{Marcel Akiyama},
-  Product Designer, at Alpaca and Made In Tracker\par}}
-\end{refsection}
+% One row per quote: the author sits in the aside column.
+\newcommand{\recommendation}[4][9pt]{%
+  \begin{cvrow}[#1]{{\semibold\color{text}\href{\cvrecsurl}{#2}}\\#3}{}%
+    \smfont\textit{“#4”}\end{cvrow}}
+\begin{refsection}[6pt]{quote}{Recommendations}\end{refsection}
+\recommendation{Jimmy Crequer}{Direct report at YAOYA, contractor at Made
+  In Tracker}{Adrien is what I would call an ‘enabler’. […] He thinks that a
+  small team of extremely good developers produce a better output than a large
+  team of average developers, and his behavior demonstrates that.}
+\recommendation[15pt]{Marcel Akiyama}{Colleague at Alpaca and Made In
+  Tracker}{[…] his constant learning and strong architectural perspective. […]
+  he demonstrated that he is a resilient leader. […] I'd definitely recommend
+  him for a leadership position.}
 
 % ---------------------------------------------------------------- Languages
 \begin{refsection}[15pt]{languages}{Languages}
