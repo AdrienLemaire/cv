@@ -4,7 +4,7 @@
 
 % ---------------------------------------------------------------- Settings
 \newcommand{\cvname}{Adrien Lemaire}
-\newcommand{\cvheadline}{CTO \& Co-founder · Full-stack Engineer}
+\newcommand{\cvheadline}{CTO · AI \& Data Products}
 \newcommand{\cvurl}{https://adrienlemaire.github.io/cv/}
 
 % ---------------------------------------------------------------- Packages
@@ -77,7 +77,7 @@
 \newcommand{\hidetext}[1]{%
   \BeginAccSupp{method=plain,ActualText={}}#1\EndAccSupp{}}
 
-% \cvicon[size]{zondicon name}
+% \cvicon[size]{Lucide icon name}
 \newcommand{\cvicon}[2][12pt]{%
   \hidetext{\includegraphics[height=#1]{icons/#2}}}
 
@@ -88,13 +88,17 @@
     \setlength{\fboxsep}{1.5pt}\colorbox{white}{#2}}}%
   \kern.5\rulewidth}
 
-\newcommand{\pinmarker}{\onrule{-4pt}{\rotatebox{12}{\cvicon{pin}}}}
-\newcommand{\sectionmarker}[1]{\onrule{-5.5pt}{\cvicon[15pt]{#1}}}
+\newcommand{\pinmarker}{\onrule{-2pt}{\cvicon{pin}}}
+\newcommand{\sectionicon}[1]{\raisebox{-3pt}{\cvicon[14pt]{#1}}}
+\newcommand{\sectionmarker}[1]{\onrule{0pt}{\sectionicon{#1}}}
 
 % ---------------------------------------------------------------- Rows
 % A row is one unbreakable line: aside column, timeline rule (with an
 % optional marker), body minipage. Rows are stacked without interline glue
 % so the rule stays continuous; spacing lives in the bottom padding.
+% \cvrule draws the timeline; \cvrulestub ends it on the last marker.
+\newcommand{\cvrule}{\vrule width \rulewidth}
+\newcommand{\cvrulestub}{\vrule width \rulewidth height 9pt depth 0pt}
 \newcommand{\cvaside}[1]{%
   \parbox[t]{\dimexpr\asidewidth-\asidegap}{%
     \raggedleft\xsfont\leavevmode\color{muted}#1\par
@@ -106,7 +110,7 @@
   \par\nointerlineskip\noindent
   \def\cvrowpad{#1}%
   \cvaside{#2}%
-  {\color{rule}\vrule width \rulewidth}#3\hspace{\bodygap}%
+  {\color{rule}\cvrule}#3\hspace{\bodygap}%
   \begin{minipage}[t]{\bodywidth}\raggedright}
  {\par\vspace{\cvrowpad}\hrule height 0pt\end{minipage}\par}
 
@@ -157,14 +161,15 @@
 
 % \contact{icon}{text}
 \newcommand{\contact}[2]{%
-  \mbox{\raisebox{-2pt}{\cvicon{#1}}\hspace{3pt}#2}%
+  \mbox{\raisebox{-1.5pt}{\cvicon[11pt]{#1}}\hspace{4pt}#2}%
   \hspace{12pt plus 4pt}\allowbreak}
 
-% Avatar clipped to a circle (h-28: 84pt).
+% Avatar clipped to a circle (h-28: 84pt) with a teal ring (border-2).
 \newcommand{\cvavatar}{%
   \begin{tikzpicture}
     \clip (0,0) circle (42pt);
     \node[inner sep=0] at (0,0) {\includegraphics[width=84pt]{avatar}};
+    \draw[draw=name, line width=1.5pt] (0,0) circle (41.25pt);
   \end{tikzpicture}}
 
 % QR code to the online CV, hidden from extracted text.
@@ -187,11 +192,12 @@
   {\fontsize{13.5}{21}\semibold\cvheadline\par}
   \vspace{6pt}
   {\raggedright\fontsize{10.5}{18}\selectfont
-    \contact{location}{Toulouse, France}%
-    \contact{at-symbol}{\href{mailto:lemaire.adrien@gmail.com}{lemaire.adrien@gmail.com}}%
+    \contact{map-pin}{Toulouse, France}%
+    \contact{mail}{\href{mailto:lemaire.adrien@gmail.com}{lemaire.adrien@gmail.com}}%
     \contact{globe}{\href{\cvurl}{adrienlemaire.github.io/cv}}%
-    \contact{code}{\href{https://github.com/AdrienLemaire}{github.com/AdrienLemaire}}%
-    \contact{link}{\href{https://www.linkedin.com/in/adrienlemaire}{linkedin.com/in/adrienlemaire}}%
+    \contact{github}{\href{https://github.com/AdrienLemaire}{github.com/AdrienLemaire}}%
+    \contact{linkedin}{\href{https://www.linkedin.com/in/adrienlemaire}{linkedin.com/in/adrienlemaire}
+      · \href{https://www.linkedin.com/in/adrienlemaire/details/recommendations/}{13 recommendations}}%
     \par}}%
 \hfill\parbox[c]{2.2cm}{\cvqrcode}\par
 \vspace{15pt}
@@ -201,37 +207,38 @@
   CTO and full-stack engineer with 16 years of experience, 9 of them leading
   engineering, taking products from idea to production. Co-founded Made In
   Tracker, a deeptech startup, and built MD Atlas, a medical-device regulatory
-  search engine with 110,000+ users across 170 countries. Hands-on across architecture,
+  search engine with {\semibold 110,000+ users} across 170 countries. Hands-on across architecture,
   data pipelines, agentic AI tooling and team leadership.}
 \vspace{18pt}
 
 % ---------------------------------------------------------------- Experience
-\cvheading{portfolio}{Experience}
+\cvheading{briefcase}{Experience}
 
 \begin{role}[18pt]{2023/03 – present}{Toulouse, France (remote)}%
-  {Co-founder \& CTO}{Made In Tracker}
+  {Co-Founder \& CTO}{\href{https://madeintracker.com/}{Made In Tracker}}
   \roledesc{Traceability and regulatory data software for the medical-device
     industry. Labelled deeptech startup; €90k from angel investors and €90k
     in public funding; 1 patent; valued at €1.7M by an independent expert in 2026.}
   \begin{bullets}
     \item Built MD Atlas (\href{https://md-atlas.com}{md-atlas.com}), a
-      regulatory intelligence search engine for medical devices: 5.2M records
+      regulatory intelligence search engine for medical devices: {\semibold 5.2M
+      records}
       (companies, devices, certificates, people, documents) kept fresh by
       crawlers of public databases, with conformity alerts and feed
       monitoring; 110,000+ users across 170 countries.
     \item Launched EasyUDI, a B2B SaaS for UDI and EUDAMED compliance (GS1
-      labels and DataMatrix, XML validation, audit trail): 14 customers and
+      labels and DataMatrix, XML validation, audit trail): {\semibold 14 customers} and
       €40k revenue.
     \item Chose a strongly typed, well-tested stack driven through MCP
       (TypeScript, Supabase, Vercel, Nix on NixOS) for agentic development:
-      shipped MD Atlas in 2 months instead of 2 years for 6 developers before
+      shipped MD Atlas in {\semibold 2~months} instead of 2 years for 6 developers before
       AI. Its MCP server, listed in the official MCP Registry, lets AI agents
       query EU regulatory data; the EasyUDI chatbot assists with workflows.
     \item Took R\&D to pilots with Anopa (cotton) and SobraBTP (construction
       reuse): product passports, smart labels, secure QR codes and Artwork
       Passport (AI-assisted registration). 1st place at the Axone blockchain
       contest.
-    \item Built and led a team of up to 8 (about 20 people since 2023) and
+    \item Built and led a team of {\semibold up to 8} (about 20 people since 2023) and
       coached 12+ developers. Owned architecture, code review, infrastructure
       and client integrations; worked with design, sales and investors.
   \end{bullets}
@@ -239,11 +246,11 @@
     Firebase/GCP, Vercel, Docker, Nix, LLM/RAG, MCP}
 \end{role}
 
-\begin{role}[6pt]{2017/05 – 2023/02}{Osaka, Japan / remote}{CTO}{YAOYA Inc.}
+\begin{role}[6pt]{2017/05 – 2023/02}{Osaka, Japan / remote}{CTO}{\href{https://yaoya.io/}{YAOYA Inc.}}
   \begin{bullets}
     \item Rewrote Reach@, the company's content service, from PHP/jQuery
       to Django/Wagtail, MySQL and Kubernetes: 2,000+ articles a month,
-      ¥100M+ yearly revenue.
+      {\semibold ¥100M+} yearly revenue.
     \item Led product engineering through three iterations of GOunite
       (internship marketplace, online school, metaverse community) on
       GRANDstack (React, Apollo, TypeScript, Neo4j) and Pixi.js.
@@ -255,7 +262,7 @@
 \newpage
 
 \begin{role}{2016/02 – 2016/12}{Osaka, Japan}%
-  {Senior Full-stack Developer}{ShareWis Inc.}
+  {Senior Full-stack Developer}{\href{https://share-wis.com/}{ShareWis Inc.}}
   \begin{bullets}
     \item Led EdTech products: the ShareWis ACT MOOC
       marketplace (Ruby on Rails, i18n, payments), React Native apps for
@@ -266,7 +273,7 @@
   \end{bullets}
 \end{role}
 
-\begin{role}{2015/09 – 2016/02}{Osaka, Japan}{Software Engineer}{Rakuten}
+\begin{role}{2015/09 – 2016/02}{Osaka, Japan}{Software Engineer}{\href{https://onet.co.jp/}{Rakuten}}
   \begin{bullets}
     \item Kicked off the large-scale PHP/Symfony migration of O-net, Japan's
       largest marriage agency (43,500+ members), and ran a security audit.
@@ -274,7 +281,7 @@
 \end{role}
 
 \begin{role}{2014/06 – 2015/09}{Kobe, Japan}%
-  {Engineer}{Alpaca.ai (formerly Ikkyo Technology)}
+  {Engineer}{\href{https://alpaca.markets/}{Alpaca.ai (formerly Ikkyo Technology)}}
   \begin{bullets}
     \item Designed the core of the AlpacaDB platform, released as Labellio, a
       deep-learning image labelling and training service (Kubernetes, Docker,
@@ -286,7 +293,7 @@
 \end{role}
 
 \begin{role}{2011/04 – 2014/08}{Okinawa, Japan}%
-  {Director of Technology, Software Engineer}{Aquasys}
+  {Director of Technology, Software Engineer}{\href{https://aquasys.co.jp/}{Aquasys}}
   \rolenote{Director of Technology (2012/11 – 2014/08), Software Engineer
     (2011/04 – 2012/11)}
   \begin{bullets}
@@ -304,7 +311,7 @@
 \end{role}
 
 % ---------------------------------------------------------------- Skills
-\cvheading[9pt]{wrench}{Skills}
+\cvheading[9pt]{layers}{Skills}
 \skill{Leadership}{technical strategy, architecture, hiring and coaching,
   product scoping, investor relations}
 \skill{Stack}{TypeScript, JavaScript, Python, Dart; React,
@@ -317,32 +324,36 @@
   agentic coding (Claude Code)}
 
 % ---------------------------------------------------------------- Languages
-\begin{cvsection}[15pt]{}{translate}{Languages}
+\begin{cvsection}[15pt]{}{languages}{Languages}
   \vspace{3pt}{\smloosefont French (native) · English (bilingual) · Japanese
   (professional)\par}
 \end{cvsection}
 
 % ---------------------------------------------------------------- Education
-\begin{cvsection}[15pt]{2006 – 2011}{education}{Education}
+\begin{cvsection}[15pt]{2006 – 2011}{graduation-cap}{Education}
   \vspace{3pt}{\smfont{\semibold SUPINFO International University} —
   International Master of Science in Computer Science (studied in France,
   Canada, the UK and the USA)\par}
 \end{cvsection}
 
 % ------------------------------------------- Certifications and Interests
-\begin{cvrow}{}{\sectionmarker{badge}}
+% Last row: the timeline stops on the badge and turns into a horizontal
+% connector leading to the Interests icon.
+{\let\cvrule\cvrulestub
+\begin{cvrow}{}{\sectionmarker{award}}
+  \makebox[\dimexpr.5\linewidth+9pt][l]{\sectiontitle{Certifications}%
+    \hspace{6pt}{\color{rule}\leaders\hrule height 4.75pt depth -3.25pt
+    \hfill}}%
+  \sectiontitle{\sectionicon{smile}\hspace{6pt}Interests}\par
   \begin{minipage}[t]{\dimexpr.5\linewidth-9pt}\raggedright
-    \sectiontitle{Certifications}\par
     \vspace{3pt}{\smfont
       Wharton Entrepreneurship specialisation (2016)\par
       Stanford Machine Learning (2011)\par}
   \end{minipage}\hfill
   \begin{minipage}[t]{\dimexpr.5\linewidth-9pt}\raggedright
-    \sectiontitle{\raisebox{-2.5pt}{\cvicon[15pt]{mood-happy-outline}}%
-      \hspace{6pt}Interests}\par
     \vspace{3pt}{\smloosefont Triathlon, ultra-marathon, child education,
       dog training, chess\par}
   \end{minipage}
-\end{cvrow}
+\end{cvrow}}
 
 \end{document}
