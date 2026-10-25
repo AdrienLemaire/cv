@@ -51,7 +51,7 @@
   }
 
   .entry-company {
-    @apply text-right text-teal-800;
+    @apply text-right font-semibold text-teal-800;
   }
 
   .bullets {
