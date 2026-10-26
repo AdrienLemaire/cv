@@ -253,6 +253,11 @@ challenge freely).
   mission and stack): sizes moved to the aside, YAOYA given outcome bullets
   and a Stack line, Made In Tracker trimmed. PRs #24/#25.
 - €180k and €1.7M bolded (#24).
+- `make ats` gains a 4th run, pdfminer with `boxes_flow=None`: every date
+  sits within a few lines of its title there (default pdfminer still groups
+  the date column, accepted).
+- pypdf inserts stray spaces from kerning ("Flutter ,", "( €25k)");
+  keywords stay intact. Kerning kept as is (U 10-26).
 
 ## Open items
 
@@ -260,4 +265,3 @@ Claude owns these: never drop one unless the user explicitly says no.
 
 - LinkedIn: all 10-26 edits applied by the user. Still unknown: Axone honor
   date/prize/number of teams; French profile not verifiable from the export.
-- `make ats` 4th pdfminer run with `boxes_flow=None`.

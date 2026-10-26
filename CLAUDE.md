@@ -30,7 +30,7 @@ $ nix develop                       # or `direnv allow` (.envrc)
 $ cd 2026/cto && make force         # xelatex, run twice for references
 $ pdfinfo CV_*.pdf                  # page count
 $ pdftotext -layout CV_*.pdf -      # visual text layout
-$ make ats                          # poppler raw, pypdf and pdfminer output
+$ make ats                          # poppler raw, pypdf, pdfminer (2 modes)
 ```
 
 - The flake pins the toolchain (`texlive.withPackages`, gnumake,
@@ -58,12 +58,13 @@ $ make ats                          # poppler raw, pypdf and pdfminer output
 
 ## ATS / readability
 
-- After every change, run `make ats` and read all three outputs: reading
+- After every change, run `make ats` and read all four outputs: reading
   order, contact details, dates and keywords must come out as plain text,
   each date next to its title and company. `pdftotext -layout` is the most
   forgiving extractor and hides ordering bugs; poppler raw and pypdf follow
-  the content stream, pdfminer sorts by position (it separates the left
-  date column, which is accepted).
+  the content stream, pdfminer sorts by position. Default pdfminer
+  separates the left date column (accepted); with `boxes_flow=None` each
+  date must sit within a few lines of its title.
 - Left-column text of a row (dates, locations) is typeset from the body with
   `\prepaside`/`\placeaside`, so it is emitted next to its title while
   drawn in the aside column. Never add hidden or invisible text to steer
