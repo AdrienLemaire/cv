@@ -259,11 +259,10 @@
 
 % ---------------------------------------------------------------- Summary
 \cvindent{\basefont
-  CTO and full-stack engineer with 16 years of experience, 9 of them as head
-  of engineering and 11 in Japan; trilingual French, English, Japanese.
-  Co-founded Made In Tracker and shipped MD Atlas alone in 2 months: a
-  5.2M-record medical-device regulatory platform with {\semibold 110,000+
-  users} across 170 countries.}
+  Trilingual CTO and full-stack engineer with 16 years of experience, 9 of
+  them as head of engineering and 11 in Japan.
+  Co-founded the MedTech SaaS Made In Tracker after 6 years as CTO of
+  YAOYA.}
 \vspace{9pt}
 \cvindent{\smfont\textit{“A top-level CTO […] he knows how to turn an idea into
   a concrete solution.”}\par
@@ -274,7 +273,7 @@
 % ---------------------------------------------------------------- Experience
 \cvheading{briefcase}{Experience}
 
-\begin{role}[18pt]{2023/03 – present}{Toulouse, France (remote)}%
+\begin{role}[18pt]{2023/03 – present}{Toulouse, France (remote)\\12 staff}%
   {Co-Founder \& CTO}{\href{https://madeintracker.com/}{Made In Tracker}}
   \roledesc{B2B SaaS for traceability and EU MDR regulatory data in the
     medical-device industry, GDPR-compliant. Labelled deeptech startup; 1
@@ -282,13 +281,13 @@
   \begin{bullets}
     \item Built MD Atlas (\href{https://md-atlas.com}{md-atlas.com}) in
       {\semibold 2~months} with agentic development: a regulatory search
-      engine of {\semibold 5.2M records} (devices, companies, certificates,
-      people, documents) crawled from public databases; 576,000
+      engine of {\semibold 5.2M records} crawled from public databases,
+      used by {\semibold 110,000+ users}; 576,000
       lines of TypeScript, 2,365 test files; MCP server in the official
       Registry; €300 a month to run.
     \item Secured its 40~GB multi-tenant database deny-by-default:
-      row-level security on all 101 public tables, data served through a
-      typed service layer, zero errors on the Supabase security linter.
+      row-level security on all 101 public tables, zero errors on the
+      Supabase security linter.
     \item Launched EasyUDI, a B2B SaaS for UDI/EUDAMED compliance (GS1
       DataMatrix labels, XML validation, audit trail, RAG chatbot):
       {\semibold 14 customers}, €40k revenue, go-live in 3 days. Took R\&D to
@@ -296,61 +295,64 @@
       traceability engine); won the Axone blockchain contest.
     \item Co-raised {\semibold €180k} (9 angel investors and public funding)
       and reported to investors monthly; co-managed a budget of up to €112k a
-      year, stretched with cloud credits negotiated through incubation
-      programs; valued at €1.7M by an independent expert after a review of code
+      year; valued at {\semibold €1.7M} by an independent expert after a review of code
       and data ownership proofs.
     \item Built and led a team of {\semibold up to 8} at a time (20 people since
       2023, interns to contractors),
-      hired through a CTF challenge, interviews and a live coding test, and
-      coached 12+ developers; owned architecture and code review.
+      hired through a CTF challenge, and coached 12+ developers; owned architecture and code review.
   \end{bullets}
   \stack{TypeScript, React, Flutter, Python, PostgreSQL/Supabase, GCP,
     Vercel, Nix, LLM/RAG, MCP}
 \end{role}
 
-\begin{role}[6pt]{2017/05 – 2023/02}{Osaka, Japan / remote}{CTO}{\href{https://yaoya.io/}{YAOYA Inc.}}
+\begin{role}[6pt]{2017/05 – 2023/02}{Osaka, Japan / remote\\30 staff}{CTO}{\href{https://yaoya.io/}{YAOYA Inc.}}
   \begin{bullets}
     \item Rewrote Reach@, the content service, from PHP/jQuery to
-      Django/Wagtail and Kubernetes: 2,000+ articles a month, {\semibold ¥100M+}
+      Django/Wagtail: 2,000+ articles a month, {\semibold ¥100M+}
       yearly revenue.
-    \item Led product engineering through three iterations of GOunite
-      (internship marketplace, online school, metaverse) on React, GraphQL,
-      Neo4j and Pixi.js.
-    \item Led a department of 4 developers and 25 interns.
+    \item Led product engineering through three iterations of GOunite to
+      {\semibold 2,500+ users}; its 8-day SME internship programme became the
+      top revenue line.
+    \item Built its 2.5D metaverse web game (GRANDstack, Pixi.js): WebSocket
+      servers autoscaled on Kubernetes held {\semibold 60~fps} under load,
+      with zero downtime.
+    \item Led a department of 4 developers and 25 interns; 4 interns moved on
+      to developer jobs, 1 hired in-house.
   \end{bullets}
+  \stack{Django, Wagtail, Kubernetes, React, GraphQL, Neo4j, Pixi.js, WebSocket}
 \end{role}
 
 \newpage
 
-\begin{role}{2016/02 – 2016/12}{Osaka, Japan}%
+\begin{role}{2016/02 – 2016/12}{Osaka, Japan\\8 staff · 5 devs}%
   {Senior Full-stack Developer}{\href{https://share-wis.com/}{ShareWis Inc.}}
   \roletext{Led the ShareWis ACT MOOC marketplace (Ruby on Rails, payments,
     i18n) and its React Native apps; automated delivery on AWS and GitHub.}
 \end{role}
 
-\begin{role}{2015/09 – 2016/02}{Osaka, Japan}{Software Engineer}{\href{https://onet.co.jp/}{Rakuten}}
-  \roletext{Started migrating O-net, Japan's largest marriage agency, to Symfony.}
+\begin{role}{2015/09 – 2016/02}{Osaka, Japan\\40 devs · team of 3}{Software Engineer}{\href{https://onet.co.jp/}{Rakuten}}
+  \roletext{Scoped at 3 years and started the migration of O-net, Japan's
+    largest marriage agency (43,500+ members), from 40-year-old legacy code
+    to Symfony.}
 \end{role}
 
-\begin{role}{2014/06 – 2015/09}{Kobe, Japan}%
+\begin{role}{2014/06 – 2015/09}{Kobe, Japan\\5 staff · 4 devs}%
   {Engineer}{\href{https://alpaca.markets/}{Alpaca.ai}}
-  \roletext{Designed the core of AlpacaDB, released as Labellio, a deep-learning
-    image labelling service (Kubernetes, Django, Caffe), and delivered
-    computer-vision R\&D for major Japanese gaming and search companies.}
+  \roletext{Designed the core of Labellio, a deep-learning image
+    labelling service sold to Kyocera for \$300k, and computer-vision R\&D for
+    gaming and search leaders.}
 \end{role}
 
-\begin{role}{2011/04 – 2014/08}{Okinawa, Japan}%
+\begin{role}{2011/04 – 2014/08}{Okinawa, Japan\\4 staff}%
   {Director of Technology, Software Engineer}{\href{https://aquasys.co.jp/}{Aquasys}}
-  \rolenote{Director of Technology (2012/11 – 2014/08), Software Engineer
-    (2011/04 – 2012/11)}
   \roletext{Supervised all technical operations; hired, trained and managed
-    freelancers; built a Django marketplace framework and administered
+    about 10 freelancers; built a Django marketplace framework and administered
     Odoo.}
 \end{role}
 
-\begin{role}{2010/07 – 2011/03}{London, UK}{Django Developer}{Fry-IT}
-  \roletext{Built a Django e-portfolio for London hospitals using TDD
-    (PostgreSQL, Celery).}
+\begin{role}{2010/07 – 2011/03}{London, UK\\12 staff · 2 devs}{Django Developer}{Fry-IT}
+  \roletext{Built a Django e-portfolio for London hospitals using TDD (PostgreSQL, Celery); praised by Peter Bengtsson (later Mozilla,
+    GitHub).}
 \end{role}
 
 % ---------------------------------------------------------------- Education
