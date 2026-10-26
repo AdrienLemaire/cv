@@ -248,9 +248,13 @@ challenge freely).
 Claude owns these: never drop one unless the user explicitly says no.
 
 - Commit and open PRs for `cv-facts` / `cv-facts-html` (awaiting user).
-- Give the user the LinkedIn edits: YAOYA GOunite 2,500+ users, Labellio
-  sold to Kyocera for $300k, Rakuten 3-year migration estimate and 43,500+
-  members, MD Atlas 110,000+ users.
+- LinkedIn (EN + FR texts given 10-26): user to paste About, Made In Tracker,
+  YAOYA, ShareWis, Rakuten, Alpaca, Aquasys, Fry-IT; remove street address;
+  SUPINFO degree/field split; pin Engineering Management and Medical Device
+  Regulation in Top Skills. Waiting on the user for: the About target
+  sentence (bracketed), Axone honor date/prize/number of teams, whether the
+  MD Atlas country count still applies to 110,000+ users. LinkedIn
+  descriptions don't repeat company headcounts (company pages show them).
 
 - Reviewer feedback of 10-26: Made In Tracker dominates; entries mix company,
   team, mission and stack. Still brainstorming.
