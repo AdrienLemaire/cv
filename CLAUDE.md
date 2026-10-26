@@ -5,11 +5,11 @@ PDF CV of Adrien Lemaire, written in LaTeX. The online version lives on the
 
 ## Layout
 
-- One directory per year in which the CV was updated (`2010/` … `2026/`).
-  Inside, one subdirectory per variant (`engineer/`, `cto/`, …), each with its
-  own `Makefile`.
-- Older years are an archive: never edit their content (toolchain or build
-  fixes are fine). 2026+ CVs use the timeline template in `2026/cto/`, which
+- One directory per year in which the CV was updated (`2026/`, …). Inside,
+  one subdirectory per variant (`cto/`, …), each with its own `Makefile`.
+- The 2010–2018 CVs and cover letters live in the private repo
+  `AdrienLemaire/cv-archive` (moved out on 2026-10-26, see `DECISIONS.md`);
+  never add them back here. 2026+ CVs use the timeline template in `2026/cto/`, which
   mirrors the `html` branch design (avatar, teal accents, dated timeline):
   start a new CV by copying that directory into a new year directory, then
   rename the `.tex` (`CV_YYYY-MM.tex`) and update `CVNAME` in its `Makefile`.
@@ -17,11 +17,7 @@ PDF CV of Adrien Lemaire, written in LaTeX. The online version lives on the
   pre-coloured teal-700 `#00786F`) converted with
   `nix shell nixpkgs#librsvg -c rsvg-convert -f pdf` (librsvg is not in the
   flake). Keep the Lucide icon names so both branches stay in sync.
-- `images/` holds portraits, `Certificates/` scanned diplomas, `other/` notes
-  (e.g. a LinkedIn export).
-- 2015–2018 CVs use the legacy `cv4tw` class (sidebar theme, poor ATS
-  extraction); see https://github.com/Cicatrice/cv4tw/blob/master/CUSTOMIZE.md.
-  Do not use it for new CVs.
+- `images/` holds portraits, `Certificates/` scanned certificates.
 
 ## Commands
 
@@ -34,14 +30,12 @@ $ make ats                          # poppler raw, pypdf, pdfminer (2 modes)
 ```
 
 - The flake pins the toolchain (`texlive.withPackages`, gnumake,
-  poppler-utils, Python with pypdf and pdfminer.six) and exposes TeX Live's OpenType fonts to fontconfig, so
-  `fontspec` finds Libertine and FontAwesome by name; the 2026 template loads
+  poppler-utils, Python with pypdf and pdfminer.six) and exposes TeX Live's
+  OpenType fonts to fontconfig, so `fontspec` finds fonts by name; the 2026 template loads
   Noto Sans by TeX Live file name (`NotoSans-Regular.ttf`). Never hardcode
   font paths.
 - When a build fails on a missing `.sty`, add the package to `flake.nix`
   rather than vendoring it.
-- Only the 2018+ xelatex builds are supported (2026+ is the maintained
-  template); 2011–2015 pdflatex builds are kept as-is.
 
 ## LaTeX practices
 
@@ -113,6 +107,9 @@ $ make ats                          # poppler raw, pypdf, pdfminer (2 modes)
 
 ## Commits
 
-- Commit the `.tex`, `Makefile` and the final `.pdf`; do not commit `.log`
-  files (`.aux`/`.out` are legacy and should not be added for new CVs).
+- Commit the `.tex`, `Makefile` and the final `.pdf`; never commit `.log`,
+  `.aux` or `.out` files.
+- Never put private data in the repo (street address, date of birth,
+  personal ID): it is public, and history is not a safe place to delete
+  from.
 - Simple, succinct messages. No "Generated with" or "Co-Authored-By" lines.

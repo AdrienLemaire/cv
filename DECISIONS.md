@@ -5,7 +5,8 @@ does. Read this before proposing a change: if a proposal reverses an entry
 below, say so explicitly and give a reason that answers the original one.
 
 Sources: Claude Code sessions of 2026-10-22/23, 2026-10-25 and 2026-10-26,
-PRs #1–#23 and commit history. Driver: **U** = user decision, **U✓** = user
+PRs #1–#29 and commit history (the PRs went with the
+old repo; the original history is in `AdrienLemaire/cv-archive`). Driver: **U** = user decision, **U✓** = user
 approved a proposal (Claude's or a reviewer's), **C** = Claude alone (weakest:
 challenge freely).
 
@@ -195,7 +196,8 @@ challenge freely).
 - Rakuten (O-net): hired in a team of 3 to migrate O-net to Symfony, planned
   for 6–12 months; showed it would take 3 years; proposed a faster rewrite on
   the latest Symfony, refused, so he left (U 10-26). Don't imply the team was
-  sized after the estimate, or that he started the migration. CV: "Showed
+  sized after the estimate. He did scope and start the migration (U 10-26),
+  so older "started the migration" wording is accurate. CV: "Showed
   that migrating O-net's 40-year-old code (Japan's top marriage agency,
   43,500+ members) needed 3 years, not 6–12 months; pitched a Symfony
   rewrite." 43,500+ members correct; O-net dept about 40 devs. O-net headcount not found online (operated by
@@ -258,6 +260,26 @@ challenge freely).
   the date column, accepted).
 - pypdf inserts stray spaces from kerning ("Flutter ,", "( €25k)");
   keywords stay intact. Kerning kept as is (U 10-26).
+
+## Repository (U 10-26)
+
+- History rewritten and the repo recreated under the same name (same Pages
+  URL), so the history shows no wrong figures or private data:
+  - Wrong figures purged from every commit: GOunite 2,500+ users; MD Atlas
+    110,000+ users across 170 countries, 5.2M records; €1.7M valuation;
+    25 interns; EasyUDI 14 customers, €40k revenue; Rakuten "Software
+    Engineer"; Fry-IT, Aquasys and Alpaca titles in the 2022 html. Old PDFs
+    were rebuilt from the corrected sources; image metadata (EXIF, GPS)
+    stripped.
+  - The 2010–2018 CVs, cover letters and LinkedIn export moved to the
+    private `AdrienLemaire/cv-archive` (they held street addresses, the
+    date of birth, old phone numbers and outdated facts); the date of birth
+    was also removed from the 2022 html history.
+  - Build junk dropped (`.aux`, `.log`, `.out`, `.DS_Store`, editor
+    backups); the flake no longer ships the legacy TeX packages.
+- Secret scan (gitleaks, trufflehog) over the full history: no leaks.
+- From now on, fix a wrong figure with a normal commit; rewrite history
+  again only on explicit user request.
 
 ## Open items
 
