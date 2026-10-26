@@ -192,9 +192,13 @@ challenge freely).
   documents (U 10-26). Across 170 countries.
 - YAOYA: 30 employees; GOunite **2,500+ users**.
 - ShareWis: 8 employees, 5 developers.
-- Rakuten (O-net): team of 3 developers; 43,500+ members is correct;
-  Symfony; outcome: estimated the migration of the 40-year-old legacy
-  codebase at 3 years of work. O-net headcount not found online (operated by
+- Rakuten (O-net): hired in a team of 3 to migrate O-net to Symfony, planned
+  for 6–12 months; showed it would take 3 years; proposed a faster rewrite on
+  the latest Symfony, refused, so he left (U 10-26). Don't imply the team was
+  sized after the estimate, or that he started the migration. CV: "Showed
+  that migrating O-net's 40-year-old code (Japan's top marriage agency,
+  43,500+ members) needed 3 years, not 6–12 months; pitched a Symfony
+  rewrite." 43,500+ members correct; O-net dept about 40 devs. O-net headcount not found online (operated by
   株式会社オーネット, a Rakuten Group company since 2007).
 - Alpaca.ai: 5 employees, team of 4; Labellio sold to Kyocera for $300k;
   Kubernetes, Django, Caffe confirmed.
@@ -212,8 +216,8 @@ challenge freely).
   experience, 9 of them as head of engineering and 11 in Japan. Co-founded the
   MedTech SaaS Made In Tracker after 6 years as CTO of YAOYA." The language
   list is on page 2 already ("redundant"); no figure repeats the bullets.
-- MD Atlas bullet: **110,000+ users** (U: "Nobody's going to open GA4, users
-  is fine"). Summary no longer carries users.
+- MD Atlas bullet: **110,000+ users** across 170 countries (U: "Nobody's
+  going to open GA4, users is fine"; 170 countries confirmed for 110k, U 10-26). Summary no longer carries users.
 - Company and team size go in the aside under the location, "N staff · M
   devs" (page 2 roles); page 1 roles show only staff, team size stays in their
   bullets (no repetition). Rakuten: "40 devs · team of 3" (O-net dev team
@@ -243,21 +247,17 @@ challenge freely).
   (Kubernetes/Django are backed by YAOYA's Stack line; Caffe is obsolete) and
   "Japanese".
 
+## Resolved 10-26
+
+- Reviewer feedback (Made In Tracker dominates; entries mix company, team,
+  mission and stack): sizes moved to the aside, YAOYA given outcome bullets
+  and a Stack line, Made In Tracker trimmed. PRs #24/#25.
+- €180k and €1.7M bolded (#24).
+
 ## Open items
 
 Claude owns these: never drop one unless the user explicitly says no.
 
-- Commit and open PRs for `cv-facts` / `cv-facts-html` (awaiting user).
-- LinkedIn (EN + FR texts given 10-26): user to paste About, Made In Tracker,
-  YAOYA, ShareWis, Rakuten, Alpaca, Aquasys, Fry-IT; remove street address;
-  SUPINFO degree/field split; pin Engineering Management and Medical Device
-  Regulation in Top Skills. Waiting on the user for: the About target
-  sentence (bracketed), Axone honor date/prize/number of teams, whether the
-  MD Atlas country count still applies to 110,000+ users. LinkedIn
-  descriptions don't repeat company headcounts (company pages show them).
-
-- Reviewer feedback of 10-26: Made In Tracker dominates; entries mix company,
-  team, mission and stack. Still brainstorming.
-- Bold €180k / €1.7M? They were moved into a bullet to be bolded and never
-  were.
+- LinkedIn: all 10-26 edits applied by the user. Still unknown: Axone honor
+  date/prize/number of teams; French profile not verifiable from the export.
 - `make ats` 4th pdfminer run with `boxes_flow=None`.
