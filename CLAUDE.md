@@ -92,7 +92,23 @@ $ make ats                          # poppler raw, pypdf and pdfminer output
 ## Content consistency
 
 - Titles, dates (`YYYY/MM`) and company names must match the `html` branch
-  `index.html` and LinkedIn.
+  `index.html` and LinkedIn. This rule means syncing, not freezing: when a
+  change touches them, update the `html` branch and list the exact LinkedIn
+  edits for the user.
+
+## Evaluating ideas and feedback
+
+- Read `DECISIONS.md` before proposing CV changes. If a proposal reverses an
+  entry, say so and answer the original reason; record every new decision
+  there.
+
+- Missing facts are a reason to ask, never to reject: ask the user targeted
+  questions (company size, revenue or funding, team size, stack, outcome
+  numbers) instead of discarding an idea as "unknown data".
+- Only hard constraints count against an idea (page budget, ATS extraction,
+  no invented experience). Before rejecting one, look for an alternative that
+  satisfies them (e.g. metadata in the aside column) and present the
+  trade-offs.
 
 ## Commits
 
