@@ -17,13 +17,10 @@
             boxedminipage
             catoptions
             collectbox
-            cv4tw
             enumitem
             fancyhdr
-            fontawesome
             forloop
             lastpage
-            libertine
             navigator
             needspace
             newenviron
