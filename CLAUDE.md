@@ -83,12 +83,19 @@ $ make ats                          # poppler raw, pypdf, pdfminer (2 modes)
 
 ## Tailoring per application
 
-- Keep `2026/cto/` as the generic CV (mirrored by the `html` branch). For a
-  specific job, copy it to a sibling variant directory (e.g.
-  `2026/<company>/`, `CVNAME` updated) and adapt only `\cvheadline`, the
-  summary and Skills to mirror the job description's keywords.
-- Mirror wording, never invent experience: every keyword must be backed by a
-  bullet. Titles, dates and companies stay identical to the generic CV.
+- Keep `2026/cto/` as the generic CV (mirrored by the `html` branch). This
+  repo is public: never add company-specific directories or decisions here.
+  For a specific job, copy `2026/cto/` to the private job-hunt repo
+  (`../job-hunt/applications/<company>/cv/`, `CVNAME` updated; build it in
+  this repo's dev shell, `nix develop <path to this repo>`; see job-hunt's
+  `CLAUDE.md`) and adapt only `\cvheadline`, the summary and Skills to
+  mirror the job description's keywords.
+- Tailor only to a job description read on its primary source (the posting
+  itself), never to snippets or summaries of it.
+- Mirror wording, never invent experience: add a keyword only if the same
+  term already appears in a bullet of `2026/cto/`; otherwise list it as a
+  gap for the user. Titles, dates and companies stay identical to the
+  generic CV.
 
 ## Content consistency
 

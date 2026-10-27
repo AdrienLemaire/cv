@@ -180,8 +180,13 @@ challenge freely).
 - Missing facts are a reason to ask, not to reject an idea; only hard
   constraints count against one (U 10-26).
 - When the user is brainstorming, do not edit the CV (U 10-26).
-- Tailoring per application goes in a sibling `2026/<company>/` directory;
-  `2026/cto/` stays generic.
+- Tailoring per application goes in the private job-hunt repo
+  (`applications/<company>/cv/`), never in this public repo, which would
+  disclose where the user applies; `2026/cto/` stays generic (U✓ 10-27,
+  replaces the sibling `2026/<company>/` directory).
+- A tailored keyword must already appear as the same term in a bullet; a
+  tailored CV is built only from the posting itself (U✓ 10-27, after a
+  draft stated an unverified claim as fact).
 
 ## Facts supplied 2026-10-26 (U)
 
