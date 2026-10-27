@@ -205,8 +205,8 @@ challenge freely).
   43,500+ members) needed 3 years, not 6–12 months; pitched a Symfony
   rewrite." 43,500+ members correct; O-net dept about 40 devs. O-net headcount not found online (operated by
   株式会社オーネット, a Rakuten Group company since 2007).
-- Alpaca.ai: 5 employees, team of 4; Labellio sold to Kyocera for $300k;
-  Kubernetes, Django, Caffe confirmed.
+- Alpaca.ai: 5 employees, team of 4; Labellio sold to Kyocera for $300k
+  (may be public, U 10-27); Kubernetes, Django, Caffe confirmed.
 - Aquasys: 4 employees; managed about 10 freelancers; Django + Odoo.
 - Fry-IT: about 12 employees, team of 2; outcome: praised by Peter Bengtsson
   (later Mozilla, GitHub), LinkedIn recommendation of 2010-11-12: "Adrien is
