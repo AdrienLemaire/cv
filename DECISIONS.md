@@ -25,7 +25,7 @@ challenge freely).
   Certifications, Interests are undated ruled sections off the timeline
   (U✓ 10-25).
 - **Page 2 is the tight one.** Every past overflow was fixed by trimming
-  older roles or certifications (Rakuten 43,500+ members and audit, ShareWis,
+  older roles or certifications (Rakuten audit, ShareWis,
   Alpaca Iromo, Aquasys Uruma-work, Stanford, Wharton). Preferred fixes: cut
   low-value lines or move metadata to the aside (U 10-25).
 
@@ -51,8 +51,7 @@ challenge freely).
   so they extract next to their title. **Hidden-text tricks refused**:
   extracted text must match what is visible (C 10-25, user had asked).
 - `make ats` (poppler raw, pypdf, pdfminer) after every change. pdfminer
-  splitting the date column is accepted. Open: a 4th run with
-  `boxes_flow=None` was suggested, never answered.
+  splitting the date column is accepted.
 - Education date stays in the aside (U: at line end it "will grow to 2
   lines"); Certifications and Interests stay side by side (U: stacking "will
   overflow").
@@ -138,14 +137,14 @@ challenge freely).
   removed and restored twice; "You gotta make your mind about Fry-IT" (U 10-25). When page 2 needs
   space, trim elsewhere first.
 - Rakuten title "Software Engineer" per LinkedIn (U).
-  "43,500+ members" and the security audit cut for page 2 margin (C).
+  Security audit cut for page 2 margin (C); "43,500+ members" restored
+  10-26 (U facts).
 - Alpaca.ai: no "Formerly Ikkyo Technology" note (U: it had been removed
   before, page 2 too heavy).
 - Pre-2010 roles are left out.
-- Company size and revenue of employers are not shown: they say nothing
-  about the user's job (user questioned their relevance 10-26, C agreed;
-  to confirm). Show the scope of the user's own work instead (team led,
-  product users or revenue).
+- Company and team size go in the aside (applied 10-26, superseding "not
+  shown"). Bullets show the scope of the user's own work (team led, product
+  users or revenue).
 
 ## Skills, certifications, recommendations, other sections
 
@@ -230,7 +229,8 @@ challenge freely).
 - €180k and €1.7M bolded. YAOYA stack moved to a `Stack:` line.
 - Page 2 trims approved (U "LGTM"): Aquasys dual-title dates line removed
   (the title still names both roles); Alpaca ends "computer-vision R&D for
-  Japanese gaming and search leaders".
+  gaming and search leaders" ("Japanese" dropped later the same day, see
+  below).
 - html meta descriptions now mirror the summary's first sentence.
 - html page 2 margin judged fine by U in print preview (10-26).
 - YAOYA (U facts 10-26), replacing a short-lived Chibiwork bullet (3-month
