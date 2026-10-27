@@ -183,7 +183,11 @@ challenge freely).
   (`applications/<company>/cv/`), never in this public repo, which would
   disclose where the user applies; `2026/cto/` stays generic (U✓ 10-27,
   replaces the sibling `2026/<company>/` directory).
-- A tailored keyword must already appear as the same term in a bullet; a
+- A tailored keyword must already appear as the same term in a bullet, or
+  come from a fact the user stated, recorded with its date in the
+  application's `SOURCES.md`, which may also reword the matching bullet
+  (U✓ 10-27, amended the same day: the user declined to grow the generic
+  CV, "heavy enough as it is"; dated user facts still invent nothing). A
   tailored CV is built only from the posting itself (U✓ 10-27, after a
   draft stated an unverified claim as fact).
 

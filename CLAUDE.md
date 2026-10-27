@@ -93,9 +93,11 @@ $ make ats                          # poppler raw, pypdf, pdfminer (2 modes)
 - Tailor only to a job description read on its primary source (the posting
   itself), never to snippets or summaries of it.
 - Mirror wording, never invent experience: add a keyword only if the same
-  term already appears in a bullet of `2026/cto/`; otherwise list it as a
-  gap for the user. Titles, dates and companies stay identical to the
-  generic CV.
+  term already appears in a bullet of `2026/cto/`, or comes from a fact the
+  user stated, recorded with its date in the application's `SOURCES.md`;
+  with such a fact, the matching bullet may be reworded too. Otherwise list
+  it as a gap for the user. The generic CV stays unchanged; titles, dates
+  and companies stay identical to it.
 
 ## Content consistency
 
